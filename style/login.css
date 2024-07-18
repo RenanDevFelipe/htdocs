@@ -1,0 +1,71 @@
+:root{
+    ---colorPrimary: #000;
+    ---colorsecundary: #ff6200;
+    ---colorNeutral: #fff;
+    ---shadowBoxForm: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.login-section{
+    width: 18%;
+    padding: 30px 30px 50px 30px;
+    box-shadow: var(---shadowBoxForm);
+    border-radius: 5%;
+}
+
+.login-section .title{
+    text-align: center;
+    color: #ff6200;
+    font-size: 20px;
+}
+
+.login-section form{
+    margin-top: 20%;
+}
+
+.login-section form .box-login{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+}
+
+.login-section form .box-login input{
+    padding: 5%;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: var(---colorsecundary);
+    outline: none;
+    padding: 5px;
+}
+
+.login-section form .button-login{
+    width: 100%;
+    margin-top: 10%;
+    padding: 3%;
+    border: 1px solid transparent;
+    color: #ffff;
+    background: #ff6200;
+    cursor: pointer;
+}
+
+.login-section form .button-login:hover{
+    background-color: var(---colorNeutral);
+    color: var(---colorsecundary);
+    border: 1px solid var(---colorsecundary);
+}
+
+.login-section form .passShow{
+    display: flex;
+    margin-top: 10%;
+    align-items: center;
+    font-size: 15px;
+    gap: 1%;
+}
