@@ -12,12 +12,12 @@
     </div>
     <ul class="nav-links">
         <li>
-            <a href="../deshboard/">
+            <a href="/deshboard/">
                 <i class='bx bx-star'></i>
                 <span class="link_name">Avaliar</span>
             </a>
             <ul class="sub-menu">
-                <li><a class="link_name" href="../deshboard/">Avaliar</a></li>
+                <li><a class="link_name" href="/deshboard/">Avaliar</a></li>
             </ul>
         </li>
         <li>
@@ -54,12 +54,12 @@
             </ul>
         </li>
         <li>
-            <a href="/deshboard/config.php">
+            <a href="/deshboard/settings/">
                 <i class='bx bx-cog'></i>
                 <span class="link_name">Setting</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="/deshboard/config.php">Setting</a></li>
+                <li><a class="link_name" href="/deshboard/settings/">Setting</a></li>
             </ul>
         </li>
         <li>
@@ -91,7 +91,7 @@
                 showCloseButton: true
             }).then((result) => {
                 if(result.isConfirmed) {
-                    window.location.href = 'logout.php';
+                    window.location.href = '../logout.php';
                 }
             })
 
