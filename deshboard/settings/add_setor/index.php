@@ -1,5 +1,6 @@
 <?php
 require_once "../../../autentication/index.php";
+require_once "listar_setor.php";
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +35,12 @@ require_once "../../../autentication/index.php";
                 </div>
             </section>
             <section class="list-colaboradores">
+                <?php foreach ($setores as $setor): ?>
                 <div class='box-colaborador'>
 
                     <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
+                        <i class="bx bxs-widget"></i>
+                        <p><?php echo $setor['nome_setor']?></p>
                     </div>
 
                     <div class="buttons-colaborador">
@@ -51,96 +53,7 @@ require_once "../../../autentication/index.php";
                         </div>
                     </div>
                 </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
+            <?php endforeach ?>
             </section>
 
             <section class="add-banco-de-dados">
