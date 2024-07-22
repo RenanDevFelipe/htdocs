@@ -1,0 +1,31 @@
+.form-add-bd{
+    border-radius: 8px;
+}
+
+.box-form-setor input[type=text]{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+
+.buttons-add-cancelar{
+    margin-top: 5%;
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+}
+
+.buttons-add-cancelar button{
+    padding: 5px;
+    border: solid transparent;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.buttons-add-cancelar button[type=submit]{
+    background-color: cornflowerblue;
+}
