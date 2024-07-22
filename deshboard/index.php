@@ -11,7 +11,7 @@ include '../autentication/index.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/os_identificador.css">
-    <title>Rápida, Prática e Descomplicada</title>
+    <title>TESTEEEEEE, Prática e Descomplicada</title>
 
 </head>
 
@@ -26,12 +26,12 @@ include '../autentication/index.php';
 
             <div class="os-identidficador" id="osAbertaDia">
                 <p class="title-os">O.S Abertas</p>
-                <h1 id="quantidade-os">310</h1>
+                <h1 id="quantidade-os">350</h1>
             </div>
 
             <div class="os-identidficador" id="osFechadaDia">
                 <p class="title-os">O.S Finalizadas</p>
-                <h1 id="quantidade-os">310</h1>
+                <h1 id="quantidade-os">350</h1>
             </div>
         </section>
 
