@@ -1,0 +1,111 @@
+@import url(../style/index.css);
+
+.home-section {
+    width: 100%;
+    height: 100vh;
+}
+
+.settings-add-colaborador {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.settings-add-colaborador .title-settings {
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+.settings-add-colaborador .title-settings h1 {
+    font-size: 30px;
+}
+
+.settings-add-colaborador .button-add-colaboradores {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    font-size: 30px;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.list-colaboradores.hidden {
+    display: none;
+}
+
+.list-colaboradores .box-colaborador {
+    width: 25%;
+    background-color: var(---colorNeutral);
+    box-shadow: var(---shadowBoxForm);
+}
+
+.list-colaboradores .box-colaborador .perfil-colaborador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 30px;
+}
+
+.list-colaboradores .box-colaborador .perfil-colaborador i {
+    font-size: 35px;
+}
+
+.list-colaboradores .box-colaborador .buttons-colaborador {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.list-colaboradores .box-colaborador .buttons-colaborador .button-colaborador {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #c9ccd6;
+    border-right: 1px solid #c9ccd6;
+    padding: 10px;
+}
+
+.list-colaboradores .box-colaborador .buttons-colaborador .button-colaborador a {
+    color: var(---colorPrimary);
+}
+
+.list-colaboradores .box-colaborador .buttons-colaborador .button-colaborador:hover a {
+    color: var(---colorNeutral);
+}
+
+.list-colaboradores .box-colaborador .buttons-colaborador .excluir:hover {
+    background: red;
+}
+
+.list-colaboradores .box-colaborador .buttons-colaborador .editar:hover {
+    background-color: cornflowerblue;
+}
+
+.list-colaboradores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+
+.add-banco-de-dados {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.add-banco-de-dados .form-add-bd{
+    width: 60%;
+    padding: 20px;
+    background-color: var(---colorNeutral);
+    box-shadow: var(---shadowBoxForm);
+}
+
+.add-banco-de-dados .title-add{
+    font-size: 25px;
+    margin-bottom: 1rem;
+}
