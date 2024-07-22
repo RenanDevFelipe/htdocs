@@ -54,12 +54,18 @@
             </ul>
         </li>
         <li>
-            <a href="/deshboard/settings/">
-                <i class='bx bx-cog'></i>
-                <span class="link_name">Setting</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="/deshboard/settings/">Setting</a></li>
+            <div class="iocn-link">
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Settings</a></li>
+                <li><a href="/deshboard/settings/add_usuario/">Usuário</a></li>
+                <li><a href="/deshboard/settings/add_setor/">Setor</a></li>
+                <li><a href="/deshboard/settings/add_colaborador/">Colaborador</a></li>
             </ul>
         </li>
         <li>
@@ -82,18 +88,18 @@
     var Logout = document.getElementById('logout');
 
     Logout.addEventListener('click', () => {
-            Swal.fire({
-                title: "Deseja realmente sair?",
-                icon: "question",
-                confirmButtonText: "Sim",
-                cancelButtonText: "Cancelar",
-                showCancelButton: true,
-                showCloseButton: true
-            }).then((result) => {
-                if(result.isConfirmed) {
-                    window.location.href = '../logout.php';
-                }
-            })
+        Swal.fire({
+            title: "Deseja realmente sair?",
+            icon: "question",
+            confirmButtonText: "Sim",
+            cancelButtonText: "Cancelar",
+            showCancelButton: true,
+            showCloseButton: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/deshboard/logout.php';
+            }
+        })
 
     });
 </script>

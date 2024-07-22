@@ -10,7 +10,7 @@ require_once "../../../autentication/index.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/settings.css?v=1">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
-    <title>Settings - Cadastrar Funcionário</title>
+    <title>Settings - Cadastrar Usuário</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@ require_once "../../../autentication/index.php";
 
         <section class="settings-add-colaborador">
             <div class="title-settings">
-                <h1>Colaboradores</h1>
+                <h1>Usuários</h1>
             </div>
 
             <section style="width: 92%;">

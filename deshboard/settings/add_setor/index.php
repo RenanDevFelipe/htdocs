@@ -1,5 +1,5 @@
 <?php
-require_once "../../autentication/index.php";
+require_once "../../../autentication/index.php";
 ?>
 
 <!DOCTYPE html>
@@ -8,13 +8,13 @@ require_once "../../autentication/index.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style/settings.css?v=1">
-    <link rel="stylesheet" href="../../style/dashboard.css">
-    <title>Settings - Cadastrar Funcionário</title>
+    <link rel="stylesheet" href="../../../style/settings.css?v=1">
+    <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
+    <title>Settings - Cadastrar Setor</title>
 </head>
 
 <body>
-    <?php include_once '../../slide_menu/slide_bar_menu.php' ?>
+    <?php include_once '../../../slide_menu/slide_bar_menu.php' ?>
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
@@ -22,7 +22,7 @@ require_once "../../autentication/index.php";
 
         <section class="settings-add-colaborador">
             <div class="title-settings">
-                <h1>Colaboradores</h1>
+                <h1>Setores</h1>
             </div>
 
             <section style="width: 92%;">
@@ -143,7 +143,7 @@ require_once "../../autentication/index.php";
     </section>
 </body>
 
-<script src="../../script/dashboard.js"></script>
-<script src="../../script/navegacao.js"></script>
+<script src="../../../script/navegacao.js"></script>
+<script src="../../../script/dashboard.js?v=1"></script>
 
 </html>
