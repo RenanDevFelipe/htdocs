@@ -11,9 +11,7 @@ include '../autentication/index.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/os_identificador.css">
-    <title>TESTADO, Prática e Ellyson</title>
-    <title>TESTADO, RENAN e Descomplicada</title>
-
+    <title>Rápida, Prática e Descomplicada</title>
 </head>
 
 <body>
