@@ -31,7 +31,7 @@ include '../autentication/index.php';
 
             <div class="os-identidficador" id="osFechadaDia">
                 <p class="title-os">O.S Finalizadas</p>
-                <h1 id="quantidade-os">350</h1>
+                <h1 id="quantidade-os">500</h1>
             </div>
         </section>
 
