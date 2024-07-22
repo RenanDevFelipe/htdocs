@@ -53,7 +53,7 @@ require_once "../../../autentication/index.php";
 
                     <div class="perfil-colaborador">
                         <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
+                        <p>BIG JEFFF Luiz</p>
                     </div>
 
                     <div class="buttons-colaborador">
