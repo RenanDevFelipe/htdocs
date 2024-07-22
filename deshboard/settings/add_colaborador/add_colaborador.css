@@ -1,0 +1,64 @@
+.add-banco-de-dados{
+}
+.form{
+    display: grid;
+    grid-column: 1;
+    gap: 30px;
+}
+.form input{
+    padding: 10px;
+    width: 49%;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.select{
+    width: 100%;
+}
+.form-add-bd{
+    display: flex;
+    flex-direction: column;
+}
+.buttons-add-cancelar{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 1em;
+}
+.buttons-add-cancelar button{
+    padding: 5px;
+}
+.buttons-add-cancelar button:nth-child(1){
+    background-color: cornflowerblue;
+    color: white;
+    border: solid transparent;
+    border-radius: 5px;
+}
+.buttons-add-cancelar button:nth-child(1):hover{
+    background-color: rgb(75, 132, 238);
+}
+.buttons-add-cancelar button:nth-child(2){
+    background-color: red;
+    color: white;
+    border: solid transparent;
+    border-radius: 5px;
+}
+.buttons-add-cancelar button:nth-child(2):hover{
+    background-color: crimson;
+}
+.box-form-setor{
+
+}
+.select{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    justify-content: center;
+    gap: 10px;
+}
+.select select{
+    padding: 5px;
+}
+.perfil-colaborador{
+    display: flex;
+    flex-direction: column;
+}
