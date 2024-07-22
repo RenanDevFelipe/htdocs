@@ -26,7 +26,7 @@ include '../autentication/index.php';
 
             <div class="os-identidficador" id="osAbertaDia">
                 <p class="title-os">O.S Abertas</p>
-                <h1 id="quantidade-os">350</h1>
+                <h1 id="quantidade-os">330</h1>
             </div>
 
             <div class="os-identidficador" id="osFechadaDia">
