@@ -4,3 +4,4 @@ deletarSetor.addEventListener('click', (event) => {
     event.preventDefault
     alert('tudo legal')
 })
+
