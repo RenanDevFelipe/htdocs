@@ -10,7 +10,7 @@ require_once "../../../autentication/index.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/settings.css?v=1">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
-    <title>Settings - Cadastrar Setor</title>
+    <title>Settings - Cadastrar Setores</title>
 </head>
 
 <body>
