@@ -8,7 +8,7 @@ require_once "../../../autentication/index.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../style/settings.css?v=1">
+    <link rel="stylesheet" href="../../../style/settings.css?v=2">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
     <title>Settings - Cadastrar Setores</title>
 </head>
@@ -139,11 +139,30 @@ require_once "../../../autentication/index.php";
                     </div>
                 </div>
             </section>
+
+            <section class="add-banco-de-dados">
+                <div class="form-add-bd">
+                    <div class="title-add">
+                        <h1>Adicionar Setor</h1>
+                    </div>
+
+                    <form>
+                        <div class="box-form-setor">
+                            <input type="text" placeholder="Nome do Setor">
+                        </div>
+
+                        <div class="buttons-add-cancelar">
+                            <button type="submit" class="button-form">Adicionar</button>
+                            <button type="button" class="button-form" id="buttonCancelar">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </section>
     </section>
 </body>
 
-<script src="../../../script/navegacao.js"></script>
+<script src="../../../script/navegacao.js?v=1"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
 
 </html>

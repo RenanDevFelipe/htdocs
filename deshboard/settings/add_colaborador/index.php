@@ -8,7 +8,7 @@ require_once "../../../autentication/index.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../style/settings.css?v=1">
+    <link rel="stylesheet" href="../../../style/settings.css?v=2">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
     <title>Settings - Cadastrar Funcionário</title>
 </head>
@@ -143,7 +143,7 @@ require_once "../../../autentication/index.php";
     </section>
 </body>
 
-<script src="../../../script/navegacao.js"></script>
+<script src="../../../script/navegacao.js?v=1"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
 
 </html>
