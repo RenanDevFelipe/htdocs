@@ -1,0 +1,42 @@
+
+
+.box-form-setor{
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.box-form-setor input{
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.box-form-setor select{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.buttons-add-cancelar{
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    justify-content: end;
+}
+.buttons-add-cancelar button{
+    padding: 5px;
+    border: solid transparent;
+    background-color: red;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#addUser{
+    background-color: cornflowerblue;
+}

@@ -1,5 +1,8 @@
 <?php
 require_once "../../../autentication/index.php";
+require_once "listar_user.php";
+require_once "get_roles.php";
+require_once "../add_setor/listar_setor.php"
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +13,7 @@ require_once "../../../autentication/index.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/settings.css?v=3">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
+    <link rel="stylesheet" href="add_user.css">
     <title>Settings - Cadastrar Usuário</title>
 </head>
 
@@ -31,21 +35,63 @@ require_once "../../../autentication/index.php";
                 </div>
             </section>
             <section class="list-colaboradores">
-                <div class='box-colaborador'>
+                <?php foreach ($users as $user) : ?>
+                    <div class='box-colaborador'>
 
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
+                        <div class="perfil-colaborador">
+                            <i class="bx bx-user-circle"></i>
+                            <p><?php echo $user['nome_user'] ?></p>
+                        </div>
 
-                    <div class="buttons-colaborador">                      
+                        <div class="buttons-colaborador">
                             <a href="" class="editar">Editar</a>
-                        
 
-                        
+
+
                             <a href="" class="excluir">Deletar</a>
+                        </div>
                     </div>
+                <?php endforeach ?>
                 </div>
+            </section>
+
+            <section class="add-banco-de-dados">
+                <div class="form-add-bd">
+                    <div class="title-add">
+                        <h1>Adicionar Usuário</h1>
+                    </div>
+
+                    <form id="formUser" method="POST">
+                        <div class="box-form-setor">
+                            <input type="text" name="nomeUser" id="nomeUser" placeholder="Nome do Usuário">
+                        </div>
+
+                        <div class="box-form-setor">
+                            <input type="email" name="emailUser" id="emailUser" placeholder="exemplo@exemplo.com">
+                            <input type="password" name="passUser" id="passUser" placeholder="Password">
+                        </div>
+                        <div class="box-form-setor">
+                            <select name="" id="">
+                                <option value="" disabled selected hidden>Selecione um perfil</option>
+                                <?php foreach ($roles as $role) : ?>
+                                    <option value="<?php echo $role['id_role'] ?>"><?php echo $role['nome_role'] ?></option>
+                                <?php endforeach ?>
+                            </select>
+
+                            <select name="" id="">
+                                <option value="" disabled selected hidden>Selecione um setor</option>
+                                <?php foreach($setores as $setor): ?>
+                                    <option value="<?php echo $setor['id_setor'] ?>"><?php echo $setor['nome_setor'] ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </form>
+
+                    <div class="buttons-add-cancelar">
+                        <button type="submit" class="button-form" id="addUser">Adicionar</button>
+                        <button type="button" class="button-form" id="buttonCancelar">Cancelar</button>
+                    </div>
+
                 </div>
             </section>
         </section>
@@ -54,5 +100,5 @@ require_once "../../../autentication/index.php";
 
 <script src="../../../script/navegacao.js?v=1"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
-
+<script src="enviar_riquisicao.js"></script>
 </html>
