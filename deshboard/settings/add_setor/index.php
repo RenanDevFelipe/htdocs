@@ -9,7 +9,7 @@ require_once "listar_setor.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../style/settings.css?v=2">
+    <link rel="stylesheet" href="../../../style/settings.css?v=3">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -44,13 +44,13 @@ require_once "listar_setor.php";
                     </div>
 
                     <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
+                        
                             <a href="" class="editar">Editar</a>
-                        </div>
+                      
 
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
+                        
+                            <a class="delete-button excluir" data-id="<?php echo $setor['id_setor'] ?>">Deletar</a>
+                       
                     </div>
                 </div>
             <?php endforeach ?>
@@ -82,5 +82,6 @@ require_once "listar_setor.php";
 <script src="../../../script/navegacao.js?v=1"></script>
 <script src="enviar_riquisicao.js"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
+<script src="deletar_setor.js"></script>
 
 </html>
