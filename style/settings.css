@@ -114,3 +114,7 @@
     font-size: 25px;
     margin-bottom: 1rem;
 }
+
+.hidden{
+    display: none;
+}

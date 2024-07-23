@@ -8,7 +8,7 @@ require_once "../../../autentication/index.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../style/settings.css?v=2">
+    <link rel="stylesheet" href="../../../style/settings.css?v=3">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
     <title>Settings - Cadastrar Usuário</title>
 </head>
@@ -38,105 +38,14 @@ require_once "../../../autentication/index.php";
                         <p>Jefferson Luiz</p>
                     </div>
 
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
+                    <div class="buttons-colaborador">                      
                             <a href="" class="editar">Editar</a>
-                        </div>
+                        
 
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
+                        
+                            <a href="" class="excluir">Deletar</a>
                     </div>
                 </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='box-colaborador'>
-
-                    <div class="perfil-colaborador">
-                        <i class="bx bx-user-circle"></i>
-                        <p>Jefferson Luiz</p>
-                    </div>
-
-                    <div class="buttons-colaborador">
-                        <div class="button-colaborador editar">
-                            <a href="" class="editar">Editar</a>
-                        </div>
-
-                        <div class="button-colaborador excluir">
-                            <a href="">Deletar</a>
-                        </div>
-                    </div>
                 </div>
             </section>
         </section>

@@ -18,8 +18,7 @@ $(document).ready(function() {
                     url: 'delete_setor.php',
                     data: { id: itemId },
                     success: function(response) {
-                        const res = JSON.parse(response);
-                        if (res.success) {
+                        if (response.success) {
                             Swal.fire({
                                 title: "Deletado!",
                                 text: "O item foi deletado.",
@@ -30,7 +29,7 @@ $(document).ready(function() {
                         } else {
                             Swal.fire({
                                 title: "Erro!",
-                                text: res.message,
+                                text: response.message,
                                 icon: "error"
                             });
                         }
