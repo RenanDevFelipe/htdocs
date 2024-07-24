@@ -60,14 +60,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
         $.ajax({
             type: 'POST',
-            url: 'update_setor.php',
+            url: 'update_colaborador.php',
             data: $(form).serialize(),
             dataType: 'json',
             success: function (response) {
                 if (response.success) {
                     Swal.fire({
                         title: 'Sucesso',
-                        text: 'Setor atualizado com sucesso!',
+                        text: 'Colaborador atualizado com sucesso!',
                         icon: 'success'
                     }).then(() => {
                         location.reload();
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
             },
             error: function (xhr, status, error) {
-                Swal.fire('Erro', 'Erro ao atualizar o setor', 'error');
+                Swal.fire('Erro', 'Erro ao atualizar o colaborador', 'error');
             }
         });
     })
