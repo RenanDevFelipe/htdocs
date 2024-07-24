@@ -27,12 +27,25 @@ $params = array(
 
 $api->get('su_oss_chamado', $params);
 $retorno = $api->getRespostaConteudo(false);
-$teste = json_decode($retorno);
+$os_fin= json_decode($retorno);
+
+$i = 0;
+$desc_os = array();
+$fechamento_os = array();
+$id_os_ixc = array();
+
+while($i < $os_fin->total){
+    $desc_os[] = $os_fin->registros[$i]->mensagem;
+    $fechamento_os[] = $os_fin->registros[$i]->data_fechamento;
+    $id_os_ixc[] = $os_fin->registros[$i]->id;
+    $i++;
+}
 
 
 $nomes_clientes= array();
 
-foreach ($teste->registros as $chamado) {
+
+foreach ($os_fin->registros as $chamado) {
     $params = array(
         'qtype' => 'cliente.id',
         'query' => $chamado->id_cliente,
@@ -49,3 +62,15 @@ foreach ($teste->registros as $chamado) {
 
     $nomes_clientes[] = $cliente->registros[0]->razao;
 }
+
+function zip($array1, $array2, $array3, $array4) {
+    $zipped = [];
+    $length = min(count($array1), count($array2), count($array3), count($array4));
+    for ($i = 0; $i < $length; $i++) {
+        $zipped[] = [$array1[$i], $array2[$i], $array3[$i], $array4[$i]];
+    }
+    return $zipped;
+}
+
+
+?>
