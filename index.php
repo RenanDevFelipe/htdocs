@@ -1,5 +1,5 @@
 <?
 
-header('Location: deshboard/')
-
+header('Location: deshboard/');
+die('nao sei')
 ?>

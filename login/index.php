@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/style/login.css?v=1">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../script/enviar_riquisição.js"></script>
     <title>Login - Ranking</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
         <div class="title">
             <h1>Login</h1>
         </div>
-        <form id="formLogin" method="post">
+        <form id="formLogin" >
             <div class="box-login">
                 <label for="email_login">E-mail</label>
                 <input type="email" name="email_login" id="emailLogin">
@@ -37,5 +38,4 @@
     </section>
 </body>
 <script src="../script/index.js"></script>
-<script src="enviar_riquisicao.js"></script>
 </html>

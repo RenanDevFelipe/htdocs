@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../style/dashboard.css?v=1">
+<link rel="stylesheet" href="../style/dashboard.css?v=2">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta name=" viewport" content="width=device-width, initial-scale=1.0">
@@ -53,13 +53,14 @@
                 <li><a class="link_name" href="#">O.S Aberta</a></li>
             </ul>
         </li>
-        <li>
-            <div class="iocn-link">
+        <?php if ($_SESSION['user_role'] != 1) {
+            echo ' <li>
+            <div class="iocn-link " style="display:none;">
                 <a href="#">
-                    <i class='bx bx-cog'></i>
+                    <i class="bx bx-cog"></i>
                     <span class="link_name">Settings</span>
                 </a>
-                <i class='bx bxs-chevron-down arrow'></i>
+                <i class="bx bxs-chevron-down arrow"></i>
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Settings</a></li>
@@ -67,7 +68,24 @@
                 <li><a href="/deshboard/settings/add_setor/">Setor</a></li>
                 <li><a href="/deshboard/settings/add_colaborador/">Colaborador</a></li>
             </ul>
-        </li>
+        </li>';
+        } else{
+            echo ' <li>
+            <div class="iocn-link ">
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Settings</a></li>
+                <li><a href="/deshboard/settings/add_usuario/">Usuário</a></li>
+                <li><a href="/deshboard/settings/add_setor/">Setor</a></li>
+                <li><a href="/deshboard/settings/add_colaborador/">Colaborador</a></li>
+            </ul>
+        </li>';
+        } ?>
         <li>
             <div class="profile-details">
                 <div class="profile-content">
@@ -75,7 +93,7 @@
                 </div>
                 <div class="name-job">
                     <div class="profile_name"><?php echo $_SESSION['user_name'] ?></div>
-                    <div class="job"><?php echo $_SESSION['user_setor'] ?></div>
+                    <div class="job"><?php echo $_SESSION['setor'] ?></div>
                 </div>
 
                 <i class='bx bx-log-out' id="logout"></i>

@@ -51,26 +51,31 @@
     font-size: 35px;
 }
 
-.list-colaboradores .box-colaborador .buttons-colaborador {
+.list-colaboradores .box-colaborador .buttons-colaborador{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-
+    width: 100%;
 }
 
-.list-colaboradores .box-colaborador .buttons-colaborador .button-colaborador {
+.list-colaboradores .box-colaborador .buttons-colaborador .button-colaborador{
+    display: flex;
     width: 100%;
+}
+
+.editar, .excluir{
+    width: 50%;
     text-align: center;
     border-top: 1px solid #c9ccd6;
     border-right: 1px solid #c9ccd6;
-    padding: 10px;
-}
-
-.list-colaboradores .box-colaborador .buttons-colaborador .button-colaborador a {
+    padding: 5px;
+    cursor: pointer;
     color: var(---colorPrimary);
 }
 
-.list-colaboradores .box-colaborador .buttons-colaborador .button-colaborador:hover a {
+.list-colaboradores .box-colaborador .buttons-colaborador .button-colaborador {
+    color: var(---colorPrimary);
+}
+
+.list-colaboradores .box-colaborador .buttons-colaborador  a:hover{
     color: var(---colorNeutral);
 }
 
@@ -108,4 +113,8 @@
 .add-banco-de-dados .title-add{
     font-size: 25px;
     margin-bottom: 1rem;
+}
+
+.hidden{
+    display: none;
 }

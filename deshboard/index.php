@@ -1,7 +1,8 @@
 <?php
-
+require_once "../core/core.php";
 include '../autentication/index.php';
-
+require_once "../api/os_finalizada_do_dia.php";
+require_once "../api/os_aberta_do_dia.php"
 ?>
 
 <!DOCTYPE html>
@@ -25,92 +26,41 @@ include '../autentication/index.php';
 
             <div class="os-identidficador" id="osAbertaDia">
                 <p class="title-os">O.S Abertas</p>
-                <h1 id="quantidade-os">330</h1>
+                <h1 id="quantidade-os"><?php echo $total_os_do_dia->total ?></h1>
             </div>
 
             <div class="os-identidficador" id="osFechadaDia">
                 <p class="title-os">O.S Finalizadas</p>
-                <h1 id="quantidade-os">500</h1>
+                <h1 id="quantidade-os"><?php echo $total_os_finalizada_do_dia->total ?></h1>
             </div>
         </section>
-
         <section class="dashboard-tecnicos-ranking">
-            <div class="box-tecnico">
-                <div id="tecnico">
-                    <i class="bx bx-user-circle"></i>
-                    <span>Jefferson Luiz</span>
-                </div>
-                <div class="avaliar">
-                    <i class="bx bx-star"></i>
-                    <a href="">Avaliar</a>
-                </div>
-            </div>
+            <?php
+            $query = $pdo->prepare("SELECT * FROM colaborador");
+            $query->execute();
 
-            <div class="box-tecnico">
-                <div id="tecnico">
-                    <i class="bx bx-user-circle"></i>
-                    <span>Jefferson Luiz</span>
-                </div>
-                <div class="avaliar">
-                    <i class="bx bx-star"></i>
-                    <a href="">Avaliar</a>
-                </div>
-            </div>
+            while ($colaboradores = $query->fetch(PDO::FETCH_ASSOC)) {
+                $setor = $pdo->prepare('SELECT nome_setor FROM setor WHERE id_setor = ?');
+                $setor->execute([$colaboradores['setor_colaborador']]);
+                $setores = $setor->fetch(PDO::FETCH_ASSOC)
+            ?>
 
-            <div class="box-tecnico">
-                <div id="tecnico">
-                    <i class="bx bx-user-circle"></i>
-                    <span>Jefferson Luiz</span>
-                </div>
-                <div class="avaliar">
-                    <i class="bx bx-star"></i>
-                    <a href="">Avaliar</a>
-                </div>
-            </div>
 
-            <div class="box-tecnico">
-                <div id="tecnico">
-                    <i class="bx bx-user-circle"></i>
-                    <span>Jefferson Luiz</span>
+                <div class="box-tecnico">
+                    <div id="tecnico">
+                        <i class="bx bx-user-circle"></i>
+                        <span><?php echo $colaboradores['nome_colaborador'] ?></span>
+                    </div>
+                    <div class="avaliar">
+                        <i class="bx bx-star"></i>
+                        <a href="./avaliacao/redirect.php?id_colaborador=<?php echo $colaboradores['id_ixc'] ?>">Avaliar</a>
+                    </div>
                 </div>
-                <div class="avaliar">
-                    <i class="bx bx-star"></i>
-                    <a href="">Avaliar</a>
-                </div>
-            </div>
 
-            <div class="box-tecnico">
-                <div id="tecnico">
-                    <i class="bx bx-user-circle"></i>
-                    <span>Jefferson Luiz</span>
-                </div>
-                <div class="avaliar">
-                    <i class="bx bx-star"></i>
-                    <a href="">Avaliar</a>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
 
-            <div class="box-tecnico">
-                <div id="tecnico">
-                    <i class="bx bx-user-circle"></i>
-                    <span>Jefferson Luiz</span>
-                </div>
-                <div class="avaliar">
-                    <i class="bx bx-star"></i>
-                    <a href="">Avaliar</a>
-                </div>
-            </div>
-
-            <div class="box-tecnico">
-                <div id="tecnico">
-                    <i class="bx bx-user-circle"></i>
-                    <span>Jefferson Luiz</span>
-                </div>
-                <div class="avaliar">
-                    <i class="bx bx-star"></i>
-                    <a href="">Avaliar</a>
-                </div>
-            </div>
         </section>
     </section>
 </body>
