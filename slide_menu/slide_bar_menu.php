@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../style/dashboard.css?v=1">
+<link rel="stylesheet" href="../style/dashboard.css?v=2">
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta name=" viewport" content="width=device-width, initial-scale=1.0">

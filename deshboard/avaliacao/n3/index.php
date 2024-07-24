@@ -12,7 +12,7 @@ require_once "../../../api/listar_os.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
+    <link rel="stylesheet" href="../../../style/dashboard.css?v=2">
     <link rel="stylesheet" href="index.css">
     <title>Document</title>
 </head>

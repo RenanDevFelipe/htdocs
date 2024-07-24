@@ -13,7 +13,7 @@ require_once "../add_setor/listar_setor.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
     <link rel="stylesheet" href="../../../style/settings.css?v=3">
-    <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
+    <link rel="stylesheet" href="../../../style/dashboard.css?v=2">
     <link rel="stylesheet" href="add_user.css">
     <title>Settings - Cadastrar Usuário</title>
 </head>
