@@ -12,17 +12,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 var form = document.getElementById('formUser');
-                var nomeUser = document.getElementById('nomeUser').value.trim();
-                var emailUser = document.getElementById('emailUser').value.trim();
-
-                if (nomeUser === '' || emailUser === '') {
-                    Swal.fire('Erro', 'Preencha todos os campos por favor!', 'error');
-                    return;
-                }
 
                 $.ajax({
                     type: 'POST',
-                    url: 'add_setor.php',
+                    url: 'add_usuario.php',
                     data: $(form).serialize(),
                     dataType: 'json',
                     success: function(response) {
@@ -40,7 +33,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         }
                     },
                     error: function(xhr, status, error) {
-                        Swal.fire('Erro', 'Erro pior ainda: ' + status, 'error');
+                        Swal.fire('Erro', 'Erro na Riquisição: ' + status, 'error');
                     }
                 });
             }

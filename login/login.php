@@ -17,6 +17,13 @@ if(isset($_POST['email_login'], $_POST['senha_login'])){
             $_SESSION['user_email'] = $user['email_user'];
             $_SESSION['user_setor'] = $user['setor_user'];
 
+            $setor = $pdo->prepare('SELECT nome_setor FROM setor WHERE id_setor = ?');
+            $setor->execute([$_SESSION['user_setor']]);
+
+            $str = $setor->fetch(PDO::FETCH_ASSOC);
+
+            $_SESSION['setor'] = $str['nome_setor'];
+
             echo json_encode(['success' => true]);
             exit;
 

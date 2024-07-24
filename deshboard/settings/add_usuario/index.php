@@ -11,6 +11,7 @@ require_once "../add_setor/listar_setor.php"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
     <link rel="stylesheet" href="../../../style/settings.css?v=3">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
     <link rel="stylesheet" href="add_user.css">
@@ -52,6 +53,7 @@ require_once "../add_setor/listar_setor.php"
                         </div>
                     </div>
                 <?php endforeach ?>
+
                 </div>
             </section>
 
@@ -71,14 +73,14 @@ require_once "../add_setor/listar_setor.php"
                             <input type="password" name="passUser" id="passUser" placeholder="Password">
                         </div>
                         <div class="box-form-setor">
-                            <select name="" id="">
+                            <select name="roleUser" id="" class="selectUser">
                                 <option value="" disabled selected hidden>Selecione um perfil</option>
                                 <?php foreach ($roles as $role) : ?>
                                     <option value="<?php echo $role['id_role'] ?>"><?php echo $role['nome_role'] ?></option>
                                 <?php endforeach ?>
                             </select>
 
-                            <select name="" id="">
+                            <select name="setorUser" id="" class="selectUser selectUser2">
                                 <option value="" disabled selected hidden>Selecione um setor</option>
                                 <?php foreach($setores as $setor): ?>
                                     <option value="<?php echo $setor['id_setor'] ?>"><?php echo $setor['nome_setor'] ?></option>
@@ -100,5 +102,5 @@ require_once "../add_setor/listar_setor.php"
 
 <script src="../../../script/navegacao.js?v=1"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
-<script src="enviar_riquisicao.js"></script>
+<script src="enviar_riquisicao.js?v=1"></script>
 </html>

@@ -75,7 +75,7 @@
                 </div>
                 <div class="name-job">
                     <div class="profile_name"><?php echo $_SESSION['user_name'] ?></div>
-                    <div class="job"><?php echo $_SESSION['user_setor'] ?></div>
+                    <div class="job"><?php echo $_SESSION['setor'] ?></div>
                 </div>
 
                 <i class='bx bx-log-out' id="logout"></i>
