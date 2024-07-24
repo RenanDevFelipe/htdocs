@@ -53,7 +53,7 @@ require_once "../api/os_aberta_do_dia.php"
                     </div>
                     <div class="avaliar">
                         <i class="bx bx-star"></i>
-                        <a href="./avaliacao/redirect.php">Avaliar</a>
+                        <a href="./avaliacao/redirect.php?id_colaborador=<?php echo $colaboradores['id_ixc'] ?>">Avaliar</a>
                     </div>
                 </div>
 
