@@ -1,5 +1,12 @@
 <?php
 require_once "api.php";
+$data_time = date("Y-m-d");
+
+// Data inicial (início do dia)
+$data_inicio = $data_time . ' 00:00:00';
+
+// Data final (fim do dia)
+$data_fim = $data_time . ' 23:59:59';
 
 $id_tecnico = $_GET['id_colaborador'];
 
@@ -12,7 +19,9 @@ $params = array(
     'sortname' => 'su_oss_chamado.id',
     'sortorder' => 'desc',
     'grid_param' => json_encode(array(
-        array('TB' => 'su_oss_chamado.status', 'OP' => '=', 'P' => 'AG')
+        array('TB' => 'su_oss_chamado.status', 'OP' => '=', 'P' => 'F'),
+        array('TB' => 'su_oss_chamado.data_abertura', 'OP' => '>=', 'P' => $data_inicio),
+        array('TB' => 'su_oss_chamado.data_abertura', 'OP' => '<=', 'P' => $data_fim)
     ))
 );
 

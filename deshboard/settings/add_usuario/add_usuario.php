@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email_user = :email_user");
         $stmt->execute(['email_user' => $email_user]);
         if ($stmt->fetchColumn() > 0) {
-            echo json_encode(['success' => false, 'messages' => ["Email já cadastrado."]]);
+            echo json_encode(['success' => false, 'messages' => 'Email já cadastrado.']);
             exit;
         }
 
