@@ -30,11 +30,13 @@ $retorno = $api->getRespostaConteudo(false);
 $os_fin= json_decode($retorno);
 
 $i = 0;
+$id_cliente = array();
 $desc_os = array();
 $fechamento_os = array();
 $id_os_ixc = array();
 
 while($i < $os_fin->total){
+    $id_cliente[] = $os_fin->registros[$i]->id_cliente;
     $desc_os[] = $os_fin->registros[$i]->mensagem;
     $fechamento_os[] = $os_fin->registros[$i]->data_fechamento;
     $id_os_ixc[] = $os_fin->registros[$i]->id;
@@ -63,11 +65,11 @@ foreach ($os_fin->registros as $chamado) {
     $nomes_clientes[] = $cliente->registros[0]->razao;
 }
 
-function zip($array1, $array2, $array3, $array4) {
+function zip($array1, $array2, $array3, $array4,$array5) {
     $zipped = [];
-    $length = min(count($array1), count($array2), count($array3), count($array4));
+    $length = min(count($array1), count($array2), count($array3), count($array4), count($array5));
     for ($i = 0; $i < $length; $i++) {
-        $zipped[] = [$array1[$i], $array2[$i], $array3[$i], $array4[$i]];
+        $zipped[] = [$array1[$i], $array2[$i], $array3[$i], $array4[$i], $array5[$i]];
     }
     return $zipped;
 }

@@ -13,6 +13,7 @@ require_once "../../../api/listar_os.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=1">
+    <link rel="stylesheet" href="index.css">
     <title>Document</title>
 </head>
 
@@ -21,21 +22,31 @@ require_once "../../../api/listar_os.php";
         <div class="home-content">
             <i class='bx bx-menu'></i>
         </div>
-        <section>
+        <section class="dashboard-tecnicos-ranking">
 
             <?php
-            foreach (zip($desc_os, $nomes_clientes, $fechamento_os, $id_os_ixc) as $pair) :
-                list($desc, $cliente, $fechamento, $id) = $pair;
+            foreach (zip($desc_os, $nomes_clientes, $fechamento_os, $id_os_ixc, $id_cliente) as $pair) :
+                list($desc, $cliente, $fechamento, $id, $id_cliente) = $pair;
             ?>
-                <p><?php echo $id ?></p>
-                
-                <p>
-                    <?php echo $cliente ?>
-                </p>
-
-                <p><?php echo $desc ?></p>
-
-                <p><?php echo $fechamento ?></p>
+                <div class="box-tecnico">
+                    <div id="tecnico">
+                        <div>
+                            <p> <?php echo $id ?> </p>
+                            <p> <?php echo $fechamento ?> </p>                          
+                        </div>
+                        <p> <?php echo $id_cliente . ' - ' . $cliente ?> </p>                      
+                    </div>
+                    <div class="avaliar">
+                        <div>
+                            <i class="bx bx-collection"></i>
+                            <a href="./avaliacao/redirect.php?id_colaborador=<?php echo $colaboradores['id_ixc'] ?>">Detalhes</a>
+                        </div>
+                        <div>
+                            <i class="bx bx-star"></i>
+                            <a href="./avaliacao/redirect.php?id_colaborador=<?php echo $colaboradores['id_ixc'] ?>">Avaliar</a>
+                        </div>
+                    </div>
+                </div>
 
             <?php endforeach ?>
         </section>

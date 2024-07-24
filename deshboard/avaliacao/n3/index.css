@@ -1,0 +1,105 @@
+:root{
+    ---colorPrimary: #000;
+    ---colorsecundary: #ff6200;
+    ---colorNeutral: #fff;
+    ---lightGrean: #CDCDCD;
+    ---shadowBoxForm: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.blue{
+    background-color: cornflowerblue;
+}
+.laranja{
+    background-color: var(---colorsecundary);
+}
+
+
+.Deashboard-home-os{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+.Deashboard-home-os .os-identidficador{
+    padding: 20px;
+    width: 20%;
+    height: 16vh;
+    background-color: var(---colorsecundary);
+    color: var(---colorNeutral);
+    border-radius: 20px;
+    box-shadow: var(---shadowBoxForm);
+}
+
+.Deashboard-home-os .os-identidficador #quantidade-os{
+    font-size: 25px;
+}
+
+.dashboard-tecnicos-ranking{
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.dashboard-tecnicos-ranking .box-tecnico{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: var(---shadowBoxForm);
+    border-radius: 5px;
+}
+
+.dashboard-tecnicos-ranking .box-tecnico #tecnico{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: var(---colorNeutral);
+    padding: 8%;
+    border-radius: 5px 5px 0px 0px;
+    gap: 1rem;
+}
+
+.dashboard-tecnicos-ranking .box-tecnico #tecnico i{
+    font-size: 70px;
+    color: var(---colorNeutral);
+}
+.dashboard-tecnicos-ranking .box-tecnico #tecnico div{
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard-tecnicos-ranking .box-tecnico #tecnico div p{
+    text-align: end;
+    font-size: 10px;
+}
+.dashboard-tecnicos-ranking .box-tecnico .avaliar{
+    width: 100%;
+    display: flex;
+}
+.dashboard-tecnicos-ranking .box-tecnico .avaliar div{
+    background-color: white;
+    width: 50%;
+    padding: 4%;
+    display: flex;
+    color: rgb(119, 119, 119);
+    justify-content: center;
+    align-items: center;
+    gap: 0.1rem;
+    border-top: 1px solid #c9ccd6;
+    border-right: 1px solid #c9ccd6;
+}
+.dashboard-tecnicos-ranking .box-tecnico .avaliar div:hover {
+    background-color: var(---colorsecundary);
+    transition: 0.5s;
+    color: white;
+}
+.dashboard-tecnicos-ranking .box-tecnico a{
+    text-decoration: none;
+    color: rgb(119, 119, 119);
+    font-weight: bolder;
+}
+
+.dashboard-tecnicos-ranking .box-tecnico div:hover > a{
+    color: white;
+}
