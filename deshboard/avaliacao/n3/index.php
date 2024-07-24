@@ -18,7 +18,7 @@ require_once "../../../api/listar_os.php";
 </head>
 
 <body>
-    <section class="home-section">
+    <section class="body-os home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
         </div>
