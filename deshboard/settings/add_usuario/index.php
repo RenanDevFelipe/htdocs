@@ -2,7 +2,7 @@
 require_once "../../../autentication/index.php";
 require_once "listar_user.php";
 require_once "get_roles.php";
-require_once "../add_setor/listar_setor.php"
+require_once "../add_setor/listar_setor.php";
 ?>
 
 <!DOCTYPE html>

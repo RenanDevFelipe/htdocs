@@ -1,7 +1,7 @@
 <?php
-
 include '../autentication/index.php';
-
+require_once "../api/os_finalizada_do_dia.php";
+require_once "../api/os_aberta_do_dia.php"
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +25,12 @@ include '../autentication/index.php';
 
             <div class="os-identidficador" id="osAbertaDia">
                 <p class="title-os">O.S Abertas</p>
-                <h1 id="quantidade-os">330</h1>
+                <h1 id="quantidade-os"><?php echo $total_os_do_dia->total?></h1>
             </div>
 
             <div class="os-identidficador" id="osFechadaDia">
                 <p class="title-os">O.S Finalizadas</p>
-                <h1 id="quantidade-os">500</h1>
+                <h1 id="quantidade-os"><?php echo $total_os_finalizada_do_dia->total?></h1>
             </div>
         </section>
 
