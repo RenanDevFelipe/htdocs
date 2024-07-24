@@ -16,6 +16,7 @@ if(isset($_POST['email_login'], $_POST['senha_login'])){
             $_SESSION['user_name'] = $user['nome_user'];
             $_SESSION['user_email'] = $user['email_user'];
             $_SESSION['user_setor'] = $user['setor_user'];
+            $_SESSION['user_role'] = $user['role'];
 
             $setor = $pdo->prepare('SELECT nome_setor FROM setor WHERE id_setor = ?');
             $setor->execute([$_SESSION['user_setor']]);

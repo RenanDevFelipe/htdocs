@@ -53,13 +53,14 @@
                 <li><a class="link_name" href="#">O.S Aberta</a></li>
             </ul>
         </li>
-        <li>
-            <div class="iocn-link">
+        <?php if ($_SESSION['user_role'] != 1) {
+            echo ' <li>
+            <div class="iocn-link " style="display:none;">
                 <a href="#">
-                    <i class='bx bx-cog'></i>
+                    <i class="bx bx-cog"></i>
                     <span class="link_name">Settings</span>
                 </a>
-                <i class='bx bxs-chevron-down arrow'></i>
+                <i class="bx bxs-chevron-down arrow"></i>
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Settings</a></li>
@@ -67,7 +68,24 @@
                 <li><a href="/deshboard/settings/add_setor/">Setor</a></li>
                 <li><a href="/deshboard/settings/add_colaborador/">Colaborador</a></li>
             </ul>
-        </li>
+        </li>';
+        } else{
+            echo ' <li>
+            <div class="iocn-link ">
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <i class="bx bxs-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Settings</a></li>
+                <li><a href="/deshboard/settings/add_usuario/">Usuário</a></li>
+                <li><a href="/deshboard/settings/add_setor/">Setor</a></li>
+                <li><a href="/deshboard/settings/add_colaborador/">Colaborador</a></li>
+            </ul>
+        </li>';
+        } ?>
         <li>
             <div class="profile-details">
                 <div class="profile-content">
