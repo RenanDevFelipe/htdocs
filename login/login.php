@@ -13,6 +13,7 @@ if(isset($_POST['email_login'], $_POST['senha_login'])){
     if($user){
         if (password_verify($senha, $user['senha_user'])){
             // LOGIN BEM SUCEDIDO
+            $_SESSION['user_id'] = $user['id_user'];
             $_SESSION['user_name'] = $user['nome_user'];
             $_SESSION['user_email'] = $user['email_user'];
             $_SESSION['user_setor'] = $user['setor_user'];
