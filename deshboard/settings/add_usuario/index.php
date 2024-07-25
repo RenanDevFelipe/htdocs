@@ -49,7 +49,7 @@ require_once "../add_setor/listar_setor.php";
 
 
 
-                            <a href="" class="excluir">Deletar</a>
+                            <a class="excluir" data-id = '<?php echo $user['id_user']?>'>Deletar</a>
                         </div>
                     </div>
                 <?php endforeach ?>
@@ -102,5 +102,6 @@ require_once "../add_setor/listar_setor.php";
 
 <script src="../../../script/navegacao.js?v=1"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
+<script src="deletar_user.js"></script>
 <script src="enviar_riquisicao.js?v=1"></script>
 </html>
