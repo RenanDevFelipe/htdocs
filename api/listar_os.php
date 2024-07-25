@@ -20,8 +20,8 @@ $params = array(
     'sortorder' => 'desc',
     'grid_param' => json_encode(array(
         array('TB' => 'su_oss_chamado.status', 'OP' => '=', 'P' => 'F'),
-        array('TB' => 'su_oss_chamado.data_abertura', 'OP' => '>=', 'P' => $data_inicio),
-        array('TB' => 'su_oss_chamado.data_abertura', 'OP' => '<=', 'P' => $data_fim)
+        array('TB' => 'su_oss_chamado.data_fechamento', 'OP' => '>=', 'P' => $data_inicio),
+        array('TB' => 'su_oss_chamado.data_fechamento', 'OP' => '<=', 'P' => $data_fim)
     ))
 );
 
@@ -44,7 +44,7 @@ while($i < $os_fin->total){
 }
 
 
-$nomes_clientes= array();
+$nomes_clientes = array();
 
 
 foreach ($os_fin->registros as $chamado) {
@@ -65,7 +65,7 @@ foreach ($os_fin->registros as $chamado) {
     $nomes_clientes[] = $cliente->registros[0]->razao;
 }
 
-function zip($array1, $array2, $array3, $array4,$array5) {
+function zip($array1, $array2, $array3, $array4, $array5) {
     $zipped = [];
     $length = min(count($array1), count($array2), count($array3), count($array4), count($array5));
     for ($i = 0; $i < $length; $i++) {
