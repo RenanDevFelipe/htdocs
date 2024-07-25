@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="/style/login.css?v=1">
+    <link rel="stylesheet" href="login.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../script/enviar_riquisição.js"></script>
+    <script src="../script/enviar_riquisição.js?v=1"></script>
     <title>Login - Ranking</title>
 </head>
 <body>
@@ -32,7 +33,10 @@
             </div>
 
             <div >
-                <button type="submit" class="button-login">Login</button>
+                <button type="submit" class="button-login">
+                    <div class="load-login"></div>
+                    <p class="loginP">Login</p>
+                </button>
             </div>
         </form>
     </section>

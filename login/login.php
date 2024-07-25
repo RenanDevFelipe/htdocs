@@ -26,7 +26,7 @@ if(isset($_POST['email_login'], $_POST['senha_login'])){
 
             $_SESSION['setor'] = $str['nome_setor'];
 
-            echo json_encode(['success' => true]);
+            echo json_encode(['success' => true, 'success' => 'Login realizado']);
             exit;
 
     } else{
