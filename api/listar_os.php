@@ -31,6 +31,8 @@ $retorno = $api->getRespostaConteudo(false);
 $os_fin = json_decode($retorno);
 
 $id_cliente = [];
+$abertura_os = [];
+$id_assunto = [];
 $desc_os = [];
 $fechamento_os = [];
 $id_os_ixc = [];
@@ -41,7 +43,9 @@ if (isset($os_fin->registros) && !empty($os_fin->registros)) {
     $i = 0;
 
     while ($i < $os_fin->total) {
-        $id_cliente[] = $os_fin->registros[$i]->id_cliente;
+        $id_cliente[] = $os_fin->registros[$i]->id_cliente;   
+        $abertura_os[] = $os_fin->registros[$i]->data_abertura;
+        $id_assunto[] = $os_fin->registros[$i]->id_assunto;
         $desc_os[] = $os_fin->registros[$i]->mensagem;
         $fechamento_os[] = $os_fin->registros[$i]->data_fechamento;
         $id_os_ixc[] = $os_fin->registros[$i]->id;
@@ -70,11 +74,11 @@ if (isset($os_fin->registros) && !empty($os_fin->registros)) {
 }
 
 // Função para zipar arrays
-function zip($array1, $array2, $array3, $array4, $array5) {
+function zip($array1, $array2, $array3, $array4, $array5, $array6, $array7, ) {
     $zipped = [];
-    $length = min(count($array1), count($array2), count($array3), count($array4), count($array5));
+    $length = min(count($array1), count($array2), count($array3), count($array4), count($array5), count($array6), count($array7));
     for ($i = 0; $i < $length; $i++) {
-        $zipped[] = [$array1[$i], $array2[$i], $array3[$i], $array4[$i], $array5[$i]];
+        $zipped[] = [$array1[$i], $array2[$i], $array3[$i], $array4[$i], $array5[$i], $array6[$i], $array7[$i]];
     }
     return $zipped;
 }
