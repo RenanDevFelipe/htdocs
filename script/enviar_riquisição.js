@@ -41,7 +41,13 @@ $(document).ready(function () {
                 }
             },
             error: function (xhr, status, error) {
-                alert('Erro na requisição AJAX. Status: ' + status);
+                Toast.fire({
+                    icon: "error",
+                    title: "Erro no login " + status
+                });
+
+                loadLogin.style.display = 'none'
+                loginP.style.display = 'block'
             }
         });
     });

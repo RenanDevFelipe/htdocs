@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="login.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../script/enviar_riquisição.js?v=1"></script>
+    <script src="../script/enviar_riquisição.js?v=2"></script>
     <title>Login - Ranking</title>
 </head>
 <body>
