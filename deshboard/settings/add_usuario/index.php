@@ -49,7 +49,7 @@ require_once "../add_setor/listar_setor.php";
 
 
 
-                            <a class="excluir" data-id = '<?php echo $user['id_user']?>'>Deletar</a>
+                            <a class="excluir" data-id='<?php echo $user['id_user'] ?>'>Deletar</a>
                         </div>
                     </div>
                 <?php endforeach ?>
@@ -82,7 +82,7 @@ require_once "../add_setor/listar_setor.php";
 
                             <select name="setorUser" id="" class="selectUser selectUser2">
                                 <option value="" disabled selected hidden>Selecione um setor</option>
-                                <?php foreach($setores as $setor): ?>
+                                <?php foreach ($setores as $setor) : ?>
                                     <option value="<?php echo $setor['id_setor'] ?>"><?php echo $setor['nome_setor'] ?></option>
                                 <?php endforeach ?>
                             </select>
@@ -96,6 +96,47 @@ require_once "../add_setor/listar_setor.php";
 
                 </div>
             </section>
+
+            <section class="edit-colaborador hidden add-banco-de-dados">
+                <div class="form-add-bd">
+                    <div class="title-add">
+                        <h1>Adicionar Usuário</h1>
+                    </div>
+
+                    <form id="formUser" method="POST">
+                        <div class="box-form-setor">
+                            <input type="text" name="nomeUser" id="nomeUser" placeholder="Nome do Usuário">
+                        </div>
+
+                        <div class="box-form-setor">
+                            <input type="email" name="emailUser" id="emailUser" placeholder="exemplo@exemplo.com">
+                            <input type="password" name="passUser" id="passUser" placeholder="Password">
+                        </div>
+                        <div class="box-form-setor">
+                            <select name="roleUser" id="" class="selectUser">
+                                <option value="" disabled selected hidden>Selecione um perfil</option>
+                                <?php foreach ($roles as $role) : ?>
+                                    <option value="<?php echo $role['id_role'] ?>"><?php echo $role['nome_role'] ?></option>
+                                <?php endforeach ?>
+                            </select>
+
+                            <select name="setorUser" id="" class="selectUser selectUser2">
+                                <option value="" disabled selected hidden>Selecione um setor</option>
+                                <?php foreach ($setores as $setor) : ?>
+                                    <option value="<?php echo $setor['id_setor'] ?>"><?php echo $setor['nome_setor'] ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </form>
+
+                    <div class="buttons-add-cancelar">
+                        <button type="submit" class="button-form" id="addUser">Adicionar</button>
+                        <button type="button" class="button-form" id="buttonCancelar">Cancelar</button>
+                    </div>
+
+                </div>
+            </section>
+
         </section>
     </section>
 </body>
@@ -104,4 +145,6 @@ require_once "../add_setor/listar_setor.php";
 <script src="../../../script/dashboard.js?v=1"></script>
 <script src="deletar_user.js"></script>
 <script src="enviar_riquisicao.js?v=1"></script>
+<script src="enviar_riquisicao_editar.js"></script>
+
 </html>

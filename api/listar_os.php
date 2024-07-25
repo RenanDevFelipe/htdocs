@@ -21,7 +21,8 @@ $params = array(
     'grid_param' => json_encode(array(
         array('TB' => 'su_oss_chamado.status', 'OP' => '=', 'P' => 'F'),
         array('TB' => 'su_oss_chamado.data_fechamento', 'OP' => '>=', 'P' => $data_inicio),
-        array('TB' => 'su_oss_chamado.data_fechamento', 'OP' => '<=', 'P' => $data_fim)
+        array('TB' => 'su_oss_chamado.data_fechamento', 'OP' => '<=', 'P' => $data_fim),
+        array('TB' => 'su_oss_chamado.tipo', 'OP' => '=', 'P' => 'C')
     ))
 );
 
