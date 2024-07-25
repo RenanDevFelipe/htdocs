@@ -32,14 +32,14 @@ require_once "../../../api/listar_os.php";
                     <div id="tecnico">
                         <div>
                             <p> <?php echo $id ?> </p>
-                            <p> <?php echo $fechamento ?> </p>                          
+                            <p> <?php echo $fechamento ?> </p>
                         </div>
-                        <p> <?php echo $id_cliente . ' - ' . $cliente ?> </p>                      
+                        <p> <?php echo $id_cliente . ' - ' . $cliente ?> </p>
                     </div>
                     <div class="avaliar">
                         <div>
                             <i class="bx bx-collection"></i>
-                            <a href="./avaliacao/redirect.php?id_colaborador=<?php echo $colaboradores['id_ixc'] ?>">Detalhes</a>
+                            <a href="">Detalhes</a>
                         </div>
                         <div>
                             <i class="bx bx-star"></i>
@@ -49,6 +49,9 @@ require_once "../../../api/listar_os.php";
                 </div>
 
             <?php endforeach ?>
+            <div>
+                <?php echo $erro_mensagem ?>
+            </div>
         </section>
     </section>
 

@@ -27,44 +27,48 @@ $params = array(
 
 $api->get('su_oss_chamado', $params);
 $retorno = $api->getRespostaConteudo(false);
-$os_fin= json_decode($retorno);
+$os_fin = json_decode($retorno);
 
-$i = 0;
-$id_cliente = array();
-$desc_os = array();
-$fechamento_os = array();
-$id_os_ixc = array();
+$id_cliente = [];
+$desc_os = [];
+$fechamento_os = [];
+$id_os_ixc = [];
+$nomes_clientes = [];
+$erro_mensagem = ''; // Variável para armazenar mensagem de erro
 
-while($i < $os_fin->total){
-    $id_cliente[] = $os_fin->registros[$i]->id_cliente;
-    $desc_os[] = $os_fin->registros[$i]->mensagem;
-    $fechamento_os[] = $os_fin->registros[$i]->data_fechamento;
-    $id_os_ixc[] = $os_fin->registros[$i]->id;
-    $i++;
+if (isset($os_fin->registros) && !empty($os_fin->registros)) {
+    $i = 0;
+
+    while ($i < $os_fin->total) {
+        $id_cliente[] = $os_fin->registros[$i]->id_cliente;
+        $desc_os[] = $os_fin->registros[$i]->mensagem;
+        $fechamento_os[] = $os_fin->registros[$i]->data_fechamento;
+        $id_os_ixc[] = $os_fin->registros[$i]->id;
+        $i++;
+    }
+
+    foreach ($os_fin->registros as $chamado) {
+        $params = array(
+            'qtype' => 'cliente.id',
+            'query' => $chamado->id_cliente,
+            'oper' => '=',
+            'page' => '1',
+            'rp' => '20',
+            'sortname' => 'cliente.id',
+            'sortorder' => 'desc'
+        );
+
+        $api->get('cliente', $params);
+        $retorno_cliente = $api->getRespostaConteudo(false);
+        $cliente = json_decode($retorno_cliente);
+
+        $nomes_clientes[] = $cliente->registros[0]->razao;
+    }
+} else {
+    $erro_mensagem = "Não foram encontrados registros.";
 }
 
-
-$nomes_clientes = array();
-
-
-foreach ($os_fin->registros as $chamado) {
-    $params = array(
-        'qtype' => 'cliente.id',
-        'query' => $chamado->id_cliente,
-        'oper' => '=',
-        'page' => '1',
-        'rp' => '20',
-        'sortname' => 'cliente.id',
-        'sortorder' => 'desc'
-    );
-
-    $api->get('cliente', $params);
-    $retorno_cliente = $api->getRespostaConteudo(false);
-    $cliente = json_decode($retorno_cliente);
-
-    $nomes_clientes[] = $cliente->registros[0]->razao;
-}
-
+// Função para zipar arrays
 function zip($array1, $array2, $array3, $array4, $array5) {
     $zipped = [];
     $length = min(count($array1), count($array2), count($array3), count($array4), count($array5));
@@ -73,6 +77,5 @@ function zip($array1, $array2, $array3, $array4, $array5) {
     }
     return $zipped;
 }
-
 
 ?>
