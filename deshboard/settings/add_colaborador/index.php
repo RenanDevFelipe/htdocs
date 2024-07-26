@@ -33,7 +33,6 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
             <div class="title-settings">
                 <h1>Colaboradores</h1>
             </div>
-
             <section style="width: 92%;">
                 <div class="button-add-colaboradores">
                     <i class="bx bx-plus-circle" id="buttonAdd"></i>

@@ -135,7 +135,7 @@
 }
 
 /* Estilo para box-detalhes */
-.box-detalhes {
+.box-detalhes{
     width: 100%;
     display: none; /* Inicialmente oculto */
     flex-direction: column;
@@ -146,8 +146,22 @@
     border-radius: 5px;
     border-top: 1px solid #c9ccd6;
 }
-
+.box-checklist{
+    width: 100%!important;
+    display: none; /* Inicialmente oculto */
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+    background-color: white;
+    box-shadow: var(--shadowBoxForm);
+    border-radius: 5px;
+    border-top: 1px solid #c9ccd6;
+}
 .box-detalhes.active {
+    width: 100%;
+    display: flex; /* Muda para flex para manter o layout */
+}
+.box-checklist.active{
     width: 100%;
     display: flex; /* Muda para flex para manter o layout */
 }
@@ -155,6 +169,17 @@
 .box-detalhes div {
     width: 100%;
     display: flex;
+    align-items: center;
+}
+.box-checklist form{
+    width: 100%;
+
+}
+.box-checklist form div{
+    width: 100%;
+}
+.box-checklist label{
+    font-size: 12px;
 }
 
 .box-detalhes > div p {
@@ -166,4 +191,22 @@
 }
 .box-detalhes > div p strong{
     font-size: 12px;
+}
+
+.box-checklist{
+    width: 80%;
+}
+.buttons-salvar-checklist{
+    width: 100%!important;
+    margin-top: 5%;
+    display: flex;
+    justify-content: end;
+}
+.buttons-salvar-checklist button{
+    padding: 5px;
+    border: solid transparent;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
 }

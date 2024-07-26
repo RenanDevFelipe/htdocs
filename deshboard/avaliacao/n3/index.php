@@ -29,7 +29,7 @@ $mostrar = 0;
         <section class="dashboard-tecnicos-ranking">
 
             <?php
-            foreach (zip($desc_os, $nomes_clientes, $fechamento_os, $id_os_ixc, $id_cliente, $abertura_os, $id_assunto) as $pair) :
+            foreach (zip($desc_os, $nomes_clientes, $fechamento_os, $id_os_ixc, $id_cliente, $abertura_os, $id_assunto) as $index => $pair) :
                 list($desc, $cliente, $fechamento, $id, $id_cliente, $abertura_os, $id_assunto) = $pair;
             ?>
                 <div>
@@ -46,9 +46,9 @@ $mostrar = 0;
                                 <i class="bx bx-collection"></i>
                                 <a>Detalhes</a>
                             </div>
-                            <div>
+                            <div id="abrirAvaliar">
                                 <i class="bx bx-star"></i>
-                                <a href="">Avaliar</a>
+                                <a>Avaliar</a>
                             </div>
                         </div>
 
@@ -71,24 +71,52 @@ $mostrar = 0;
                         </div>
                     </div>
                     <div class="box-checklist">
-                        <form method="post">
+                        <form method="post" id="form-<?php echo $index ?>">
                             <div>
+                                <input value="1" type="checkbox" name="execucao" id="execucao">
                                 <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
-                                <input type="checkbox" name="execucao" id="execucao">
                             </div>
                             <div>
-                                <label for="ipv6">O IPv6 foi ativado no roteador do cliente? </label>
-                                <input type="checkbox" name="ipv6" id="ipv6">
+                                <input value="1" type="checkbox" name="ipv6" id="ipv6">
+                                <label for="ipv6">O IPv6 foi ativado no roteador do cliente? </label>                               
                             </div>
                             <div>
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
-                                <input type="checkbox" name="potencia" id="potencia">
+                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
+                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>                               
                             </div>
                             <div>
-                                <label for="ipv6">A potência do sinal óptico ficou na margem de sinal permitido = ou <  que -25db?</label>
-                                <input type="checkbox" name="ipv6" id="ipv6">
+                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
+                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>                                     
+                            </div>
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
+                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>                          
+                            </div>
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
+                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>                             
+                            </div>
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
+                                <label for="velocidade">Foi Feito o teste de velocidade?</label>   
+                            </div>
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
+                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>                              
+                            </div>
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
+                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>                               
+                            </div>
+                            <div>
+                                <label for="obs">OBS:</label>   
+                                <input type="text" name="obs" id="obs" >                         
                             </div>
                         </form>
+                        <div class="buttons-salvar-checklist">
+                            <button type="button" onclick="calcularSoma(<?php echo $index ?>)">Calcular Soma</button>
+                            <button type="submit" class="button-form" id="formEditColaborador">Salvar</button>
+                        </div>
                     </div>
                 </div>
 
@@ -105,6 +133,29 @@ $mostrar = 0;
 </body>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('#abrirAvaliar');
+        const boxes = document.querySelectorAll('.box-checklist');
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                const selectedBox = boxes[index];
+
+                // Oculta todas as caixas
+                boxes.forEach(box => {
+                    if (box !== selectedBox) {
+                        box.classList.remove('active');
+                    }
+                });
+
+                // Alterna a classe 'active' na caixa clicada
+                selectedBox.classList.toggle('active');
+            });
+        });
+    });
+
+    // abrir caixa de avaliar
+
     document.addEventListener('DOMContentLoaded', function() {
         const buttons = document.querySelectorAll('#abrirDetalhes');
         const boxes = document.querySelectorAll('.box-detalhes');
@@ -125,6 +176,25 @@ $mostrar = 0;
             });
         });
     });
+
+    // soma checkbox
+
+    function calcularSoma(index) {
+        // Selecionar o formulário específico
+        const form = document.querySelector(`#form-${index}`);
+        const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+        let soma = 0;
+
+        // Iterar sobre todos os checkboxes e somar os valores dos marcados
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                soma += parseInt(checkbox.value);
+            }
+        });
+
+        // Exibir a soma ou fazer outra coisa com ela
+        alert(`A soma dos valores dos checkboxes marcados no formulário ${index} é: ${soma}`);
+    }
 </script>
 
 <script src="../../../script/dashboard.js?v=1"></script>
