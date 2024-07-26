@@ -173,7 +173,10 @@
 }
 .box-checklist form{
     width: 100%;
-
+    display: none;
+}
+.box-checklist form.active{
+    display: block;
 }
 .box-checklist form div{
     width: 100%;
