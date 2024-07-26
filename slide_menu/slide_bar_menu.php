@@ -45,7 +45,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/deshboard/os_aberta/">
                 <i class='bx bx-history'></i>
                 <span class="link_name">O.S Aberta</span>
             </a>
