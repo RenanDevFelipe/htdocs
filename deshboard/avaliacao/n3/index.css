@@ -148,7 +148,6 @@
 }
 .box-checklist{
     width: 100%!important;
-    display: none; /* Inicialmente oculto */
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box; /* Inclui padding e border na largura total */
@@ -198,6 +197,7 @@
 
 .box-checklist{
     width: 80%;
+    display: none;
 }
 .buttons-salvar-checklist{
     width: 100%!important;
@@ -212,4 +212,10 @@
     background-color: cornflowerblue;
     color: white;
     cursor: pointer;
+}
+.active{
+    display: flex;
+}
+.buttons-salvar-checklist{
+    display: none;
 }

@@ -16,7 +16,7 @@ $mostrar = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=4">
-    <link rel="stylesheet" href="index.css?v=4">
+    <link rel="stylesheet" href="index.css?v=5">
     <title>Document</title>
 </head>
 
@@ -70,7 +70,7 @@ $mostrar = 0;
                             <p><strong>Descrição da OS: </strong><?php echo $desc ?></p>
                         </div>
                     </div>
-                    <div class="box-checklist">
+                    <div id="box-avaliar" class="box-checklist">
                         <form class="formulario_instalacao" method="post" id="form-<?php echo $index ?>">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -188,7 +188,7 @@ $mostrar = 0;
                                 <input type="text" name="obs" id="obs">
                             </div>
                         </form>
-                        <form class="formulario_instalacao_iptv" data-assunto="427" method="post" id="form-<?php echo $index ?>">
+                        <form class="formulario_instalacao_iptv" data-assunto="425" method="post" id="form-<?php echo $index ?>">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
                                 <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -328,6 +328,7 @@ $mostrar = 0;
     document.addEventListener('DOMContentLoaded', function() {
         const buttons = document.querySelectorAll('#abrirAvaliar');
         const forms = document.querySelectorAll('.box-checklist form');
+        const boxAvaliar = document.getElementById('box-avaliar');
 
         buttons.forEach((button) => {
             button.addEventListener('click', function() {
@@ -335,13 +336,15 @@ $mostrar = 0;
 
                 // Ocultar todos os formulários
                 forms.forEach(form => {
-                    form.classList.remove('active');
+                    form.classList.remove('active'); 
+                    boxAvaliar.style.display = 'none';
                 });
 
                 // Mostrar o formulário correspondente ao assunto
                 forms.forEach(form => {
                     if (form.getAttribute('data-assunto') === assunto) {
                         form.classList.add('active');
+                        boxAvaliar.style.display = 'flex';
                     }
                 });
             });
