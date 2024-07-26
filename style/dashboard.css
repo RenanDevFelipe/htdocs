@@ -13,6 +13,11 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+body{
+  background-color: #E4E9F7;
+  background-attachment: fixed;
+  height: 100vh;
+}
 .hidden{
   display: none;
 }
