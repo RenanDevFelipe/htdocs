@@ -14,6 +14,7 @@ require_once "../add_setor/listar_setor.php";
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
     <link rel="stylesheet" href="../../../style/settings.css?v=3">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=2">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="add_user.css">
     <title>Settings - Cadastrar Usuário</title>
 </head>
@@ -45,7 +46,7 @@ require_once "../add_setor/listar_setor.php";
                         </div>
 
                         <div class="buttons-colaborador">
-                            <a href="" class="editar">Editar</a>
+                            <a class="editar editarteste"data-id="<?php echo $user['id_user'] ?>">Editar</a>
 
 
 
@@ -98,29 +99,30 @@ require_once "../add_setor/listar_setor.php";
             </section>
 
             <section class="edit-colaborador hidden add-banco-de-dados">
-                <div class="form-add-bd">
+            <div class="form-add-bd">
                     <div class="title-add">
-                        <h1>Adicionar Usuário</h1>
+                        <h1>Editar Usuário</h1>
                     </div>
 
-                    <form id="formUser" method="POST">
+                    <form id="formUserEdit" method="POST">
                         <div class="box-form-setor">
-                            <input type="text" name="nomeUser" id="nomeUser" placeholder="Nome do Usuário">
+                            <input type="hidden" id="editUserId" name="id_user">
+                            <input type="text" name="nomeUser" id="editnomeUser" placeholder="Nome do Usuário">
                         </div>
 
                         <div class="box-form-setor">
-                            <input type="email" name="emailUser" id="emailUser" placeholder="exemplo@exemplo.com">
-                            <input type="password" name="passUser" id="passUser" placeholder="Password">
+                            <input type="email" name="emailUser" id="editemailUser" placeholder="exemplo@exemplo.com">
+                            <input type="password" name="passUser" id="editpassUser" placeholder="Password">
                         </div>
                         <div class="box-form-setor">
-                            <select name="roleUser" id="" class="selectUser">
+                            <select name="roleUser" id="editperfilUser" class="selectUser">
                                 <option value="" disabled selected hidden>Selecione um perfil</option>
                                 <?php foreach ($roles as $role) : ?>
                                     <option value="<?php echo $role['id_role'] ?>"><?php echo $role['nome_role'] ?></option>
                                 <?php endforeach ?>
                             </select>
 
-                            <select name="setorUser" id="" class="selectUser selectUser2">
+                            <select name="setorUser" id="editSetor" class="selectUser selectUser2">
                                 <option value="" disabled selected hidden>Selecione um setor</option>
                                 <?php foreach ($setores as $setor) : ?>
                                     <option value="<?php echo $setor['id_setor'] ?>"><?php echo $setor['nome_setor'] ?></option>
@@ -130,8 +132,8 @@ require_once "../add_setor/listar_setor.php";
                     </form>
 
                     <div class="buttons-add-cancelar">
-                        <button type="submit" class="button-form" id="addUser">Adicionar</button>
-                        <button type="button" class="button-form" id="buttonCancelar">Cancelar</button>
+                        <button type="submit" class="button-form formEditUsuario" id="addUser">Editar</button>
+                        <button type="button" class="button-form" id="buttonCancelarEdit">Cancelar</button>
                     </div>
 
                 </div>
@@ -145,6 +147,6 @@ require_once "../add_setor/listar_setor.php";
 <script src="../../../script/dashboard.js?v=1"></script>
 <script src="deletar_user.js"></script>
 <script src="enviar_riquisicao.js?v=1"></script>
-<script src="enviar_riquisicao_editar.js"></script>
+<script src="enviar_riquisicao_editar.js?v=1"></script>
 
 </html>
