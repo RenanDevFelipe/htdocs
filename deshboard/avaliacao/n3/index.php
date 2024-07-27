@@ -17,7 +17,7 @@ $mostrar = 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=4">
     <link rel="stylesheet" href="index.css?v=5">
-    <title>Document</title>
+    <title>Avaliação N3</title>
 </head>
 
 <body>
