@@ -15,7 +15,7 @@ $data_fim = $ultimoDiaMes->format('Y-m-d') . ' 23:59:59';
 // Parâmetros para a API
 $params = array(
     'qtype' => 'su_oss_chamado.id_assunto',
-    'query' => '26',
+    'query' => '26 ',
     'oper' => '=',
     'page' => '1',
     'rp' => '20',
