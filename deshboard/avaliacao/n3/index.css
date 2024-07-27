@@ -160,30 +160,12 @@
     width: 100%;
     display: flex; /* Muda para flex para manter o layout */
 }
-.box-checklist.active{
-    width: 100%;
-    display: flex; /* Muda para flex para manter o layout */
-}
 
 .box-detalhes div {
     width: 100%;
     display: flex;
     align-items: center;
 }
-.box-checklist form{
-    width: 100%;
-    display: none;
-}
-.box-checklist form.active{
-    display: block;
-}
-.box-checklist form div{
-    width: 100%;
-}
-.box-checklist label{
-    font-size: 12px;
-}
-
 .box-detalhes > div p {
     text-align: start;
     width: 100%;
@@ -195,10 +177,6 @@
     font-size: 12px;
 }
 
-.box-checklist{
-    width: 80%;
-    display: none;
-}
 .buttons-salvar-checklist{
     width: 100%!important;
     margin-top: 5%;
