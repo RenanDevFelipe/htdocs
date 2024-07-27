@@ -38,7 +38,7 @@ if(isset($_POST['email_login'], $_POST['senha_login'])){
  }else{
 
     // USUÀRIO NÂO ENCONTRADO
-    echo json_encode(['success' => false, 'error' => 'Preencha todos os campos por favor!!']);
+    echo json_encode(['success' => false, 'error' => 'Usuário não encontrado!!']);
 
  }
 } else{
