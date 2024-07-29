@@ -41,7 +41,7 @@ foreach ($colaboradores as $colaborador) {
         </div>
         <div class="avaliar">
             <i class="bx bx-star"></i>
-            <a href="./avaliacao/redirect.php?id_colaborador=' . $colaborador['id_ixc'] . '">Avaliar</a>
+            <a href="./avaliacao/redirect.php?id_colaborador=' . $colaborador['id_ixc'] . '&' . 'bd=' . $colaborador['id_colaborador']. '">Avaliar</a>
         </div>
     </div>';
 }

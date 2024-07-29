@@ -3,6 +3,7 @@ include '../../autentication/index.php';
 
 $current_id = $_SESSION['user_setor'];
 $id_colaborador = $_GET['id_colaborador'];
+$id_colaborador_bd = $_GET['bd'];
 
 $setor = array(
     '5' => 'n3',
@@ -27,7 +28,7 @@ foreach ($setor as $id => $folder) {
 
 // Se $redirect_folder foi definido, redireciona para a pasta correspondente
 if (!empty($redirect_folder)) {
-    header("Location: $redirect_folder/"."?id_colaborador=".$id_colaborador);
+    header("Location: $redirect_folder/"."?id_colaborador=".$id_colaborador . '&' . 'bd=' . $id_colaborador_bd);
     exit();
 } else {
     // Caso não encontre correspondência, faça algo aqui, se necessário

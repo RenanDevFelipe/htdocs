@@ -166,6 +166,23 @@
     display: flex;
     align-items: center;
 }
+.box-avaliar{
+    width: 100%!important;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+    background-color: white;
+    box-shadow: var(--shadowBoxForm);
+    border-radius: 5px;
+    border-top: 1px solid #c9ccd6;
+}
+.box-avaliar form{
+    width: 100%;
+    font-size: 10px;
+}
+.box-avaliar form div{
+    width: 100%;
+}
 .box-detalhes > div p {
     text-align: start;
     width: 100%;

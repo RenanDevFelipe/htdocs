@@ -251,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
         buttons.forEach((button) => {
             button.addEventListener('click', function() {
                 const assunto = button.getAttribute('data-assunto');
-
                 // Ocultar todos os formulários
                 forms.forEach(form => {
                     form.classList.remove('active'); 
@@ -356,3 +355,33 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 </html>
 
+//
+
+document.addEventListener('DOMContentLoaded', () => {
+        // Função para calcular a soma dos valores dos checkboxes selecionados
+        function calcularSomaCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            let soma = 0;
+            checkboxes.forEach(checkbox => {
+                soma += parseInt(checkbox.value); // Convertendo o valor para número e somando
+            });
+            return soma;
+        }
+
+        // Exemplo de como você pode usar a função
+        const botaoCalcular = document.getElementById('calcularSoma');
+
+        if (botaoCalcular) {
+            botaoCalcular.addEventListener('click', () => {
+                const resultado = calcularSomaCheckboxes();
+                console.log('Total da soma dos checkboxes selecionados:', resultado);
+                alert("teste")
+                // Armazenar o resultado em uma variável ou fazer algo com ele
+                // Exemplo: Atualizar um elemento da página com o resultado
+                const resultadoElemento = document.getElementById('resultado');
+                if (resultadoElemento) {
+                    resultadoElemento.textContent = `Total: ${resultado}`;
+                }
+            });
+        }
+    });
