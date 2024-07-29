@@ -16,7 +16,7 @@ $mostrar = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=4">
-    <link rel="stylesheet" href="index.css?v=5">
+    <link rel="stylesheet" href="index.css?v=6">
     <title>Avaliação N3</title>
 </head>
 
@@ -46,9 +46,9 @@ $mostrar = 0;
                                 <i class="bx bx-collection"></i>
                                 <a>Detalhes</a>
                             </div>
-                            <div id="abrirAvaliar" data-assunto="<?php echo $id_assunto ?>">
+                            <div id="abrirAvaliar" data-assunto="<?php echo $id_assunto ?>" data-id-os="<?php echo $id ?>">
                                 <i class="bx bx-star"></i>
-                                <nav>                                   
+                                <nav>
                                     <a>Avaliar</a>
                                 </nav>
                             </div>
@@ -72,7 +72,7 @@ $mostrar = 0;
                             <p><strong>Descrição da OS: </strong><?php echo $desc ?></p>
                         </div>
                     </div>
-                    <div id="box-avaliar-$<?php echo $id_assunto ?>"></div>
+                    <div id="box-avaliar-<?php echo $id_assunto ?>-<?php echo $id ?>"></div>
                 </div>
 
 
@@ -88,10 +88,10 @@ $mostrar = 0;
 </body>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-            const forms = {
-                28: `
-                        <form class="formulario_instalacao_iptv" method="post">
+    document.addEventListener('DOMContentLoaded', () => {
+        const forms = {
+            28: `
+                        <form class="formulario_instalacao_iptv hidden" method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
                                 <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -131,8 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </form>
                 `,
-                10: `
-                        <form class="formulario_instalacao_iptv" method="post">
+            152: `
+                        <form class="formulario_instalacao_iptv " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
                                 <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -172,26 +172,26 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </form>
                 `,
-                
-            };
 
-            // Adicione um identificador à div onde o formulário será inserido
-            document.querySelectorAll('#abrirAvaliar').forEach(link => {
-                link.addEventListener('click', event => {
-                    event.preventDefault();
-                    const formId = 10; // Use event.currentTarget para garantir que você está acessando o elemento correto
-                    // Verifique se o formId existe no objeto forms
-                    
-                    if (forms[formId]) {
-                        
+        };
+
+        // Adicione um identificador à div onde o formulário será inserido
+        document.querySelectorAll('#abrirAvaliar').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const formId = link.getAttribute('data-assunto'); // Use event.currentTarget para garantir que você está acessando o elemento correto
+                const idOS = link.getAttribute('data-id-os');
+                // Verifique se o formId existe no objeto forms
+                var boxAvaliar = document.querySelector('.hidden');
+
+                if (forms[formId]) {
                         // Insira o formulário na div correta
-                        document.getElementById(`box-avaliar-${formId}`).innerHTML = forms[formId];
+                        
+                        document.getElementById(`box-avaliar-${formId}-${idOS}`).innerHTML = forms[formId];
                     }
-                });
             });
         });
-
-    
+    });
 </script>
 <script src="index.js"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
