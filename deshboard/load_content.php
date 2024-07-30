@@ -3,6 +3,7 @@
 require_once "../core/core.php";
 require_once "../api/os_finalizada_do_dia.php";
 require_once "../api/os_aberta_do_dia.php";
+include_once '../deshboard/avaliacao/estoque/require_point.php';
 
 sleep(2);
 

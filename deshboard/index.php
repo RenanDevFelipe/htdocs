@@ -1,6 +1,6 @@
 <?php
 include '../autentication/index.php';
-
+include 'avaliacao/estoque/require_point.php'
 ?>
 
 <!DOCTYPE html>
