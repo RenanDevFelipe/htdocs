@@ -91,7 +91,7 @@ $mostrar = 0;
     document.addEventListener('DOMContentLoaded', () => {
         const forms = {
             85: (idOS) => `
-                        <form  class="formulario_sem_acesso " method="post">
+                        <form  class="formulario_sem_acesso " method="post" id="form_${idOS}">
                             <div>
                                 <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -126,9 +126,10 @@ $mostrar = 0;
                                 <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
                         </form>
                 `,
             11: `
@@ -544,31 +545,50 @@ $mostrar = 0;
         };
 
         document.querySelectorAll('#abrirAvaliar').forEach(link => {
-            link.addEventListener('click', event => {
-                event.preventDefault();
+        link.addEventListener('click', event => {
+            event.preventDefault();
 
-                const formId = link.getAttribute('data-assunto');
-                const idOS = link.getAttribute('data-id-os');
-                const descOS = link.getAttribute('data-desc');
+            const formId = link.getAttribute('data-assunto');
+            const idOS = link.getAttribute('data-id-os');
+            const descOS = link.getAttribute('data-desc');
 
-                const boxId = `box-avaliar-${formId}-${idOS}`;
-                let boxAvaliar = document.getElementById(boxId);
+            const boxId = `box-avaliar-${formId}-${idOS}`;
+            let boxAvaliar = document.getElementById(boxId);
 
-                if (!boxAvaliar) {
-                    boxAvaliar = document.createElement('div');
-                    boxAvaliar.id = boxId;
-                    document.body.appendChild(boxAvaliar);
-                }
+            if (!boxAvaliar) {
+                boxAvaliar = document.createElement('div');
+                boxAvaliar.id = boxId;
+                document.body.appendChild(boxAvaliar);
+            }
 
-                if (boxAvaliar.classList.contains('hidden')) {
-                    boxAvaliar.classList.remove('hidden');
-                } else {
-                    boxAvaliar.classList.add('hidden');
-                }
+            if (boxAvaliar.classList.contains('hidden')) {
+                boxAvaliar.classList.remove('hidden');
+            } else {
+                boxAvaliar.classList.add('hidden');
+            }
 
-                boxAvaliar.innerHTML = forms[formId](idOS);
+            boxAvaliar.innerHTML = forms[formId](idOS);
+
+            // Adiciona event listeners aos inputs do formulário gerado
+            const form = document.getElementById(`form_${idOS}`);
+            console.log(form);
+            form.querySelectorAll('input').forEach(input => {
+                input.addEventListener('change', event => {
+                    console.log(`Input ${event.target.id} changed to ${event.target.checked ? 'checked' : 'unchecked'}`);
+                });
+            });
+
+            // Adiciona event listener ao botão de soma
+            const sumButton = document.getElementById(`sumButton_${idOS}`);
+            sumButton.addEventListener('click', () => {
+                let sum = 0;
+                form.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                    sum += parseInt(checkbox.value);
+                });
+                alert(`A soma dos valores dos checkboxes marcados é: ${sum}`);
             });
         });
+    });
     });
 </script>
 <script src="index.js"></script>
