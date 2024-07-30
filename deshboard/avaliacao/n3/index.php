@@ -125,7 +125,8 @@ $mostrar = 0;
                                 <label for="obs_${idOS}">OBS:</label>
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button> 
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button>                     
                         </form>
                 `,
             11: (idOS) => `
@@ -164,6 +165,7 @@ $mostrar = 0;
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             27: (idOS) => `
@@ -202,6 +204,7 @@ $mostrar = 0;
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             23: (idOS) => `
@@ -240,6 +243,7 @@ $mostrar = 0;
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             10: (idOS) => `
@@ -286,6 +290,7 @@ $mostrar = 0;
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             70: (idOS) => `
@@ -332,6 +337,7 @@ $mostrar = 0;
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             26: (idOS) => `
@@ -370,6 +376,7 @@ $mostrar = 0;
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             308: (idOS) => `
@@ -411,6 +418,8 @@ $mostrar = 0;
                                 <label for="obs">OBS:</label>
                                 <input type="text" name="obs" id="obs">
                             </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             357: (idOS) => `
@@ -452,6 +461,8 @@ $mostrar = 0;
                                 <label for="obs">OBS:</label>
                                 <input type="text" name="obs" id="obs">
                             </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             425: (idOS) => `
@@ -493,6 +504,8 @@ $mostrar = 0;
                                 <label for="obs">OBS:</label>
                                 <input type="text" name="obs" id="obs">
                             </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
             452: (idOS) => `
@@ -534,6 +547,8 @@ $mostrar = 0;
                                 <label for="obs">OBS:</label>
                                 <input type="text" name="obs" id="obs">
                             </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
                         </form>
                 `,
         };
@@ -583,7 +598,46 @@ $mostrar = 0;
             });
         });
     });
+});
+
+// Define a função no escopo global
+function generateAndCopyText(idOS) {
+    const fields = [
+        { id: `execucao_${idOS}`, label: 'A ordem de serviço estava com o Status em "Execução"?' },
+        { id: `potencia_${idOS}`, label: 'Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.' },
+        { id: `potenciaBoa_${idOS}`, label: 'A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?' },
+        { id: `organizadoCaixa_${idOS}`, label: 'Foi organizado os cabos na CTO/Caixa?' },
+        { id: `organizadoParede_${idOS}`, label: 'Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?' },
+        { id: `velocidade_${idOS}`, label: 'Foi Feito o teste de velocidade?' },
+        { id: `acessoRemoto_${idOS}`, label: 'Foi ativado o Ping e liberado o acesso remoto?' },
+        { id: `nomeRede_${idOS}`, label: 'Foi inserido o nome (Ticonnect), na rede wifi?' },
+    ];
+
+    let resultText = '';
+
+    fields.forEach(field => {
+        const checkbox = document.getElementById(field.id);
+        if (checkbox) { // Verifica se o elemento existe
+            resultText += `${field.label}\nSim (${checkbox.checked ? 'X' : ' '}) Não (${checkbox.checked ? ' ' : 'X'})\n\n`;
+        } else {
+            console.warn(`Elemento com ID ${field.id} não encontrado.`);
+        }
     });
+
+    const obs = document.getElementById(`obs_${idOS}`);
+    if (obs) { // Verifica se o elemento existe
+        resultText += `OBS: ${obs.value}\n`;
+    } else {
+        console.warn(`Elemento com ID obs_${idOS} não encontrado.`);
+    }
+
+    navigator.clipboard.writeText(resultText).then(() => {
+        alert('Texto copiado para a área de transferência!');
+    }).catch(err => {
+        console.error('Erro ao copiar o texto: ', err);
+    });
+}
+
 </script>
 <script src="index.js"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
