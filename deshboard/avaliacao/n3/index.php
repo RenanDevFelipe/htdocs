@@ -46,7 +46,7 @@ $mostrar = 0;
                                 <i class="bx bx-collection"></i>
                                 <a>Detalhes</a>
                             </div>
-                            <div id="abrirAvaliar" data-assunto="<?php echo $id_assunto ?>" data-id-os="<?php echo $id ?>">
+                            <div class="hidden" id="abrirAvaliar" data-assunto="<?php echo $id_assunto ?>" data-id-os="<?php echo $id ?>">
                                 <i class="bx bx-star"></i>
                                 <nav>
                                     <a>Avaliar</a>
@@ -72,7 +72,7 @@ $mostrar = 0;
                             <p><strong>Descrição da OS: </strong><?php echo $desc ?></p>
                         </div>
                     </div>
-                    <div id="box-avaliar-<?php echo $id_assunto ?>-<?php echo $id ?>"></div>
+                    <div class="box-avaliar hidden" id="box-avaliar-<?php echo $id_assunto ?>-<?php echo $id ?>"></div>
                 </div>
 
 
@@ -91,7 +91,7 @@ $mostrar = 0;
     document.addEventListener('DOMContentLoaded', () => {
         const forms = {
                 28: `
-                        <form class="formulario_sem_acesso hidden" method="post">
+                        <form  class="formulario_sem_acesso " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
                                 <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -542,10 +542,8 @@ $mostrar = 0;
                         </form>
                 `,
         };
-    });
 
-
-    document.querySelectorAll('#abrirAvaliar').forEach(link => {
+        document.querySelectorAll('#abrirAvaliar').forEach(link => {
             link.addEventListener('click', event => {
                 event.preventDefault();
 
@@ -559,6 +557,7 @@ $mostrar = 0;
                 if (boxAvaliar) {
                     if (boxAvaliar.classList.contains('hidden')) {
                         boxAvaliar.classList.remove('hidden');
+                        console.log(forms[28]);
                         boxAvaliar.innerHTML = forms[formId];
                         const hiddenInput = boxAvaliar.querySelector('#id_os');
                         if (hiddenInput) {
@@ -574,6 +573,11 @@ $mostrar = 0;
                 }
             });
         });
+    });
+
+
+
+
 </script>
 <script src="index.js"></script>
 <script src="../../../script/dashboard.js?v=1"></script>

@@ -385,3 +385,37 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+
+    //  30/07/2024 
+    
+    document.querySelectorAll('#abrirAvaliar').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+
+                const formId = link.getAttribute('data-assunto');
+                const idOS = link.getAttribute('data-id-os');
+                const descOS = link.getAttribute('data-desc');
+
+                const boxId = `box-avaliar-${formId}-${idOS}`;
+                const boxAvaliar = document.getElementById(boxId);
+
+                if (boxAvaliar) {
+                    if (boxAvaliar.classList.contains('hidden')) {
+                        boxAvaliar.classList.remove('hidden');
+                        console.log(forms[formId]);
+                        boxAvaliar.innerHTML = forms[formId];
+                        const hiddenInput = boxAvaliar.querySelector('#id_os');
+                        if (hiddenInput) {
+                            hiddenInput.value = idOS;
+                        }
+                        const assuntoOsInput = boxAvaliar.querySelector('#assunto_os');
+                        if (assuntoOsInput) {
+                            assuntoOsInput.value = descOS;
+                        }
+                    } else {
+                        boxAvaliar.classList.add('hidden');
+                    }
+                }
+            });
+        });
