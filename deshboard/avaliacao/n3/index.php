@@ -90,35 +90,31 @@ $mostrar = 0;
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const forms = {
-            85: (idOS) => `
-                        <form  class="formulario_sem_acesso " method="post" id="form_${idOS}">
+            28: (idOS) => `
+                        <form  class="formulario_sem_acesso" method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
                                 <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
                                 <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa_${idOS}" id="organizadoCaixa_${idOS}">
-                                <label for="organizadoCaixa_${idOS}">Foi organizado os cabos na CTO/Caixa?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
                                 <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
                                 <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
                                 <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
@@ -132,253 +128,251 @@ $mostrar = 0;
                             <button type="button" id="sumButton_${idOS}">Somar Valores</button>
                         </form>
                 `,
-            11: `
-                        <form class="formulario_suporte_tecnico " method="post">
+            11: (idOS) => `
+                        <form  class="formulario_suporte_tecnico" method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
-                            </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
                         </form>
                 `,
-            27: `
-                        <form class="formulario_lentidao " method="post">
+            27: (idOS) => `
+                        <form  class="formulario_lentidao" method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
-                            </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
                         </form>
                 `,
-            23: `
-                        <form class="formulario_oscilacao " method="post">
+            23: (idOS) => `
+                        <form  class="formulario_oscilacao" method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
-                            </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
                         </form>
                 `,
-            10: `
-                        <form class="formulario_instalacao " method="post">
+            10: (idOS) => `
+                        <form  class="formulario_sem_acesso" method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="canal_${idOS}" id="canal_${idOS}">
+                                <label for="canal_${idOS}">onfigurações do equipamento Canal e Largura</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                            </div>         
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="central_${idOS}" id="central_${idOS}">
+                                <label for="central_${idOS}">baixou central do cliente no telefone do cliente?</label>
                             </div>
                             <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
                         </form>
                 `,
-            70: `
-                        <form class="formulario_mudanca_endereco " method="post">
+            70: (idOS) => `
+                        <form  class="formulario_sem_acesso" method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="canal_${idOS}" id="canal_${idOS}">
+                                <label for="canal_${idOS}">onfigurações do equipamento Canal e Largura</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                            </div>         
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="central_${idOS}" id="central_${idOS}">
+                                <label for="central_${idOS}">baixou central do cliente no telefone do cliente?</label>
                             </div>
                             <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
                         </form>
                 `,
-            26: `
-                        <form class="formulario_troca_equipamento " method="post">
+            26: (idOS) => `
+                        <form  class="formulario_troca_equipamento" method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
-                            </div>
+                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
                         </form>
                 `,
-            308: `
+            308: (idOS) => `
                         <form class="formulario_instalacao_camera " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -419,7 +413,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-            357: `
+            357: (idOS) => `
                         <form class="formulario_suporte_camera " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -460,7 +454,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-            425: `
+            425: (idOS) => `
                         <form class="formulario_instalacao_iptv " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -501,7 +495,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-            452: `
+            452: (idOS) => `
                         <form class="formulario_suporte_iptv " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
