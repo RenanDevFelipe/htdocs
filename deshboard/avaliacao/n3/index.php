@@ -90,40 +90,40 @@ $mostrar = 0;
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const forms = {
-                28: `
+            85: (idOS) => `
                         <form  class="formulario_sem_acesso " method="post">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa_${idOS}" id="organizadoCaixa_${idOS}">
+                                <label for="organizadoCaixa_${idOS}">Foi organizado os cabos na CTO/Caixa?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
                                 <label for="obs">OBS:</label>
@@ -131,7 +131,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                11: `
+            11: `
                         <form class="formulario_suporte_tecnico " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -172,7 +172,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                27: `
+            27: `
                         <form class="formulario_lentidao " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -213,7 +213,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                23: `
+            23: `
                         <form class="formulario_oscilacao " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -254,7 +254,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                10: `
+            10: `
                         <form class="formulario_instalacao " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -295,7 +295,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                70: `
+            70: `
                         <form class="formulario_mudanca_endereco " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -336,7 +336,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                26: `
+            26: `
                         <form class="formulario_troca_equipamento " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -377,7 +377,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                308: `
+            308: `
                         <form class="formulario_instalacao_camera " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -418,7 +418,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                357: `
+            357: `
                         <form class="formulario_suporte_camera " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -459,7 +459,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                425: `
+            425: `
                         <form class="formulario_instalacao_iptv " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -500,7 +500,7 @@ $mostrar = 0;
                             </div>
                         </form>
                 `,
-                452: `
+            452: `
                         <form class="formulario_suporte_iptv " method="post">
                             <div>
                                 <input value="1" type="checkbox" name="execucao" id="execucao">
@@ -552,32 +552,24 @@ $mostrar = 0;
                 const descOS = link.getAttribute('data-desc');
 
                 const boxId = `box-avaliar-${formId}-${idOS}`;
-                const boxAvaliar = document.getElementById(boxId);
+                let boxAvaliar = document.getElementById(boxId);
 
-                if (boxAvaliar) {
-                    if (boxAvaliar.classList.contains('hidden')) {
-                        boxAvaliar.classList.remove('hidden');
-                        console.log(forms[28]);
-                        boxAvaliar.innerHTML = forms[formId];
-                        const hiddenInput = boxAvaliar.querySelector('#id_os');
-                        if (hiddenInput) {
-                            hiddenInput.value = idOS;
-                        }
-                        const assuntoOsInput = boxAvaliar.querySelector('#assunto_os');
-                        if (assuntoOsInput) {
-                            assuntoOsInput.value = descOS;
-                        }
-                    } else {
-                        boxAvaliar.classList.add('hidden');
-                    }
+                if (!boxAvaliar) {
+                    boxAvaliar = document.createElement('div');
+                    boxAvaliar.id = boxId;
+                    document.body.appendChild(boxAvaliar);
                 }
+
+                if (boxAvaliar.classList.contains('hidden')) {
+                    boxAvaliar.classList.remove('hidden');
+                } else {
+                    boxAvaliar.classList.add('hidden');
+                }
+
+                boxAvaliar.innerHTML = forms[formId](idOS);
             });
         });
     });
-
-
-
-
 </script>
 <script src="index.js"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
