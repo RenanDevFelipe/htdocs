@@ -15,7 +15,7 @@ $params = array(
     'query' => $id_tecnico,
     'oper' => '=',
     'page' => '1',
-    'rp' => '20',
+    'rp' => '300',
     'sortname' => 'su_oss_chamado.id',
     'sortorder' => 'desc',
     'grid_param' => json_encode(array(
@@ -58,7 +58,7 @@ if (isset($os_fin->registros) && !empty($os_fin->registros)) {
             'query' => $chamado->id_cliente,
             'oper' => '=',
             'page' => '1',
-            'rp' => '20',
+            'rp' => '300',
             'sortname' => 'cliente.id',
             'sortorder' => 'desc'
         );
