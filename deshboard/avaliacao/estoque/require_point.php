@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:/xampp1/htdocs/core/core.php';
+require_once '../core/core.php';
 
 
 $sql = $pdo->prepare('SELECT COUNT(*) FROM avaliacao_estoque WHERE data_finalizacao = ?');
