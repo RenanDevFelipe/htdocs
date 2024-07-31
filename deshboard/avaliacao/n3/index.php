@@ -16,7 +16,7 @@ $mostrar = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=4">
-    <link rel="stylesheet" href="index.css?v=6">
+    <link rel="stylesheet" href="index.css?v=7">
     <title>Avaliação N3</title>
 </head>
 
@@ -126,7 +126,15 @@ $mostrar = 0;
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <button type="button" id="sumButton_${idOS}">Somar Valores</button> 
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button>                     
+                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button>  
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div>              
                         </form>
                 `,
             11: (idOS) => `
@@ -588,7 +596,7 @@ $mostrar = 0;
             });
 
             // Adiciona event listener ao botão de soma
-            const sumButton = document.getElementById(`sumButton_${idOS}`);
+            const sumButton = document.getElementById(`form-avaliar_${idOS}`);
             sumButton.addEventListener('click', () => {
                 let sum = 0;
                 form.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
@@ -601,6 +609,7 @@ $mostrar = 0;
 });
 
 // Define a função no escopo global
+
 function generateAndCopyText(idOS) {
     const fields = [
         { id: `execucao_${idOS}`, label: 'A ordem de serviço estava com o Status em "Execução"?' },
@@ -637,6 +646,7 @@ function generateAndCopyText(idOS) {
         console.error('Erro ao copiar o texto: ', err);
     });
 }
+
 
 </script>
 <script src="index.js"></script>

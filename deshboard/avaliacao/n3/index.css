@@ -123,6 +123,43 @@
     transition: 0.5s;
     color: white;
 }
+.form-avaliar{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.form-avaliar div{
+    background-color: white;
+    width: 50%!important;
+    padding: 4%;
+    display: flex;
+    color: rgb(119, 119, 119);
+    justify-content: center;
+    align-items: center;
+    gap: 0.1rem;
+    border: 1px solid #c9ccd6;
+    cursor: pointer;
+}
+.form-avaliar div:hover{
+    background-color: var(--colorsecundary);
+    transition: 0.5s;
+    color: white;
+}
+.form-avaliar div:hover a{
+    color: white;
+}
+.form-avaliar a{
+    text-decoration: none;
+    color: rgb(119, 119, 119);
+    font-weight: bolder;
+    font-size: 15px;
+}
+.form-avaliar i{
+    font-size: 15px;
+}
+.form-avaliar a:hover{
+    color: white;
+}
 
 .dashboard-tecnicos-ranking div .box-tecnico a {
     text-decoration: none;
