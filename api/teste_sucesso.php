@@ -106,4 +106,5 @@ foreach ($id_colaborador_ixc as $colaborador) {
     print_r($total_ponto);
     echo "<br><br>";
 }
+$teste;
 ?>

@@ -14,7 +14,7 @@ if (isset($_POST['user_id'])) {
     if ($query->execute()) {
         echo "Colaborador deletado com sucesso!";
     } else {
-        echo "Erro ao deletar o colaborador.";
+        echo "Erro ao deletar o colaborador..";
     }
 }
 ?>
