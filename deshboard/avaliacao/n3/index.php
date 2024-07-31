@@ -125,8 +125,7 @@ $mostrar = 0;
                                 <label for="obs_${idOS}">OBS:</label>
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button> 
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button>  
+ 
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
                                     <i class="bx bx-star"></i>
@@ -603,6 +602,9 @@ $mostrar = 0;
                     sum += parseInt(checkbox.value);
                 });
                 alert(`A soma dos valores dos checkboxes marcados é: ${sum}`);
+
+                // chama a funcao de copiar o texto
+                generateAndCopyText(idOS);
             });
         });
     });
