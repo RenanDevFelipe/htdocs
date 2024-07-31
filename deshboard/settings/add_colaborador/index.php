@@ -148,10 +148,11 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
         </section>
     </section>
 </body>
-<script src="deletar_usuario.js"></script>
+
 <script src="../../../script/navegacao.js?v=1"></script>
 <script src="../../../script/dashboard.js?v=1"></script>
 <script src="enviar_requisicao.js"></script>
 <script src="requisicao_editar.js?v=2"></script>
+<script src="deletar_colaborador.js"></script>
 
 </html>
