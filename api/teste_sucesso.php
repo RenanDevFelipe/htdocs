@@ -41,7 +41,7 @@ foreach ($id_colaborador_ixc as $colaborador) {
         'query' => $id_ixc,
         'oper' => '=',
         'page' => '1',
-        'rp' => '20',
+        'rp' => '300',
         'sortname' => 'su_oss_chamado.id',
         'sortorder' => 'desc',
         'grid_param' => json_encode(array(

@@ -1,6 +1,7 @@
 <?php
-
 namespace IXCsoft;
+
+set_time_limit(300);
 
 class WebserviceClientException extends \Exception
 {
@@ -234,3 +235,4 @@ class WebserviceClient implements \Iterator, \ArrayAccess
         }
     }
 }
+
