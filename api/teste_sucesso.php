@@ -11,7 +11,8 @@ $sql->execute();
 $id_colaborador_ixc = $sql->fetchAll();
 
 // Função para substituir os IDs pelos valores correspondentes
-function substituir_ids($pontuacao, $id_diagnostico) {
+function substituir_ids($pontuacao, $id_diagnostico)
+{
     foreach ($pontuacao as &$id) {
         if (isset($id_diagnostico[$id])) {
             $id = $id_diagnostico[$id];
@@ -21,13 +22,14 @@ function substituir_ids($pontuacao, $id_diagnostico) {
 }
 
 $id_diagnostico = array(
-    '46' => '10',
-    '45' => '0'
+    '50' => '10',
+    '49' => '5',
+    '51' => '0'
 );
 
 $data_ano = date("Y");
 $data_mes = date("m");
-$date_sucesso = date('Y-m-d');
+$date_sucesso = date("Y-m-d");
 
 // Data inicial (início do dia)
 $data_inicio = $data_ano . '-' . $data_mes . '-01' . ' 00:00:00';
@@ -63,16 +65,13 @@ foreach ($id_colaborador_ixc as $colaborador) {
     $retorno = $api->getRespostaConteudo(false);
     $teste = json_decode($retorno);
 
-    if (!empty($teste->registros)) {
+    if ($teste->total > 0) {
         $id_atendimento = [];
         foreach ($teste->registros as $registro) {
             if (!in_array($registro->id_ticket, $id_atendimento)) {
                 $id_atendimento[] = $registro->id_ticket;
             }
         }
-
-        $avaliacao = [];
-        $teste = [];
 
         foreach ($id_atendimento as $id_sucesso) {
             $params = array(
@@ -87,7 +86,8 @@ foreach ($id_colaborador_ixc as $colaborador) {
                     array('TB' => 'su_oss_chamado.status', 'OP' => '=', 'P' => 'F'),
                     array('TB' => 'su_oss_chamado.data_fechamento', 'OP' => '>=', 'P' => $inicio_sucesso),
                     array('TB' => 'su_oss_chamado.data_fechamento', 'OP' => '<=', 'P' => $fim_sucesso),
-                    array('TB' => 'su_oss_chamado.setor', 'OP' => '=', 'P' => '36')
+                    array('TB' => 'su_oss_chamado.setor', 'OP' => '=', 'P' => '36'),
+                    array('TB' => 'su_oss_chamado.id_assunto', 'OP' => '=', 'P' => '416')
                 ))
             );
 
@@ -96,25 +96,23 @@ foreach ($id_colaborador_ixc as $colaborador) {
             $teste_1 = json_decode($retorno);
 
             if ($teste_1->total > 0) {
-                $avaliacao[] = $teste_1->registros[0]->id_su_diagnostico;
-                $teste[] = $id_sucesso;
+                $id_ticket = $id_sucesso;
+                $ponto_sucesso = substituir_ids($teste_1->registros[0]->id_su_diagnostico, $id_diagnostico);
+                $colaborador_sucesso =  $colaborador['id_colaborador'];
+                $id_setor = 8;
+                $data_sucesso = date('Y-m-d');
+
+                $sql = $pdo->prepare('SELECT COUNT(*) FROM avaliacao_sucesso WHERE id_atendimento = ?');
+                $sql->execute([$id_ticket]);
+
+                if($sql->fetchColumn() == 0){
+                    $sql = $pdo->prepare('INSERT INTO avaliacao_sucesso (id_atendimento, id_tecnico, id_setor, ponto_sucesso, data_avaliacao) VALUES (?, ?, ?, ?, ?)');
+                    $sql->execute([$id_ticket, $colaborador_sucesso, $id_setor, $ponto_sucesso, $data_sucesso]);
+                }
             }
         }
 
-        $total_ponto = substituir_ids($avaliacao, $id_diagnostico);
-
-        echo "Colaborador ID: " . $colaborador['id_colaborador'] . "<br>";
-        echo "Avaliação: ";
-        print_r($avaliacao);
-        echo "<br>";
-        echo "Teste: ";
-        print_r($teste);
-        echo "<br>";
-        echo "Total Ponto: ";
-        print_r($total_ponto);
-        echo "<br><br>";
-    } else {
-        echo "Nenhum registro encontrado para o colaborador ID: " . $colaborador['id_colaborador'] . "<br><br>";
     }
 }
+
 ?>
