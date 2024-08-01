@@ -159,25 +159,25 @@ $mostrar = 0;
             11: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_suporte_tecnico" method="post" id="form_${idOS}">
                             <div>
-                                <input value="${id_tecnico}" type="text" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
                             </div>
                             <div>
-                                <input value="${descOS}" type="text" name="descOS_${idOS}" id="descOS_${idOS}">
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${fechamentoOS}" type="text" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${formId}" type="text" name="formId_${idOS}" id="formId_${idOS}">
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
                             </div>
                             <div>
-                                <input value="${nota_os}" type="text" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${pontuacao_os}" type="text" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${id_setor}" type="text" name="setor_${idOS}" id="setor_${idOS}">
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
                             </div>
                             <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
@@ -225,25 +225,25 @@ $mostrar = 0;
             27: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_lentidao" method="post" id="form_${idOS}">
                             <div>
-                                <input value="${id_tecnico}" type="text" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
                             </div>
                             <div>
-                                <input value="${descOS}" type="text" name="descOS_${idOS}" id="descOS_${idOS}">
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${fechamentoOS}" type="text" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${formId}" type="text" name="formId_${idOS}" id="formId_${idOS}">
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
                             </div>
                             <div>
-                                <input value="${nota_os}" type="text" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${pontuacao_os}" type="text" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${id_setor}" type="text" name="setor_${idOS}" id="setor_${idOS}">
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
                             </div>
                             <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
@@ -291,25 +291,25 @@ $mostrar = 0;
             23: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_oscilacao" method="post" id="form_${idOS}">
                             <div>
-                                <input value="${id_tecnico}" type="text" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
                             </div>
                             <div>
-                                <input value="${descOS}" type="text" name="descOS_${idOS}" id="descOS_${idOS}">
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${fechamentoOS}" type="text" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${formId}" type="text" name="formId_${idOS}" id="formId_${idOS}">
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
                             </div>
                             <div>
-                                <input value="${nota_os}" type="text" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${pontuacao_os}" type="text" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${id_setor}" type="text" name="setor_${idOS}" id="setor_${idOS}">
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
                             </div>
                             <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
@@ -356,6 +356,27 @@ $mostrar = 0;
                 `,
             10: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_instalacao" method="post" id="form_${idOS}">
+                            <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
                             <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -410,6 +431,27 @@ $mostrar = 0;
             70: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_troca_endereco" method="post" id="form_${idOS}">
                             <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
+                            <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
@@ -463,25 +505,25 @@ $mostrar = 0;
             26: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_troca_equipamento" method="post" id="form_${idOS}">
                             <div>
-                                <input value="${id_tecnico}" type="text" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
                             </div>
                             <div>
-                                <input value="${descOS}" type="text" name="descOS_${idOS}" id="descOS_${idOS}">
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${fechamentoOS}" type="text" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${formId}" type="text" name="formId_${idOS}" id="formId_${idOS}">
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
                             </div>
                             <div>
-                                <input value="${nota_os}" type="text" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${pontuacao_os}" type="text" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
                             </div>
                             <div>
-                                <input value="${id_setor}" type="text" name="setor_${idOS}" id="setor_${idOS}">
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
                             </div>
                             <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
@@ -528,6 +570,27 @@ $mostrar = 0;
                 `,
             308: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form class="formulario_instalacao_camera " method="post" id="form_${idOS}">
+                            <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
                             <div>
                                 <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -577,6 +640,27 @@ $mostrar = 0;
                 `,
             357: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form class="formulario_suporte_camera " method="post" id="form_${idOS}">
+                        <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
                             <div>
                                 <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -627,6 +711,27 @@ $mostrar = 0;
             425: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form class="formulario_instalacao_iptv " method="post" id="form_${idOS}">
                             <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
+                            <div>
                                 <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
@@ -675,6 +780,27 @@ $mostrar = 0;
                 `,
             452: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form class="formulario_suporte_iptv " method="post" id="form_${idOS}">
+                            <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
                             <div>
                                 <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
