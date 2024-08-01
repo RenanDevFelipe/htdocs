@@ -46,7 +46,7 @@ $mostrar = 0;
                                 <i class="bx bx-collection"></i>
                                 <a>Detalhes</a>
                             </div>
-                            <div class="hidden" id="abrirAvaliar" data-assunto="<?php echo $id_assunto ?>" data-id-os="<?php echo $id ?>">
+                            <div class="hidden" id="abrirAvaliar" data-id-tecnico="<?php echo $_GET['bd'] ?>" data-desc="<?php echo $desc ?>" data-finalizacao-os="<?php echo $fechamento ?>" data-assunto="<?php echo $id_assunto ?>" data-id-os="<?php echo $id ?>">
                                 <i class="bx bx-star"></i>
                                 <nav>
                                     <a>Avaliar</a>
@@ -90,8 +90,29 @@ $mostrar = 0;
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const forms = {
-            28: (idOS) => `
+            28: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_sem_acesso" method="post" id="form_${idOS}">
+                             <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
                             <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -118,14 +139,13 @@ $mostrar = 0;
                                 <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
-                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="canal_${idOS}" id="canal_${idOS}">
+                                <label for="canal_${idOS}">Configurou o canal e largura do equipamento?</label>
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
- 
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
                                     <i class="bx bx-star"></i>
@@ -133,12 +153,33 @@ $mostrar = 0;
                                         <a>Avaliar</a>
                                     </nav>
                                 </div>     
-                            </div>              
+                            </div>          
                         </form>
                 `,
-            11: (idOS) => `
+            11: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_suporte_tecnico" method="post" id="form_${idOS}">
                             <div>
+                                <input value="${id_tecnico}" type="text" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="text" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="text" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="text" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="text" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="text" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="text" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
+                            <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
@@ -171,13 +212,40 @@ $mostrar = 0;
                                 <label for="obs_${idOS}">OBS:</label>
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div> 
                         </form>
                 `,
-            27: (idOS) => `
+            27: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_lentidao" method="post" id="form_${idOS}">
                             <div>
+                                <input value="${id_tecnico}" type="text" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="text" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="text" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="text" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="text" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="text" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="text" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
+                            <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
@@ -210,13 +278,40 @@ $mostrar = 0;
                                 <label for="obs_${idOS}">OBS:</label>
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div> 
                         </form>
                 `,
-            23: (idOS) => `
+            23: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_oscilacao" method="post" id="form_${idOS}">
                             <div>
+                                <input value="${id_tecnico}" type="text" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="text" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="text" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="text" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="text" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="text" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="text" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
+                            <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
@@ -249,59 +344,18 @@ $mostrar = 0;
                                 <label for="obs_${idOS}">OBS:</label>
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div>   
                         </form>
                 `,
-            10: (idOS) => `
-                        <form  class="formulario_sem_acesso" method="post" id="form_${idOS}">
-                            <div>
-                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
-                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
-                            </div>
-
-                            <div>
-                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
-                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
-                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="2" type="checkbox" name="canal_${idOS}" id="canal_${idOS}">
-                                <label for="canal_${idOS}">onfigurações do equipamento Canal e Largura</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
-                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
-                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
-                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
-                            </div>         
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
-                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="2" type="checkbox" name="central_${idOS}" id="central_${idOS}">
-                                <label for="central_${idOS}">baixou central do cliente no telefone do cliente?</label>
-                            </div>
-                            <div>
-                                <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
-                            </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
-                        </form>
-                `,
-            70: (idOS) => `
-                        <form  class="formulario_sem_acesso" method="post" id="form_${idOS}">
+            10: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+                        <form  class="formulario_instalacao" method="post" id="form_${idOS}">
                             <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
@@ -343,13 +397,93 @@ $mostrar = 0;
                                 <label for="obs_${idOS}">OBS:</label>
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div>  
                         </form>
                 `,
-            26: (idOS) => `
+            70: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+                        <form  class="formulario_troca_endereco" method="post" id="form_${idOS}">
+                            <div>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
+                            </div>
+
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="2" type="checkbox" name="canal_${idOS}" id="canal_${idOS}">
+                                <label for="canal_${idOS}">onfigurações do equipamento Canal e Largura</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                            </div>         
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="2" type="checkbox" name="central_${idOS}" id="central_${idOS}">
+                                <label for="central_${idOS}">baixou central do cliente no telefone do cliente?</label>
+                            </div>
+                            <div>
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                            </div>
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div>  
+                        </form>
+                `,
+            26: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_troca_equipamento" method="post" id="form_${idOS}">
                             <div>
+                                <input value="${id_tecnico}" type="text" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="text" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="text" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="text" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="text" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="text" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="text" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
+                            <div>
                                 <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
                                 <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
@@ -382,180 +516,210 @@ $mostrar = 0;
                                 <label for="obs_${idOS}">OBS:</label>
                                 <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div> 
                         </form>
                 `,
-            308: (idOS) => `
-                        <form class="formulario_instalacao_camera " method="post">
+            308: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+                        <form class="formulario_instalacao_camera " method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa_${idOS}" id="organizadoCaixa_${idOS}">
+                                <label for="organizadoCaixa_${idOS}">Foi organizado os cabos na CTO/Caixa?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div>  
                         </form>
                 `,
-            357: (idOS) => `
-                        <form class="formulario_suporte_camera " method="post">
+            357: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+                        <form class="formulario_suporte_camera " method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa_${idOS}" id="organizadoCaixa_${idOS}">
+                                <label for="organizadoCaixa_${idOS}">Foi organizado os cabos na CTO/Caixa?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div>  
                         </form>
                 `,
-            425: (idOS) => `
-                        <form class="formulario_instalacao_iptv " method="post">
+            425: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+                        <form class="formulario_instalacao_iptv " method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa_${idOS}" id="organizadoCaixa_${idOS}">
+                                <label for="organizadoCaixa_${idOS}">Foi organizado os cabos na CTO/Caixa?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div>  
                         </form>
                 `,
-            452: (idOS) => `
-                        <form class="formulario_suporte_iptv " method="post">
+            452: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+                        <form class="formulario_suporte_iptv " method="post" id="form_${idOS}">
                             <div>
-                                <input value="1" type="checkbox" name="execucao" id="execucao">
-                                <label for="execucao">A ordem de serviço estava com o Status em "Execução"? </label>
+                                <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
                             </div>
 
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia" id="potencia">
-                                <label for="potencia">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa" id="potenciaBoa">
-                                <label for="potenciaBoa">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa" id="organizadoCaixa">
-                                <label for="organizadoCaixa">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa_${idOS}" id="organizadoCaixa_${idOS}">
+                                <label for="organizadoCaixa_${idOS}">Foi organizado os cabos na CTO/Caixa?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede" id="organizadoParede">
-                                <label for="organizadoParede">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade" id="velocidade">
-                                <label for="velocidade">Foi Feito o teste de velocidade?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto" id="acessoRemoto">
-                                <label for="acessoRemoto">Foi ativado o Ping e liberado o acesso remoto?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede" id="nomeRede">
-                                <label for="nomeRede">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
                             </div>
                             <div>
-                                <label for="obs">OBS:</label>
-                                <input type="text" name="obs" id="obs">
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
-                            <button type="button" id="sumButton_${idOS}">Somar Valores</button>
-                            <button type="button" onclick="generateAndCopyText('${idOS}')">Copiar Texto</button> 
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div>  
                         </form>
                 `,
         };
@@ -564,10 +728,16 @@ $mostrar = 0;
         link.addEventListener('click', event => {
             event.preventDefault();
 
+            // variaveis que vao para o banco de dados pelo form 
+
             const formId = link.getAttribute('data-assunto');
             const idOS = link.getAttribute('data-id-os');
             const descOS = link.getAttribute('data-desc');
-
+            const fechamentoOS = link.getAttribute('data-finalizacao-os');
+            const id_setor = "5";
+            var pontuacao_os = 0;
+            var nota_os = 0;
+            const id_tecnico = link.getAttribute('data-id-tecnico');
             const boxId = `box-avaliar-${formId}-${idOS}`;
             let boxAvaliar = document.getElementById(boxId);
 
@@ -583,7 +753,7 @@ $mostrar = 0;
                 boxAvaliar.classList.add('hidden');
             }
 
-            boxAvaliar.innerHTML = forms[formId](idOS);
+            boxAvaliar.innerHTML = forms[formId](idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico);
 
             // Adiciona event listeners aos inputs do formulário gerado
             const form = document.getElementById(`form_${idOS}`);
@@ -601,10 +771,62 @@ $mostrar = 0;
                 form.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
                     sum += parseInt(checkbox.value);
                 });
+                pontuacao_os = sum;
+                const quantidade_inputs = form.querySelectorAll('input[type="checkbox"');
+
+                // Seleciona todos os checkboxes no formulário
+                const checkboxes = form.querySelectorAll('form input[type="checkbox"]');
+
+                // Inicializa a soma
+                let soma = 0;
+
+                // Itera sobre todos os checkboxes
+                checkboxes.forEach(checkbox => {
+                // Adiciona o valor do checkbox à soma
+                soma += parseFloat(checkbox.value);
+                });
+
+                nota_os = (pontuacao_os * 10) /  soma;
+
+                console.log('pontuação da OS: ' + pontuacao_os);
+                console.log('total de value: ' + soma);
+                console.log('nota_os é: ' + nota_os);
+
+
                 alert(`A soma dos valores dos checkboxes marcados é: ${sum}`);
+
 
                 // chama a funcao de copiar o texto
                 generateAndCopyText(idOS);
+
+                // Coleta os dados do formulário
+const formData = new FormData(form);
+
+// Adiciona os valores calculados aos inputs do formulário
+form.querySelector(`input[name="pontuacaoOS_${idOS}"]`).value = pontuacao_os;
+form.querySelector(`input[name="notaOS_${idOS}"]`).value = nota_os;
+
+// Adiciona esses valores ao formData
+formData.set(`pontuacaoOS_${idOS}`, pontuacao_os);
+formData.set(`notaOS_${idOS}`, nota_os);
+
+// Envia os dados para o servidor
+fetch(`inserir_avaliacao.php?idOS=${idOS}`, {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+    if (data.missing_fields) {
+        console.log('Campos ausentes:', data.missing_fields);
+    }
+    alert(data.message);
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('Erro ao enviar os dados.');
+});
             });
         });
     });
