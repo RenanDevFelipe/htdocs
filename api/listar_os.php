@@ -46,7 +46,7 @@ if (isset($os_fin->registros) && !empty($os_fin->registros)) {
         $id_cliente[] = $os_fin->registros[$i]->id_cliente;   
         $abertura_os[] = $os_fin->registros[$i]->data_abertura;
         $id_assunto[] = $os_fin->registros[$i]->id_assunto;
-        $desc_os[] = $os_fin->registros[$i]->mensagem;
+        $desc_os[] = $os_fin->registros[$i]->mensagem_resposta;
         $fechamento_os[] = $os_fin->registros[$i]->data_fechamento;
         $id_os_ixc[] = $os_fin->registros[$i]->id;
         $i++;
