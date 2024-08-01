@@ -11,21 +11,13 @@ $sql->execute();
 $id_colaborador_ixc = $sql->fetchAll();
 
 // Função para substituir os IDs pelos valores correspondentes
-function substituir_ids($pontuacao, $id_diagnostico)
+function substituir_ids($id, $id_diagnostico)
 {
-    foreach ($pontuacao as &$id) {
-        if (isset($id_diagnostico[$id])) {
-            $id = $id_diagnostico[$id];
-        }
+    if (isset($id_diagnostico[$id])) {
+        return $id_diagnostico[$id];
     }
-    return $pontuacao;
+    return $id;
 }
-
-$id_diagnostico = array(
-    '50' => '10',
-    '49' => '5',
-    '51' => '0'
-);
 
 $data_ano = date("Y");
 $data_mes = date("m");
@@ -95,23 +87,34 @@ foreach ($id_colaborador_ixc as $colaborador) {
             $retorno = $api->getRespostaConteudo(false);
             $teste_1 = json_decode($retorno);
 
+            $id_diagnostico = array(
+                '50' => '10',
+                '49' => '5',
+                '51' => '0'
+            );
+
             if ($teste_1->total > 0) {
-                $id_ticket = $id_sucesso;
-                $ponto_sucesso = substituir_ids($teste_1->registros[0]->id_su_diagnostico, $id_diagnostico);
-                $colaborador_sucesso =  $colaborador['id_colaborador'];
-                $id_setor = 8;
-                $data_sucesso = date('Y-m-d');
 
-                $sql = $pdo->prepare('SELECT COUNT(*) FROM avaliacao_sucesso WHERE id_atendimento = ?');
-                $sql->execute([$id_ticket]);
+                $id_diagnostico_val = $teste_1->registros[0]->id_su_diagnostico;
 
-                if($sql->fetchColumn() == 0){
-                    $sql = $pdo->prepare('INSERT INTO avaliacao_sucesso (id_atendimento, id_tecnico, id_setor, ponto_sucesso, data_avaliacao) VALUES (?, ?, ?, ?, ?)');
-                    $sql->execute([$id_ticket, $colaborador_sucesso, $id_setor, $ponto_sucesso, $data_sucesso]);
+                if ($id_diagnostico_val != 46) {
+
+                    $id_ticket = $id_sucesso;
+                    $ponto_sucesso = substituir_ids($id_diagnostico_val, $id_diagnostico);
+                    $colaborador_sucesso =  $colaborador['id_colaborador'];
+                    $id_setor = 8;
+                    $data_sucesso = date('Y-m-d');
+
+                    $sql = $pdo->prepare('SELECT COUNT(*) FROM avaliacao_sucesso WHERE id_atendimento = ?');
+                    $sql->execute([$id_ticket]);
+
+                    if ($sql->fetchColumn() == 0) {
+                        $sql = $pdo->prepare('INSERT INTO avaliacao_sucesso (id_atendimento, id_tecnico, id_setor, ponto_sucesso, data_avaliacao) VALUES (?, ?, ?, ?, ?)');
+                        $sql->execute([$id_ticket, $colaborador_sucesso, $id_setor, $ponto_sucesso, $data_sucesso]);
+                    }
                 }
             }
         }
-
     }
 }
 
