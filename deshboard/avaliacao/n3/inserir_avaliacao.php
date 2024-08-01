@@ -36,12 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $notaOS = htmlspecialchars(trim($_POST['notaOS_'.$idOS]));
         $pontuacao = htmlspecialchars(trim($_POST['pontuacaoOS_'.$idOS]));
         $setor = htmlspecialchars(trim($_POST['setor_'.$idOS]));
-        $potencia = htmlspecialchars(trim($_POST['potencia_'.$idOS]));
-        $potenciaBoa = htmlspecialchars(trim($_POST['potenciaBoa_'.$idOS]));
-        $organizado = htmlspecialchars(trim($_POST['organizadoParede_'.$idOS]));
-        $velocidade = htmlspecialchars(trim($_POST['velocidade_'.$idOS]));
-        $remoto = htmlspecialchars(trim($_POST['acessoRemoto_'.$idOS]));
-        $nomeRede = htmlspecialchars(trim($_POST['nomeRede_'.$idOS]));
         $dataAvaliacao = date('Y-m-d');
         $idTecnico = htmlspecialchars(trim($_POST['idTecnico_'.$idOS]));
 
