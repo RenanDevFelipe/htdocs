@@ -1,0 +1,121 @@
+:root {
+    ---colorPrimary: #000;
+    ---colorsecundary: #ff6200;
+    ---colorNeutral: #fff;
+    ---colorFundo: #E4E9F7;
+    ---shadowBoxForm: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.title {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+.title h1 {
+    font-size: 25px;
+}
+
+
+.list-geral-os {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.list-of-oss {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-top: 8%;
+}
+
+.box-os {
+    width: 30%;
+    height: 15vh;
+    background-color: var(---colorNeutral);
+    box-shadow: var(---shadowBoxForm);
+    padding: 10px;
+}
+
+.box-os .id-os {
+    font-size: 10px;
+}
+
+.box-os .title-os {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+.box-os .title-os p:nth-child(2) {
+    color: var(---colorsecundary);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.content-box {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-tres-pontinhos {
+
+    outline: 1px solid transparent;
+    font-size: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+
+.loader-tres-pontinhos span {
+    background: var(---colorsecundary);
+    border-radius: 100%;
+    vertical-align: middle;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 2px 2px;
+    -webkit-animation: loader-tres-pontinhos 0.8s linear infinite alternate;
+    animation: loader-tres-pontinhos 0.8s linear infinite alternate;
+}
+
+.loader-tres-pontinhos span:nth-child(1) {
+    -webkit-animation-delay: -0.8;
+    animation-delay: -0.8s;
+}
+
+.loader-tres-pontinhos span:nth-child(2) {
+    -webkit-animation-delay: -0.53333s;
+    animation-delay: -0.53333s;
+}
+
+.loader-tres-pontinhos span:nth-child(3) {
+    -webkit-animation-delay: -0.26666s;
+    animation-delay: -0.26666s;
+}
+
+@keyframes loader-tres-pontinhos {
+    from {
+        transform: scale(0, 0);
+    }
+
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+@-webkit-keyframes loader-tres-pontinhos {
+    from {
+        -webkit-transform: scale(0, 0);
+    }
+
+    to {
+        -webkit-transform: scale(1, 1);
+    }
+}
