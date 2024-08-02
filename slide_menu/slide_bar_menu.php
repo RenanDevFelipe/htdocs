@@ -36,12 +36,12 @@
             </ul>
         </li>
         <li>
-            <a href="#">
+            <a href="/deshboard/ranking_setor/">
                 <i class='bx bx-pie-chart-alt-2'></i>
                 <span class="link_name">Ranking por Setor</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Ranking por Setor</a></li>
+                <li><a class="link_name" href="/deshboard/ranking_setor/">Ranking por Setor</a></li>
             </ul>
         </li>
 
