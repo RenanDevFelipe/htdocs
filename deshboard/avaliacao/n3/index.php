@@ -16,7 +16,8 @@ $mostrar = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=4">
-    <link rel="stylesheet" href="index.css?v=7">
+    <link rel="stylesheet" href="index.css?v=8">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Avaliação N3</title>
 </head>
 
@@ -144,7 +145,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -210,7 +211,139 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
+                            </div>
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div> 
+                        </form>
+                `,
+                45: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+                        <form  class="formulario_puxa_cabo" method="post" id="form_${idOS}">
+                            <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
+                            <div>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
+                            </div>
+
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                            </div>
+                            <div>
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
+                            </div>
+                            <div id="form-avaliar_${idOS}" class="form-avaliar">
+                                <div>
+                                    <i class="bx bx-star"></i>
+                                    <nav>
+                                        <a>Avaliar</a>
+                                    </nav>
+                                </div>     
+                            </div> 
+                        </form>
+                `,
+                87: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+                        <form  class="formulario_troca_cabo" method="post" id="form_${idOS}">
+                            <div>
+                                <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${descOS}" type="hidden" name="descOS_${idOS}" id="descOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${fechamentoOS}" type="hidden" name="fechamentoOS_${idOS}" id="fechamentoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${formId}" type="hidden" name="formId_${idOS}" id="formId_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${nota_os}" type="hidden" name="notaOS_${idOS}" id="notaOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${pontuacao_os}" type="hidden" name="pontuacaoOS_${idOS}" id="pontuacaoOS_${idOS}">
+                            </div>
+                            <div>
+                                <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
+                            </div>
+                            <div>
+                                <input value="2" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
+                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
+                            </div>
+
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
+                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
+                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="2" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
+                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
+                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="3" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
+                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
+                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                            </div>
+                            <div>
+                                <label for="obs_${idOS}">OBS:</label>
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -276,7 +409,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -342,7 +475,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -416,7 +549,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -490,7 +623,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -556,7 +689,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -626,7 +759,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -696,7 +829,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -766,7 +899,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -836,7 +969,7 @@ $mostrar = 0;
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
-                                <input type="text" name="obs_${idOS}" id="obs_${idOS}">
+                                <input class="obs" type="text" name="obs_${idOS}" id="obs_${idOS}">
                             </div>
                             <div id="form-avaliar_${idOS}" class="form-avaliar">
                                 <div>
@@ -851,111 +984,116 @@ $mostrar = 0;
         };
 
         document.querySelectorAll('#abrirAvaliar').forEach(link => {
-        link.addEventListener('click', event => {
-            event.preventDefault();
+    link.addEventListener('click', event => {
+        event.preventDefault();
 
-            // variaveis que vao para o banco de dados pelo form 
+        const formId = link.getAttribute('data-assunto');
+        const idOS = link.getAttribute('data-id-os');
+        const descOS = link.getAttribute('data-desc');
+        const fechamentoOS = link.getAttribute('data-finalizacao-os');
+        const id_setor = "5";
+        var pontuacao_os = 0;
+        var nota_os = 0;
+        const id_tecnico = link.getAttribute('data-id-tecnico');
+        const boxId = `box-avaliar-${formId}-${idOS}`;
+        let boxAvaliar = document.getElementById(boxId);
 
-            const formId = link.getAttribute('data-assunto');
-            const idOS = link.getAttribute('data-id-os');
-            const descOS = link.getAttribute('data-desc');
-            const fechamentoOS = link.getAttribute('data-finalizacao-os');
-            const id_setor = "5";
-            var pontuacao_os = 0;
-            var nota_os = 0;
-            const id_tecnico = link.getAttribute('data-id-tecnico');
-            const boxId = `box-avaliar-${formId}-${idOS}`;
-            let boxAvaliar = document.getElementById(boxId);
+        if (!boxAvaliar) {
+            boxAvaliar = document.createElement('div');
+            boxAvaliar.id = boxId;
+            document.body.appendChild(boxAvaliar);
+        }
 
-            if (!boxAvaliar) {
-                boxAvaliar = document.createElement('div');
-                boxAvaliar.id = boxId;
-                document.body.appendChild(boxAvaliar);
-            }
+        if (boxAvaliar.classList.contains('hidden')) {
+            boxAvaliar.classList.remove('hidden');
+        } else {
+            boxAvaliar.classList.add('hidden');
+        }
 
-            if (boxAvaliar.classList.contains('hidden')) {
-                boxAvaliar.classList.remove('hidden');
-            } else {
-                boxAvaliar.classList.add('hidden');
-            }
+        boxAvaliar.innerHTML = forms[formId](idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico);
 
-            boxAvaliar.innerHTML = forms[formId](idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico);
+        const form = document.getElementById(`form_${idOS}`);
+        console.log(form);
+        form.querySelectorAll('input').forEach(input => {
+            input.addEventListener('change', event => {
+                console.log(`Input ${event.target.id} changed to ${event.target.checked ? 'checked' : 'unchecked'}`);
+            });
+        });
 
-            // Adiciona event listeners aos inputs do formulário gerado
-            const form = document.getElementById(`form_${idOS}`);
-            console.log(form);
-            form.querySelectorAll('input').forEach(input => {
-                input.addEventListener('change', event => {
-                    console.log(`Input ${event.target.id} changed to ${event.target.checked ? 'checked' : 'unchecked'}`);
-                });
+        const sumButton = document.getElementById(`form-avaliar_${idOS}`);
+        sumButton.addEventListener('click', () => {
+            let sum = 0;
+            form.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                sum += parseInt(checkbox.value);
+            });
+            pontuacao_os = sum;
+            const quantidade_inputs = form.querySelectorAll('input[type="checkbox"');
+
+            const checkboxes = form.querySelectorAll('form input[type="checkbox"]');
+            let soma = 0;
+            checkboxes.forEach(checkbox => {
+                soma += parseFloat(checkbox.value);
             });
 
-            // Adiciona event listener ao botão de soma
-            const sumButton = document.getElementById(`form-avaliar_${idOS}`);
-            sumButton.addEventListener('click', () => {
-                let sum = 0;
-                form.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
-                    sum += parseInt(checkbox.value);
+            nota_os = (pontuacao_os * 10) / soma;
+
+            console.log('pontuação da OS: ' + pontuacao_os);
+            console.log('total de value: ' + soma);
+            console.log('nota_os é: ' + nota_os);
+
+            Swal.fire({
+                title: 'Resultado',
+                text: `A soma dos valores dos checkboxes marcados é: ${sum}`,
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
+
+            generateAndCopyText(idOS);
+
+            const formData = new FormData(form);
+            form.querySelector(`input[name="pontuacaoOS_${idOS}"]`).value = pontuacao_os;
+            form.querySelector(`input[name="notaOS_${idOS}"]`).value = nota_os;
+            formData.set(`pontuacaoOS_${idOS}`, pontuacao_os);
+            formData.set(`notaOS_${idOS}`, nota_os);
+
+            fetch(`inserir_avaliacao.php?idOS=${idOS}`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                if (data.missing_fields) {
+                    console.log('Campos ausentes:', data.missing_fields);
+                } else if (data.message == "Avaliação ja existe!"){
+                    Swal.fire({
+                    title: 'Erro',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
                 });
-                pontuacao_os = sum;
-                const quantidade_inputs = form.querySelectorAll('input[type="checkbox"');
-
-                // Seleciona todos os checkboxes no formulário
-                const checkboxes = form.querySelectorAll('form input[type="checkbox"]');
-
-                // Inicializa a soma
-                let soma = 0;
-
-                // Itera sobre todos os checkboxes
-                checkboxes.forEach(checkbox => {
-                // Adiciona o valor do checkbox à soma
-                soma += parseFloat(checkbox.value);
+                } else if(data.message == "Avaliacao feita com sucesso"){
+                    Swal.fire({
+                    title: 'Sucesso',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
                 });
-
-                nota_os = (pontuacao_os * 10) /  soma;
-
-                console.log('pontuação da OS: ' + pontuacao_os);
-                console.log('total de value: ' + soma);
-                console.log('nota_os é: ' + nota_os);
-
-
-                alert(`A soma dos valores dos checkboxes marcados é: ${sum}`);
-
-
-                // chama a funcao de copiar o texto
-                generateAndCopyText(idOS);
-
-                // Coleta os dados do formulário
-const formData = new FormData(form);
-
-// Adiciona os valores calculados aos inputs do formulário
-form.querySelector(`input[name="pontuacaoOS_${idOS}"]`).value = pontuacao_os;
-form.querySelector(`input[name="notaOS_${idOS}"]`).value = nota_os;
-
-// Adiciona esses valores ao formData
-formData.set(`pontuacaoOS_${idOS}`, pontuacao_os);
-formData.set(`notaOS_${idOS}`, nota_os);
-
-// Envia os dados para o servidor
-fetch(`inserir_avaliacao.php?idOS=${idOS}`, {
-    method: 'POST',
-    body: formData
-})
-.then(response => response.json())
-.then(data => {
-    console.log('Success:', data);
-    if (data.missing_fields) {
-        console.log('Campos ausentes:', data.missing_fields);
-    }
-    alert(data.message);
-})
-.catch(error => {
-    console.error('Error:', error);
-    alert('Erro ao enviar os dados.');
-});
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Erro',
+                    text: 'Erro ao enviar os dados.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             });
         });
     });
+});
+
 });
 
 // Define a função no escopo global
@@ -976,7 +1114,7 @@ function generateAndCopyText(idOS) {
 
     fields.forEach(field => {
         const checkbox = document.getElementById(field.id);
-        if (checkbox) { // Verifica se o elemento existe
+        if (checkbox) {
             resultText += `${field.label}\nSim (${checkbox.checked ? 'X' : ' '}) Não (${checkbox.checked ? ' ' : 'X'})\n\n`;
         } else {
             console.warn(`Elemento com ID ${field.id} não encontrado.`);
@@ -984,18 +1122,30 @@ function generateAndCopyText(idOS) {
     });
 
     const obs = document.getElementById(`obs_${idOS}`);
-    if (obs) { // Verifica se o elemento existe
+    if (obs) {
         resultText += `OBS: ${obs.value}\n`;
     } else {
         console.warn(`Elemento com ID obs_${idOS} não encontrado.`);
     }
 
     navigator.clipboard.writeText(resultText).then(() => {
-        alert('Texto copiado para a área de transferência!');
+        Swal.fire({
+            title: 'Sucesso',
+            text: 'Texto copiado para a área de transferência!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
     }).catch(err => {
         console.error('Erro ao copiar o texto: ', err);
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao copiar o texto.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
     });
 }
+
 
 
 </script>
