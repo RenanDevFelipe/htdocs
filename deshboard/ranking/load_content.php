@@ -44,31 +44,75 @@ foreach ($avaliacoes_n3 as $avaliacao) {
     $tecnicos_notas[$id_tecnico]['quantidade']++;
 }
 
+// Calcular a média para cada técnico
 foreach ($tecnicos_notas as $id_tecnico => $notas) {
-    $tecnicos_notas[$id_tecnico]['media'] = round($notas['total_nota'] / $notas['quantidade'], 2); // Arredondar para 2 casas decimais
+    $tecnicos_notas[$id_tecnico]['media'] = round($notas['total_nota'] / $notas['quantidade'], 2);
 }
 
 // Associar médias e pontuações aos colaboradores
 foreach ($colaboradores as &$colaborador) {
-    $id_tecnico = $colaborador['id_colaborador']; // Assumindo que o id_colaborador é o id_tecnico
+    $id_tecnico = $colaborador['id_colaborador'];
     $colaborador['media'] = isset($tecnicos_notas[$id_tecnico]) ? $tecnicos_notas[$id_tecnico]['media'] : 0;
     $colaborador['total_pontuacao'] = isset($tecnicos_notas[$id_tecnico]) ? $tecnicos_notas[$id_tecnico]['total_pontuacao'] : 0;
 }
 unset($colaborador); // Desvincular referência
 
-// Ordenar colaboradores pela maior média
+// Ordenar colaboradores pela maior média e pela soma dos pontos (em caso de empate)
 usort($colaboradores, function($a, $b) {
-    return $b['media'] <=> $a['media'];
+    // Primeiro critério: média em ordem decrescente
+    if ($a['media'] != $b['media']) {
+        return $b['media'] <=> $a['media'];
+    }
+    // Segundo critério: soma dos pontos em ordem decrescente
+    return $b['total_pontuacao'] <=> $a['total_pontuacao'];
 });
 
-// Conteúdo dinâmico
-$content = '<section class="dashboard-tecnicos-ranking">';
+// Separar os 3 primeiros colocados
+$top_3 = array_slice($colaboradores, 0, 3);
+$restantes = array_slice($colaboradores, 3);
 
-foreach ($colaboradores as $colaborador) {
+// Conteúdo dinâmico para os 3 primeiros colocados
+$top_3_content = '<section class="dashboard-tecnicos-top-3">';
+$counter = 1; // Inicializar contador
+
+foreach ($top_3 as $colaborador) {
+    $media_nota = $colaborador['media'];
+    $soma_pontuacao = $colaborador['total_pontuacao'];
+
+    // Gerar uma classe única para cada colaborador
+    $class_suffix = 'top-3-' . $counter;
+    
+    $top_3_content .= '
+        <div class="box-tecnico-top3 ' . $class_suffix . '">
+            <div id="tecnico-top3">
+                <img src="./assets/deafult-user.png">
+                <span>' . $colaborador['nome_colaborador'] . '</span>          
+            </div>
+            <div class="box-notas-top3">
+                <div>
+                    <span>Média das Notas</span>
+                    <span>' . $media_nota . '</span> 
+                </div>
+                <div>
+                    <span>Soma das Pontuações</span>
+                    <span>' . $soma_pontuacao . '</span>
+                </div>
+            </div>
+        </div>
+    ';
+    $counter++; // Incrementar contador
+}
+
+$top_3_content .= '</section>';
+
+// Conteúdo dinâmico para os demais colaboradores
+$restantes_content = '<section class="dashboard-tecnicos-ranking">';
+
+foreach ($restantes as $colaborador) {
     $media_nota = $colaborador['media'];
     $soma_pontuacao = $colaborador['total_pontuacao'];
     
-    $content .= '
+    $restantes_content .= '
     <div class="box-tecnico">
         <div id="tecnico">
             <i class="bx bx-user-circle"></i>
@@ -87,8 +131,10 @@ foreach ($colaboradores as $colaborador) {
     </div>';
 }
 
-$content .= '</section>';
+$restantes_content .= '</section>';
 
-echo $content;
+// Exibir o conteúdo
+echo $top_3_content;
+echo $restantes_content;
 
 ?>
