@@ -31,7 +31,7 @@ require_once 'get_ranking.php';
                         <p>2°</p>
                         <img src="./upload/teste_rankig.png" alt="">
                         <b><?php echo $notas_colaboradores[1]['nome_colaborador']; ?></b>
-                        <p><?php echo $notas_colaboradores[1]['total_sucesso']; ?> Pontos</p>
+                        <p><?php echo $notas_colaboradores[1]['media_nota']; ?> ⭐</p>
                     </div>
                 <?php endif; ?>
 
@@ -40,7 +40,7 @@ require_once 'get_ranking.php';
                         <p>1°</p>
                         <img src="./upload/teste_rankig.png" alt="">
                         <b><?php echo $notas_colaboradores[0]['nome_colaborador']; ?></b>
-                        <p><?php echo $notas_colaboradores[0]['total_sucesso']; ?> Pontos</p>
+                        <p><?php echo $notas_colaboradores[0]['media_nota']; ?> ⭐</p>
                     </div>
                 <?php endif; ?>
 
@@ -49,7 +49,7 @@ require_once 'get_ranking.php';
                         <p>3°</p>
                         <img src="./upload/teste_rankig.png" alt="">
                         <b><?php echo $notas_colaboradores[2]['nome_colaborador']; ?></b>
-                        <p><?php echo $notas_colaboradores[2]['total_sucesso']; ?> Pontos</p>
+                        <p><?php echo $notas_colaboradores[2]['media_nota']; ?> ⭐</p>
                     </div>
                 <?php endif; ?>
             </div>
@@ -68,7 +68,7 @@ require_once 'get_ranking.php';
                         </div>
 
                         <div class="Pontos">
-                            <p><?php echo $colaborador['total_sucesso'] ?> Pontos</p>
+                            <p><?php echo $colaborador['media_nota'] ?> ⭐</p>
                         </div>
 
                     </div>
