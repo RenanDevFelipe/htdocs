@@ -1,5 +1,5 @@
 <?php
-require_once '../../autentication/index.php';
+require_once '../../../autentication/index.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,13 +8,13 @@ require_once '../../autentication/index.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style/dashboard.css?v=3">
-    <link rel="stylesheet" href="ranking_diario.css?v=2">
+    <link rel="stylesheet" href="../../../style/dashboard.css?v=3">
+    <link rel="stylesheet" href="ranking_diario.css?v=3">
     <title>Ranking Diario</title>
 </head>
 
 <body>
-    <?php include_once '../../slide_menu/slide_bar_menu.php' ?>
+    <?php include_once '../../../slide_menu/slide_bar_menu.php' ?>
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
@@ -50,6 +50,6 @@ require_once '../../autentication/index.php';
         };
     </script>
 
-    <script src="../../script/dashboard.js"></script>
+    <script src="../../../script/dashboard.js"></script>
 
 </html>

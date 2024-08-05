@@ -22,15 +22,15 @@
         </li>
         <li>
             <div class="iocn-link">
-                <a href="#">
+                <a href="/deshboard/ranking/ranking_diario/">
                     <i class='bx bx-collection'></i>
                     <span class="link_name">Ranking</span>
                 </a>
                 <i class='bx bxs-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="#">Ranking</a></li>
-                <li><a href="/deshboard/ranking/ranking_diario.php">Diario</a></li>
+                <li><a class="link_name" href="/deshboard/ranking/ranking_diario/">Ranking</a></li>
+                <li><a href="/deshboard/ranking/ranking_diario/">Diario</a></li>
                 <li><a href="#">Mensal</a></li>
                 <li><a href="#">Anual</a></li>
             </ul>

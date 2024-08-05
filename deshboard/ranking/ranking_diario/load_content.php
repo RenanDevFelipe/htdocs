@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../../core/core.php";
+require_once "../../../core/core.php";
 
 sleep(2);
 
@@ -23,12 +23,20 @@ $data_atual = date('Y-m-d');
 $query_n3 = $pdo->prepare("SELECT id_tecnico, nota_os, pontuacao_os FROM avaliacao_n3 WHERE DATE(data_finalizacao) = ?");
 $query_n3->execute([$data_atual]);
 
+$query_sucesso = $pdo->prepare("SELECT ponto_sucesso, id_tecnico FROM avaliacao_sucesso WHERE DATE(data_avaliacao) = ?");
+$query_sucesso->execute([$data_atual]);
+
+$avaliacoes_sucesso = [];
+while($row_sucesso = $query_sucesso->fetch(PDO::FETCH_ASSOC)){
+     $avaliacoes_sucesso[] = $row_sucesso;
+}
+
 $avaliacoes_n3 = [];
 while ($row_n3 = $query_n3->fetch(PDO::FETCH_ASSOC)) {
     $avaliacoes_n3[] = $row_n3;
 }
 
-// Calcular soma e média das notas e pontuações por técnico
+// Combinar avaliações N3 e sucesso por técnico
 $tecnicos_notas = [];
 foreach ($avaliacoes_n3 as $avaliacao) {
     $id_tecnico = $avaliacao['id_tecnico'];
@@ -36,17 +44,45 @@ foreach ($avaliacoes_n3 as $avaliacao) {
     $pontuacao_os = $avaliacao['pontuacao_os'];
     
     if (!isset($tecnicos_notas[$id_tecnico])) {
-        $tecnicos_notas[$id_tecnico] = ['total_nota' => 0, 'quantidade' => 0, 'total_pontuacao' => 0];
+        $tecnicos_notas[$id_tecnico] = [
+            'total_nota_n3' => 0,
+            'quantidade_n3' => 0,
+            'total_nota_sucesso' => 0,
+            'quantidade_sucesso' => 0,
+            'total_pontuacao' => 0
+        ];
     }
     
-    $tecnicos_notas[$id_tecnico]['total_nota'] += $nota_os;
+    $tecnicos_notas[$id_tecnico]['total_nota_n3'] += $nota_os;
     $tecnicos_notas[$id_tecnico]['total_pontuacao'] += $pontuacao_os;
-    $tecnicos_notas[$id_tecnico]['quantidade']++;
+    $tecnicos_notas[$id_tecnico]['quantidade_n3']++;
+}
+
+foreach ($avaliacoes_sucesso as $avaliacao_sucesso) {
+    $id_tecnico = $avaliacao_sucesso['id_tecnico'];
+    $ponto_sucesso = $avaliacao_sucesso['ponto_sucesso'];
+    
+    if (!isset($tecnicos_notas[$id_tecnico])) {
+        $tecnicos_notas[$id_tecnico] = [
+            'total_nota_n3' => 0,
+            'quantidade_n3' => 0,
+            'total_nota_sucesso' => 0,
+            'quantidade_sucesso' => 0,
+            'total_pontuacao' => 0
+        ];
+    }
+    
+    if ($ponto_sucesso > 0) {
+        $tecnicos_notas[$id_tecnico]['total_nota_sucesso'] += $ponto_sucesso;
+        $tecnicos_notas[$id_tecnico]['quantidade_sucesso']++;
+    }
 }
 
 // Calcular a média para cada técnico
 foreach ($tecnicos_notas as $id_tecnico => $notas) {
-    $tecnicos_notas[$id_tecnico]['media'] = round($notas['total_nota'] / $notas['quantidade'], 2);
+    $media_n3 = $notas['quantidade_n3'] > 0 ? $notas['total_nota_n3'] / $notas['quantidade_n3'] : 0;
+    $media_sucesso = $notas['quantidade_sucesso'] > 0 ? $notas['total_nota_sucesso'] / $notas['quantidade_sucesso'] : 0;
+    $tecnicos_notas[$id_tecnico]['media'] = round(($media_n3 + $media_sucesso) / 2, 2);
 }
 
 // Associar médias e pontuações aos colaboradores
@@ -90,11 +126,11 @@ foreach ($top_3 as $colaborador) {
             </div>
             <div class="box-notas-top3">
                 <div>
-                    <span>Média das Notas</span>
+                    <span>Média das Notas: </span>
                     <span>' . $media_nota . '</span> 
                 </div>
                 <div>
-                    <span>Soma das Pontuações</span>
+                    <span>Soma das Pontuações: </span>
                     <span>' . $soma_pontuacao . '</span>
                 </div>
             </div>
@@ -107,28 +143,34 @@ $top_3_content .= '</section>';
 
 // Conteúdo dinâmico para os demais colaboradores
 $restantes_content = '<section class="dashboard-tecnicos-ranking">';
-
+$lugar = 4;
 foreach ($restantes as $colaborador) {
     $media_nota = $colaborador['media'];
     $soma_pontuacao = $colaborador['total_pontuacao'];
     
     $restantes_content .= '
     <div class="box-tecnico">
-        <div id="tecnico">
-            <i class="bx bx-user-circle"></i>
-            <span>' . $colaborador['nome_colaborador'] . '</span>          
+        <div>
+            <div>
+                <span>'. $lugar . '°' .' </span>
+            </div>
+            <div id="tecnico">
+                <i class="bx bx-user-circle"></i>
+                <span>' . $colaborador['nome_colaborador'] . '</span>          
+            </div>
         </div>
         <div class="box-notas">
             <div>
-                <span>Média das Notas</span>
-                <span>' . $media_nota . '</span> 
+                <span>Média das Notas:  </span>
+                <span>' .  $media_nota . '</span> 
             </div>
             <div>
-                <span>Soma das Pontuações</span>
+                <span>Soma das Pontuações: </span>
                 <span>' . $soma_pontuacao . '</span>
             </div>
         </div>
     </div>';
+    $lugar++;
 }
 
 $restantes_content .= '</section>';
