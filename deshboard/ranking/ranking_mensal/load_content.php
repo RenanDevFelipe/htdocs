@@ -99,6 +99,7 @@ foreach ($avaliacoes_sucesso as $avaliacao_sucesso) {
     if ($ponto_sucesso > 0) {
         $tecnicos_notas[$id_tecnico]['total_nota_sucesso'] += $ponto_sucesso;
         $tecnicos_notas[$id_tecnico]['quantidade_sucesso']++;
+        $tecnicos_notas[$id_tecnico]['total_pontuacao'] += $ponto_sucesso;
     }
 }
 
@@ -122,6 +123,7 @@ foreach ($avaliacoes_rh as $avaliacao_rh) {
     
     $tecnicos_notas[$id_tecnico]['total_nota_rh'] += $pnt_total;
     $tecnicos_notas[$id_tecnico]['quantidade_rh']++;
+    $tecnicos_notas[$id_tecnico]['total_pontuacao'] += $pnt_total;
 }
 
 foreach ($avaliacoes_estoque as $avaliacao_estoque) {
@@ -144,6 +146,7 @@ foreach ($avaliacoes_estoque as $avaliacao_estoque) {
     
     $tecnicos_notas[$id_tecnico]['total_nota_estoque'] += $pnt_total_estoque;
     $tecnicos_notas[$id_tecnico]['quantidade_estoque']++;
+    $tecnicos_notas[$id_tecnico]['total_pontuacao'] += $pnt_total_estoque;
 }
 
 // Calcular a média para cada técnico
@@ -152,6 +155,12 @@ foreach ($tecnicos_notas as $id_tecnico => $notas) {
     $media_sucesso = $notas['quantidade_sucesso'] > 0 ? $notas['total_nota_sucesso'] / $notas['quantidade_sucesso'] : 0;
     $media_rh = $notas['quantidade_rh'] > 0 ? $notas['total_nota_rh'] / $notas['quantidade_rh'] : 0;
     $media_estoque = $notas['quantidade_estoque'] > 0 ? $notas['total_nota_estoque'] / $notas['quantidade_estoque'] : 0;
+
+    // Ajustar médias para a escala de 10
+    $media_n3 = min($media_n3, 10);
+    $media_sucesso = min($media_sucesso, 10);
+    $media_rh = min($media_rh, 10);
+    $media_estoque = min($media_estoque, 10);
 
     $tecnicos_notas[$id_tecnico]['media'] = round(($media_n3 + $media_sucesso + $media_rh + $media_estoque) / 4, 2);
 }
