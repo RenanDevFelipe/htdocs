@@ -12,7 +12,7 @@ require_once 'get_ranking.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css">
-    <link rel="stylesheet" href="ranking.css">
+    <link rel="stylesheet" href="ranking.css?v=1">
     <title>Ranking - Estoque</title>
 </head>
 
@@ -31,7 +31,7 @@ require_once 'get_ranking.php';
                         <p>2°</p>
                         <img src="./upload/teste_rankig.png" alt="" style="width: 110px; height: 110px;">
                         <b><?php echo $notas_colaboradores[1]['nome_colaborador']; ?></b>
-                        <p><?php echo $notas_colaboradores[1]['total_estoque']; ?> Pontos</p>
+                        <p class="nota"><?php echo $notas_colaboradores[1]['total_estoque']; ?> Pontos</p>
                     </div>
                 <?php endif; ?>
 
@@ -40,7 +40,7 @@ require_once 'get_ranking.php';
                         <p>1°</p>
                         <img src="./upload/teste_rankig.png" alt="" style="width: 110px; height: 110px;">
                         <b><?php echo $notas_colaboradores[0]['nome_colaborador']; ?></b>
-                        <p><?php echo $notas_colaboradores[0]['total_estoque']; ?> Pontos</p>
+                        <p class="nota"><?php echo $notas_colaboradores[0]['total_estoque']; ?> Pontos</p>
                     </div>
                 <?php endif; ?>
 
@@ -49,7 +49,7 @@ require_once 'get_ranking.php';
                         <p>3°</p>
                         <img src="./upload/teste_rankig.png" alt="">
                         <b><?php echo $notas_colaboradores[2]['nome_colaborador']; ?></b>
-                        <p><?php echo $notas_colaboradores[2]['total_estoque']; ?> Pontos</p>
+                        <p class="nota"><?php echo $notas_colaboradores[2]['total_estoque']; ?> Pontos</p>
                     </div>
                 <?php endif; ?>
             </div>
@@ -68,7 +68,7 @@ require_once 'get_ranking.php';
                         </div>
 
                         <div class="Pontos">
-                            <p><?php echo $colaborador['total_estoque'] ?> Pontos</p>
+                            <p class="nota"><?php echo $colaborador['total_estoque'] ?> Pontos</p>
                         </div>
 
                     </div>
