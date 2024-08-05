@@ -32,6 +32,9 @@ $query_rh->execute([$mes_atual]);
 $query_estoque = $pdo->prepare("SELECT pnt_total_estoque, id_tecnico_estoque FROM avaliacao_estoque WHERE DATE_FORMAT(data_finalizacao, '%Y-%m') = ?");
 $query_estoque->execute([$mes_atual]);
 
+$query_n2 = $pdo->prepare("SELECT ponto_total, id_tecnico_n2 FROM avaliacao_n2 WHERE DATE_FORMAT(data_finalizacao, '%Y-%m') = ?");
+$query_n2->execute([$mes_atual]);
+
 $avaliacoes_sucesso = [];
 while ($row_sucesso = $query_sucesso->fetch(PDO::FETCH_ASSOC)) {
     $avaliacoes_sucesso[] = $row_sucesso;
@@ -52,6 +55,11 @@ while ($row_estoque = $query_estoque->fetch(PDO::FETCH_ASSOC)) {
     $avaliacoes_estoque[] = $row_estoque;
 }
 
+$avaliacoes_n2 = [];
+while ($row_n2 = $query_n2->fetch(PDO::FETCH_ASSOC)) {
+    $avaliacoes_n2[] = $row_n2;
+}
+
 // Combinar avaliações por técnico
 $tecnicos_notas = [];
 foreach ($avaliacoes_n3 as $avaliacao) {
@@ -69,6 +77,8 @@ foreach ($avaliacoes_n3 as $avaliacao) {
             'quantidade_rh' => 0,
             'total_nota_estoque' => 0,
             'quantidade_estoque' => 0,
+            'total_nota_n2' => 0,
+            'quantidade_n2' => 0,
             'total_pontuacao' => 0
         ];
     }
@@ -92,6 +102,8 @@ foreach ($avaliacoes_sucesso as $avaliacao_sucesso) {
             'quantidade_rh' => 0,
             'total_nota_estoque' => 0,
             'quantidade_estoque' => 0,
+            'total_nota_n2' => 0,
+            'quantidade_n2' => 0,
             'total_pontuacao' => 0
         ];
     }
@@ -117,6 +129,8 @@ foreach ($avaliacoes_rh as $avaliacao_rh) {
             'quantidade_rh' => 0,
             'total_nota_estoque' => 0,
             'quantidade_estoque' => 0,
+            'total_nota_n2' => 0,
+            'quantidade_n2' => 0,
             'total_pontuacao' => 0
         ];
     }
@@ -140,6 +154,8 @@ foreach ($avaliacoes_estoque as $avaliacao_estoque) {
             'quantidade_rh' => 0,
             'total_nota_estoque' => 0,
             'quantidade_estoque' => 0,
+            'total_nota_n2' => 0,
+            'quantidade_n2' => 0,
             'total_pontuacao' => 0
         ];
     }
@@ -149,20 +165,47 @@ foreach ($avaliacoes_estoque as $avaliacao_estoque) {
     $tecnicos_notas[$id_tecnico]['total_pontuacao'] += $pnt_total_estoque;
 }
 
-// Calcular a média para cada técnico
-foreach ($tecnicos_notas as $id_tecnico => $notas) {
+foreach ($avaliacoes_n2 as $avaliacao_n2) {
+    $id_tecnico = $avaliacao_n2['id_tecnico_n2'];
+    $ponto_total = $avaliacao_n2['ponto_total'];
+    
+    if (!isset($tecnicos_notas[$id_tecnico])) {
+        $tecnicos_notas[$id_tecnico] = [
+            'total_nota_n3' => 0,
+            'quantidade_n3' => 0,
+            'total_nota_sucesso' => 0,
+            'quantidade_sucesso' => 0,
+            'total_nota_rh' => 0,
+            'quantidade_rh' => 0,
+            'total_nota_estoque' => 0,
+            'quantidade_estoque' => 0,
+            'total_nota_n2' => 0,
+            'quantidade_n2' => 0,
+            'total_pontuacao' => 0
+        ];
+    }
+    
+    $tecnicos_notas[$id_tecnico]['total_nota_n2'] += $ponto_total;
+    $tecnicos_notas[$id_tecnico]['quantidade_n2']++;
+    $tecnicos_notas[$id_tecnico]['total_pontuacao'] += $ponto_total;
+}
+
+// Calcular a média das notas e total de pontuação para cada técnico
+foreach ($tecnicos_notas as $id_tecnico => &$notas) {
     $media_n3 = $notas['quantidade_n3'] > 0 ? $notas['total_nota_n3'] / $notas['quantidade_n3'] : 0;
     $media_sucesso = $notas['quantidade_sucesso'] > 0 ? $notas['total_nota_sucesso'] / $notas['quantidade_sucesso'] : 0;
     $media_rh = $notas['quantidade_rh'] > 0 ? $notas['total_nota_rh'] / $notas['quantidade_rh'] : 0;
     $media_estoque = $notas['quantidade_estoque'] > 0 ? $notas['total_nota_estoque'] / $notas['quantidade_estoque'] : 0;
+    $media_n2 = $notas['quantidade_n2'] > 0 ? $notas['total_nota_n2'] / $notas['quantidade_n2'] : 0;
 
     // Ajustar médias para a escala de 10
     $media_n3 = min($media_n3, 10);
     $media_sucesso = min($media_sucesso, 10);
     $media_rh = min($media_rh, 10);
     $media_estoque = min($media_estoque, 10);
+    $media_n2 = min($media_n2, 10);
 
-    $tecnicos_notas[$id_tecnico]['media'] = round(($media_n3 + $media_sucesso + $media_rh + $media_estoque) / 4, 2);
+    $notas['media'] = round(($media_n3 + $media_sucesso + $media_rh + $media_estoque + $media_n2) / 5, 2);
 }
 
 // Associar médias e pontuações aos colaboradores
