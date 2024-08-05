@@ -32,7 +32,7 @@ foreach($colaboradores as $colaborador){
 
 // Classificar as notas em ordem decrescente
 usort($notas_colaboradores, function($a, $b) {
-    return $b['total_n2'] - $a['total_n2'];
+    return $b['total_n2'] <=> $a['total_n2'];
 });
 
 // HTML para exibir os resultados

@@ -35,7 +35,7 @@ foreach($colaboradores as $colaborador){
 
 // Classificar as médias em ordem decrescente
 usort($notas_colaboradores, function($a, $b) {
-    return $b['media_nota'] - $a['media_nota'];
+    return $b['media_nota'] <=> $a['media_nota'];
 });
 
 // HTML para exibir os resultados
