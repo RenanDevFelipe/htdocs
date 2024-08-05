@@ -32,7 +32,7 @@
                 <li><a class="link_name" href="/deshboard/ranking/ranking_diario/">Ranking</a></li>
                 <li><a href="/deshboard/ranking/ranking_diario/">Diario</a></li>
                 <li><a href="/deshboard/ranking/ranking_mensal/">Mensal</a></li>
-                <li><a href="#">Anual</a></li>
+                <li><a href="/deshboard/ranking/ranking_anual/">Anual</a></li>
             </ul>
         </li>
         <li>
