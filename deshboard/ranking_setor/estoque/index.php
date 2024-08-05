@@ -29,7 +29,7 @@ require_once 'get_ranking.php';
                 <?php if (isset($notas_colaboradores[1])) : ?>
                     <div class="top3-cards prata">
                         <p>2°</p>
-                        <img src="./upload/teste_rankig.png" alt="">
+                        <img src="./upload/teste_rankig.png" alt="" style="width: 110px; height: 110px;">
                         <b><?php echo $notas_colaboradores[1]['nome_colaborador']; ?></b>
                         <p><?php echo $notas_colaboradores[1]['total_estoque']; ?> Pontos</p>
                     </div>
@@ -38,7 +38,7 @@ require_once 'get_ranking.php';
                 <?php if (isset($notas_colaboradores[0])) : ?>
                     <div class="top3-cards golden">
                         <p>1°</p>
-                        <img src="./upload/teste_rankig.png" alt="">
+                        <img src="./upload/teste_rankig.png" alt="" style="width: 110px; height: 110px;">
                         <b><?php echo $notas_colaboradores[0]['nome_colaborador']; ?></b>
                         <p><?php echo $notas_colaboradores[0]['total_estoque']; ?> Pontos</p>
                     </div>

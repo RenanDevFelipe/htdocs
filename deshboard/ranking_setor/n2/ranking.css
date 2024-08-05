@@ -151,3 +151,9 @@ a {
     align-items: center;
     gap: 2rem;
 }
+
+.nota{
+    font-weight: bold;
+    color: darkseagreen;
+    font-size: 18px;
+}
