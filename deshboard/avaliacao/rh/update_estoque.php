@@ -13,28 +13,30 @@ $checkboxes = [
 // Filtra apenas os checkboxes marcados
 $checkedItems = array_filter($checkboxes);
 
+// Extrair mês e ano da data recebida via POST
+$data_parts = explode('-', $data);
+$year = $data_parts[0];
+$month = $data_parts[1];
+
 // Prepara a consulta SQL
 $updates = [];
 foreach ($checkedItems as $key => $value) {
     // Subtrai 2 pontos do respectivo campo
-    $updates[] = "$key = $key -2";
+    $updates[] = "$key = $key - 2";
 }
- 
+
 // Executa a atualização no banco de dados
 if (!empty($updates)) {
-    $sql = "UPDATE avaliacao_rh SET " . implode(', ', $updates) . " WHERE id_tecnico = ? AND data_avaliacao = ?";
+    $sql = "UPDATE avaliacao_rh SET " . implode(', ', $updates) . " WHERE id_tecnico = ? AND MONTH(data_avaliacao) = ? AND YEAR(data_avaliacao) = ?";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$bd, $data]); // 'is' significa que estamos esperando um inteiro e uma string
-
-    if ($stmt->execute()) {
+    
+    if ($stmt->execute([$bd, $month, $year])) {
         echo json_encode(['success' => true, 'message' => 'Dados atualizados com sucesso.']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Erro ao atualizar os dados: ' . $conn->error]);
+        echo json_encode(['success' => false, 'message' => 'Erro ao atualizar os dados: ' . $stmt->errorInfo()]);
     }
-
 } else {
     echo json_encode(['success' => false, 'message' => 'Nenhum checkbox marcado.']);
 }
-
 
 ?>
