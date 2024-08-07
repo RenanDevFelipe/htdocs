@@ -88,15 +88,27 @@
     color: var(--colorNeutral);
 }
 
-.dashboard-tecnicos-ranking div .box-tecnico #tecnico div {
+.dashboard-tecnicos-ranking div .box-tecnico #tecnico > div {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
-
+.dashboard-tecnicos-ranking div .box-tecnico #tecnico .box-check{
+    width: 100px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.box-check div{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
 .dashboard-tecnicos-ranking div .box-tecnico #tecnico div p {
     text-align: end;
     font-size: 10px;
+    margin-left: 2px;
 }
 
 .dashboard-tecnicos-ranking div .box-tecnico .avaliar {

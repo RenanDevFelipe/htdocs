@@ -244,8 +244,10 @@ body{
   width: calc(100% - 78px);
 }
 .home-section .home-content{
+  width: 100%;
   height: 60px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .home-section .home-content .bx-menu,
@@ -260,6 +262,11 @@ body{
 .home-section .home-content .text{
   font-size: 26px;
   font-weight: 600;
+}
+.home-content i:nth-child(2){
+  font-size: 30px;
+  padding: 10px;
+  cursor: pointer;
 }
 @media (max-width: 420px) {
   .sidebar.close .nav-links li .sub-menu{

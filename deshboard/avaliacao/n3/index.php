@@ -1,10 +1,12 @@
 <?php
+require_once "../../../core/core.php";
 require_once "../../../autentication/index.php";
 require_once "../../../slide_menu/slide_bar_menu.php";
 require_once "../../../api/listar_os.php";
 require_once "../../../api/os_aberta_do_dia.php";
 
 $mostrar = 0;
+$avaliado = false;
 ?>
 
 
@@ -16,7 +18,7 @@ $mostrar = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=4">
-    <link rel="stylesheet" href="index.css?v=8">
+    <link rel="stylesheet" href="index.css?v=9">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Avaliação N3</title>
 </head>
@@ -32,11 +34,21 @@ $mostrar = 0;
             <?php
             foreach (zip($desc_os, $nomes_clientes, $fechamento_os, $id_os_ixc, $id_cliente, $abertura_os, $id_assunto) as $index => $pair) :
                 list($desc, $cliente, $fechamento, $id, $id_cliente, $abertura_os, $id_assunto) = $pair;
+            // Consulta para verificar se o colaborador já existe
+            $sql = $pdo->prepare('SELECT * FROM avaliacao_n3 WHERE id_os = ?');
+            $sql->execute([$id]);
+
+            $avaliado = $sql->rowCount() > 0;
+                
             ?>
                 <div>
                     <div class="box-tecnico">
                         <div id="tecnico">
                             <div>
+                                <div class="box-check" title="<?php echo $avaliado ? 'Já Finalizado!' : 'Não Finalizado!'; ?>" >
+                                    <div style="background-color: <?php echo $avaliado ? 'red' : 'green'; ?>;"></div>
+                                    <p><?php echo $avaliado ? 'Finalizado!' : 'Não Finalizado!'; ?></p>
+                                </div>
                                 <p> <?php echo $id ?> </p>
                                 <p> <?php echo $fechamento ?> </p>
                             </div>
@@ -865,37 +877,20 @@ $mostrar = 0;
                                 <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
                             </div>
                             <div>
-                                <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
-                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
-                            </div>
-
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
-                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input value="1" type="checkbox" name="link_${idOS}" id="link_${idOS}">
+                                <label for="link_${idOS}">Foi tirado a foto do link no aplicativo?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
-                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="funcionando_${idOS}" id="funcionando_${idOS}">
+                                <label for="funcionando_${idOS}">Foi tirada a foto do IPTV funcionando?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa_${idOS}" id="organizadoCaixa_${idOS}">
-                                <label for="organizadoCaixa_${idOS}">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizacao_${idOS}" id="organizacao_${idOS}">
+                                <label for="organizacao_${idOS}">Foi tirada a foto da organização(TV/TVBOX)?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
-                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
-                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
-                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
-                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="cabeamento_${idOS}" id="cabeamento_${idOS}">
+                                <label for="cabeamento_${idOS}">Foi tirada a foto do cabeamento TVBOX->TV?</label>
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
@@ -1072,13 +1067,14 @@ $mostrar = 0;
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
-                } else if(data.message == "Avaliacao feita com sucesso"){
+                } else if(data.message == "Avaliação feita com sucesso!"){
                     Swal.fire({
                     title: 'Sucesso',
                     text: data.message,
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
+                location.reload();
                 }
             })
             .catch(error => {
@@ -1108,6 +1104,94 @@ function generateAndCopyText(idOS) {
         { id: `velocidade_${idOS}`, label: 'Foi Feito o teste de velocidade?' },
         { id: `acessoRemoto_${idOS}`, label: 'Foi ativado o Ping e liberado o acesso remoto?' },
         { id: `nomeRede_${idOS}`, label: 'Foi inserido o nome (Ticonnect), na rede wifi?' },
+    ];
+
+    let resultText = '';
+
+    fields.forEach(field => {
+        const checkbox = document.getElementById(field.id);
+        if (checkbox) {
+            resultText += `${field.label}\nSim (${checkbox.checked ? 'X' : ' '}) Não (${checkbox.checked ? ' ' : 'X'})\n\n`;
+        } else {
+            console.warn(`Elemento com ID ${field.id} não encontrado.`);
+        }
+    });
+
+    const obs = document.getElementById(`obs_${idOS}`);
+    if (obs) {
+        resultText += `OBS: ${obs.value}\n`;
+    } else {
+        console.warn(`Elemento com ID obs_${idOS} não encontrado.`);
+    }
+
+    navigator.clipboard.writeText(resultText).then(() => {
+        Swal.fire({
+            title: 'Sucesso',
+            text: 'Texto copiado para a área de transferência!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }).catch(err => {
+        console.error('Erro ao copiar o texto: ', err);
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao copiar o texto.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+}
+
+function generateAndCopyTextIPTV(idOS) {
+    const fields = [
+        { id: `link_${idOS}`, label: 'Foi tirado a foto do link no aplicativo?' },
+        { id: `funcionando_${idOS}`, label: 'Foi tirada a foto do IPTV funcionando?' },
+        { id: `organizacao_${idOS}`, label: 'Foi tirada a foto da organização(TV/TVBOX)?' },
+        { id: `cabeamento_${idOS}`, label: 'Foi tirada a foto do cabeamento TVBOX->TV?' },
+    ];
+
+    let resultText = '';
+
+    fields.forEach(field => {
+        const checkbox = document.getElementById(field.id);
+        if (checkbox) {
+            resultText += `${field.label}\nSim (${checkbox.checked ? 'X' : ' '}) Não (${checkbox.checked ? ' ' : 'X'})\n\n`;
+        } else {
+            console.warn(`Elemento com ID ${field.id} não encontrado.`);
+        }
+    });
+
+    const obs = document.getElementById(`obs_${idOS}`);
+    if (obs) {
+        resultText += `OBS: ${obs.value}\n`;
+    } else {
+        console.warn(`Elemento com ID obs_${idOS} não encontrado.`);
+    }
+
+    navigator.clipboard.writeText(resultText).then(() => {
+        Swal.fire({
+            title: 'Sucesso',
+            text: 'Texto copiado para a área de transferência!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }).catch(err => {
+        console.error('Erro ao copiar o texto: ', err);
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao copiar o texto.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+}
+
+function generateAndCopyTextCamera(idOS) {
+    const fields = [
+        { id: `link_${idOS}`, label: 'Foi tirado a foto do link no aplicativo?' },
+        { id: `funcionando_${idOS}`, label: 'Foi tirada a foto do IPTV funcionando?' },
+        { id: `organizacao_${idOS}`, label: 'Foi tirada a foto da organização(TV/TVBOX)?' },
+        { id: `cabeamento_${idOS}`, label: 'Foi tirada a foto do cabeamento TVBOX->TV?' },
     ];
 
     let resultText = '';

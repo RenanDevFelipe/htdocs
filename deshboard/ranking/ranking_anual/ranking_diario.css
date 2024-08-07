@@ -262,6 +262,8 @@
     height: 40px; /* Ajuste o tamanho do enfeite */
 }
 
+
+
 @keyframes loader-tres-pontinhos {
     from {
         transform: scale(0, 0);

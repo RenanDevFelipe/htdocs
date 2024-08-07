@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $insert = $pdo->prepare('INSERT INTO avaliacao_n3 (id_os, desc_os, pontuacao_os, nota_os, data_finalizacao_os, data_finalizacao, id_tecnico, id_setor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
                 if ($insert->execute([$idOS, $desc, $pontuacao, $notaOS, $fechamento, $dataAvaliacao, $idTecnico, $setor])) {
                     $response['success'] = true;
-                    $response['message'] = 'Avaliacao feita com sucesso';
+                    $response['message'] = 'Avaliação feita com sucesso!';
                 } else {
                     $response['message'] = 'Erro ao avaliar!';
                 }

@@ -8,8 +8,8 @@ require_once '../../../autentication/index.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../style/dashboard.css?v=3">
-    <link rel="stylesheet" href="ranking_diario.css?v=3">
+    <link rel="stylesheet" href="../../../style/dashboard.css?v=5">
+    <link rel="stylesheet" href="ranking_diario.css?v=4">
     <title>Ranking Mensal</title>
 </head>
 
@@ -18,6 +18,7 @@ require_once '../../../autentication/index.php';
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
+            <i onclick="redirectToPage('../mensal_porcentagem/')" class="bx bx-bar-chart-alt-2"></i>
         </div>
 
         <div id="content">
@@ -38,6 +39,9 @@ require_once '../../../autentication/index.php';
 
 
     <script>
+        function redirectToPage(url) {
+            window.location.href = url;
+        }
         window.onload = function() {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', 'load_content.php', true);

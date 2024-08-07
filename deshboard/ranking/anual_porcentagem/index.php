@@ -19,6 +19,7 @@ require_once 'require_media.php';
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
+            <i onclick="redirectToPage('../ranking_anual/')" class="bx bx-arrow-back"></i>
         </div>
 
         <section class="list-card-porcentagem">
@@ -54,5 +55,11 @@ require_once 'require_media.php';
     </section>
 </body>
 <script src="../../../script/dashboard.js"></script>
+
+<script>
+    function redirectToPage(url) {
+            window.location.href = url;
+        }
+</script>
 
 </html>
