@@ -271,3 +271,16 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+#pesquisa{
+    width: 100%;
+    margin-top: 50px;
+}
+#pesquisa form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pesquisa form input{
+    padding: 10px;
+}

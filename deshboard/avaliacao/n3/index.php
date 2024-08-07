@@ -18,84 +18,85 @@ $avaliado = false;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=4">
-    <link rel="stylesheet" href="index.css?v=9">
+    <link rel="stylesheet" href="index.css?v=10">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Avaliação N3</title>
 </head>
 
 <body>
-    <section class="body-os home-section">
-        <div class="home-content">
-            <i class='bx bx-menu'></i>
-            <p><strong>Total de OS:</strong> <?php echo $os_fin->total ?></p>
-        </div>
-        <section class="dashboard-tecnicos-ranking">
-
-            <?php
-            foreach (zip($desc_os, $nomes_clientes, $fechamento_os, $id_os_ixc, $id_cliente, $abertura_os, $id_assunto) as $index => $pair) :
-                list($desc, $cliente, $fechamento, $id, $id_cliente, $abertura_os, $id_assunto) = $pair;
+<section class="body-os home-section">
+    <div class="home-content">
+        <i class='bx bx-menu'></i>
+        <p><strong>Total de OS:</strong> <?php echo $os_fin->total ?></p>
+    </div>
+    <div id="pesquisa">
+        <form id="formData" action="" method="GET">
+            <input type="hidden" name="id_colaborador" value="<?php echo htmlspecialchars($_GET['id_colaborador']); ?>">
+            <input type="hidden" name="bd" value="<?php echo htmlspecialchars($_GET['bd']); ?>">
+            <input type="date" name="data" id="dataInput" value="<?php echo isset($_GET['data']) ? $_GET['data'] : ''; ?>">
+        </form>
+    </div>
+    <section class="dashboard-tecnicos-ranking">
+        <?php
+        foreach (zip($desc_os, $nomes_clientes, $fechamento_os, $id_os_ixc, $id_cliente, $abertura_os, $id_assunto) as $index => $pair) :
+            list($desc, $cliente, $fechamento, $id, $id_cliente, $abertura_os, $id_assunto) = $pair;
             // Consulta para verificar se o colaborador já existe
             $sql = $pdo->prepare('SELECT * FROM avaliacao_n3 WHERE id_os = ?');
             $sql->execute([$id]);
 
             $avaliado = $sql->rowCount() > 0;
-                
-            ?>
-                <div>
-                    <div class="box-tecnico">
-                        <div id="tecnico">
-                            <div>
-                                <div class="box-check" title="<?php echo $avaliado ? 'Já Finalizado!' : 'Não Finalizado!'; ?>" >
-                                    <div style="background-color: <?php echo $avaliado ? 'red' : 'green'; ?>;"></div>
-                                    <p><?php echo $avaliado ? 'Finalizado!' : 'Não Finalizado!'; ?></p>
-                                </div>
-                                <p> <?php echo $id ?> </p>
-                                <p> <?php echo $fechamento ?> </p>
-                            </div>
-                            <p> <?php echo $id_cliente . ' - ' . $cliente ?> </p>
+        ?>
+        <div>
+            <div class="box-tecnico">
+                <div id="tecnico">
+                    <div>
+                        <div class="box-check" title="<?php echo $avaliado ? 'Já Finalizado!' : 'Não Finalizado!'; ?>" >
+                            <div style="background-color: <?php echo $avaliado ? 'red' : 'green'; ?>;"></div>
+                            <p><?php echo $avaliado ? 'Finalizado!' : 'Não Finalizado!'; ?></p>
                         </div>
-                        <div class="avaliar">
-                            <div id="abrirDetalhes">
-                                <i class="bx bx-collection"></i>
-                                <a>Detalhes</a>
-                            </div>
-                            <div class="hidden" id="abrirAvaliar" data-id-tecnico="<?php echo $_GET['bd'] ?>" data-desc="<?php echo $desc ?>" data-finalizacao-os="<?php echo $fechamento ?>" data-assunto="<?php echo $id_assunto ?>" data-id-os="<?php echo $id ?>">
-                                <i class="bx bx-star"></i>
-                                <nav>
-                                    <a>Avaliar</a>
-                                </nav>
-                            </div>
-                        </div>
-
+                        <p> <?php echo $id ?> </p>
+                        <p> <?php echo $fechamento ?> </p>
                     </div>
-                    <div class="box-detalhes">
-                        <div class="row-id-os">
-                            <p><strong>ID: </strong><?php echo $id ?></p>
-                        </div>
-                        <div class="row-assunto-os">
-                            <p><strong>Assunto da OS: </strong><?php echo $id_assunto ?></p>
-                        </div>
-                        <div class="row-data-abertura">
-                            <p><strong>Data de abertura: </strong><?php echo $abertura_os ?></p>
-                        </div>
-                        <div class="row-data-fechamento">
-                            <p><strong>Data de fechamento: </strong><?php echo $fechamento ?></p>
-                        </div>
-                        <div class="row-desc-os">
-                            <p><strong>Descrição da OS: </strong><?php echo $desc ?></p>
-                        </div>
-                    </div>
-                    <div class="box-avaliar hidden" id="box-avaliar-<?php echo $id_assunto ?>-<?php echo $id ?>"></div>
+                    <p> <?php echo $id_cliente . ' - ' . $cliente ?> </p>
                 </div>
-
-
-
-            <?php endforeach ?>
-            <div>
-                <?php echo $erro_mensagem ?>
+                <div class="avaliar">
+                    <div id="abrirDetalhes">
+                        <i class="bx bx-collection"></i>
+                        <a>Detalhes</a>
+                    </div>
+                    <div class="hidden" id="abrirAvaliar" data-id-tecnico="<?php echo $_GET['bd'] ?>" data-desc="<?php echo $desc ?>" data-finalizacao-os="<?php echo $fechamento ?>" data-assunto="<?php echo $id_assunto ?>" data-id-os="<?php echo $id ?>">
+                        <i class="bx bx-star"></i>
+                        <nav>
+                            <a>Avaliar</a>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        </section>
+            <div class="box-detalhes">
+                <div class="row-id-os">
+                    <p><strong>ID: </strong><?php echo $id ?></p>
+                </div>
+                <div class="row-assunto-os">
+                    <p><strong>Assunto da OS: </strong><?php echo $id_assunto ?></p>
+                </div>
+                <div class="row-data-abertura">
+                    <p><strong>Data de abertura: </strong><?php echo $abertura_os ?></p>
+                </div>
+                <div class="row-data-fechamento">
+                    <p><strong>Data de fechamento: </strong><?php echo $fechamento ?></p>
+                </div>
+                <div class="row-desc-os">
+                    <p><strong>Descrição da OS: </strong><?php echo $desc ?></p>
+                </div>
+            </div>
+            <div class="box-avaliar hidden" id="box-avaliar-<?php echo $id_assunto ?>-<?php echo $id ?>"></div>
+        </div>
+        <?php endforeach ?>
+        <div>
+            <?php echo $erro_mensagem ?>
+        </div>
     </section>
+</section>
 
 
 </body>
@@ -1231,6 +1232,11 @@ function generateAndCopyTextCamera(idOS) {
 }
 
 
+// form submit 
+
+document.getElementById('dataInput').addEventListener('change', function() {
+    document.getElementById('formData').submit();
+});
 
 </script>
 <script src="index.js"></script>

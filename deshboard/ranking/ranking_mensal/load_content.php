@@ -226,6 +226,7 @@ usort($colaboradores, function($a, $b) {
     return $b['total_pontuacao'] <=> $a['total_pontuacao'];
 });
 
+
 // Separar os 3 primeiros colocados
 $top_3 = array_slice($colaboradores, 0, 3);
 $restantes = array_slice($colaboradores, 3);
@@ -242,6 +243,7 @@ foreach ($top_3 as $colaborador) {
     $class_suffix = 'top-3-' . $counter;
     
     $top_3_content .= '
+        
         <div class="box-tecnico-top3 ' . $class_suffix . '">
             <div id="tecnico-top3">
                 <img src="./assets/deafult-user.png">
