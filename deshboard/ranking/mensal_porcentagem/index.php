@@ -29,26 +29,35 @@ require_once 'require_media.php';
 
             <div class="container-list">
                 <div class="container-card-porcentagem">
-                    <?php foreach($colaboradores as $colaborador): ?>
-                    <?php
-                    // Valor do progresso
+                    <?php foreach ($colaboradores as $colaborador) : ?>
+                        <?php
+                        // Valor do progresso
                         $media = $colaborador['media'];
                         $progress = $media * 10; // Exemplo de progresso, normalmente viria do seu banco de dados
-                    ?>
-                    <div class="cards">
-                        <div>
-                            <p><?php echo $colaborador['nome_colaborador']?></p>
-                        </div>
+                        if ($progress >= 0 && $progress <= 50) {
+                            $colorProgress = 'red';
+                        } elseif ($progress > 50 && $progress <= 80) {
+                            $colorProgress = '#dc9900';
+                        } elseif ($progress > 80 && $progress <= 99) {
+                            $colorProgress = '#008000';
+                        } else {
+                            $colorProgress = '#00bfff';
+                        }
+                        ?>
+                        <div class="cards">
+                            <div>
+                                <p><?php echo $colaborador['nome_colaborador'] ?></p>
+                            </div>
 
-                        <div>
-                            <div class="progress-circle">
-                                <div class="progress" style="--progress: <?php echo $progress; ?>%;" title="<?php echo $progress . '%'?>">
-                                    <span><?php echo $media ?></span>
+                            <div>
+                                <div class="progress-circle">
+                                    <div class="progress" style="--progress: <?php echo $progress; ?>%; --colorProgress: <?php echo $colorProgress ?> ;" title="<?php echo 'Média: ' . $media ?>">
+                                        <span><?php echo $progress . '%' ?></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <?php endforeach?>
+                    <?php endforeach ?>
                 </div>
             </div>
         </section>
@@ -57,8 +66,8 @@ require_once 'require_media.php';
 
 <script>
     function redirectToPage(url) {
-            window.location.href = url;
-        }
+        window.location.href = url;
+    }
 </script>
 <script src="../../../script/dashboard.js"></script>
 

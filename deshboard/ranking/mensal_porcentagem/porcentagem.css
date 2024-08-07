@@ -39,7 +39,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: conic-gradient(var(---colorsecundary) var(--progress), #e0e0e0 0);
+    background: conic-gradient(var(--colorProgress) var(--progress), #e0e0e0 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,7 +56,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(---colorsecundary);
+    color: var(--colorProgress);
 }
 
 .container-card-porcentagem{
