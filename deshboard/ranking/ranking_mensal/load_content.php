@@ -4,6 +4,8 @@ require_once "../../../core/core.php";
 
 sleep(2);
 
+$date_param = isset($_GET['data']) ? $_GET['data'] : date('Y-m');
+
 // Obter a lista de colaboradores e seus setores
 $query = $pdo->prepare("SELECT * FROM colaborador");
 $query->execute();
@@ -21,19 +23,19 @@ $mes_atual = date('Y-m');
 
 // Obter as avaliações dos técnicos para o mês atual
 $query_n3 = $pdo->prepare("SELECT id_tecnico, nota_os, pontuacao_os FROM avaliacao_n3 WHERE DATE_FORMAT(data_finalizacao, '%Y-%m') = ?");
-$query_n3->execute([$mes_atual]);
+$query_n3->execute([$date_param]);
 
 $query_sucesso = $pdo->prepare("SELECT ponto_sucesso, id_tecnico FROM avaliacao_sucesso WHERE DATE_FORMAT(data_avaliacao, '%Y-%m') = ?");
-$query_sucesso->execute([$mes_atual]);
+$query_sucesso->execute([$date_param]);
 
 $query_rh = $pdo->prepare("SELECT pnt_total, id_tecnico, data_avaliacao FROM avaliacao_rh WHERE DATE_FORMAT(data_avaliacao, '%Y-%m') = ?");
-$query_rh->execute([$mes_atual]);
+$query_rh->execute([$date_param]);
 
 $query_estoque = $pdo->prepare("SELECT pnt_total_estoque, id_tecnico_estoque FROM avaliacao_estoque WHERE DATE_FORMAT(data_finalizacao, '%Y-%m') = ?");
-$query_estoque->execute([$mes_atual]);
+$query_estoque->execute([$date_param]);
 
 $query_n2 = $pdo->prepare("SELECT ponto_total, id_tecnico_n2 FROM avaliacao_n2 WHERE DATE_FORMAT(data_finalizacao, '%Y-%m') = ?");
-$query_n2->execute([$mes_atual]);
+$query_n2->execute([$date_param]);
 
 $avaliacoes_sucesso = [];
 while ($row_sucesso = $query_sucesso->fetch(PDO::FETCH_ASSOC)) {

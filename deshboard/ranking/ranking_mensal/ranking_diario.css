@@ -261,6 +261,19 @@
     width: 40px; /* Ajuste o tamanho do enfeite */
     height: 40px; /* Ajuste o tamanho do enfeite */
 }
+#filter{
+    width: 95%;
+    display: flex;
+    justify-content: end;
+}
+
+#filter input[type=month]{
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-shadow: var(---shadowBoxForm);
+    outline: none;
+}
 
 @keyframes loader-tres-pontinhos {
     from {
