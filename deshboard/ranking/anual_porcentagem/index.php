@@ -39,14 +39,14 @@ require_once 'require_media.php';
                         }
 
                         elseif($progress > 50 && $progress <= 80){
-                                $colorProgress = '#f3d500';
+                                $colorProgress = '#dc9900';
                         }
 
                         elseif($progress > 80 && $progress <= 99){
                             $colorProgress = '#008000';
                         }
                         else{
-                            $colorProgress = '0000ff';
+                            $colorProgress = '#00bfff';
                         }
                         ?>
                         <div class="cards">

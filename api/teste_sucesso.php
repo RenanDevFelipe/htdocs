@@ -97,7 +97,7 @@ foreach ($id_colaborador_ixc as $colaborador) {
 
                 $id_diagnostico_val = $teste_1->registros[0]->id_su_diagnostico;
 
-                if ($id_diagnostico_val != 46) {
+                if ($id_diagnostico_val != 46 && $id_diagnostico_val != 45) {
 
                     $id_ticket = $id_sucesso;
                     $ponto_sucesso = substituir_ids($id_diagnostico_val, $id_diagnostico);
