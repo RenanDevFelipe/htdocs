@@ -46,34 +46,34 @@ $nomes_clientes = [];
 $erro_mensagem = ''; // Variável para armazenar mensagem de erro
 
 if (isset($os_fin->registros) && !empty($os_fin->registros)) {
-    $i = 0;
+    $i_2 = 0;
 
-    while ($i < $os_fin->total) {
-        $id_cliente[] = $os_fin->registros[$i]->id_cliente;   
-        $abertura_os[] = $os_fin->registros[$i]->data_abertura;
-        $id_assunto[] = $os_fin->registros[$i]->id_assunto;
-        $desc_os[] = $os_fin->registros[$i]->mensagem_resposta;
-        $fechamento_os[] = $os_fin->registros[$i]->data_fechamento;
-        $id_os_ixc[] = $os_fin->registros[$i]->id;
-        $i++;
-    }
+    while ($i_2 < $os_fin->total) {
+        if ($os_fin->registros[$i_2]->id_assunto != 2) {
+            $id_cliente[] = $os_fin->registros[$i_2]->id_cliente;   
+            $abertura_os[] = $os_fin->registros[$i_2]->data_abertura;
+            $id_assunto[] = $os_fin->registros[$i_2]->id_assunto;
+            $desc_os[] = $os_fin->registros[$i_2]->mensagem_resposta;
+            $fechamento_os[] = $os_fin->registros[$i_2]->data_fechamento;
+            $id_os_ixc[] = $os_fin->registros[$i_2]->id;
 
-    foreach ($os_fin->registros as $chamado) {
-        $params = array(
-            'qtype' => 'cliente.id',
-            'query' => $chamado->id_cliente,
-            'oper' => '=',
-            'page' => '1',
-            'rp' => '300',
-            'sortname' => 'cliente.id',
-            'sortorder' => 'desc'
-        );
-
-        $api->get('cliente', $params);
-        $retorno_cliente = $api->getRespostaConteudo(false);
-        $cliente = json_decode($retorno_cliente);
-
-        $nomes_clientes[] = $cliente->registros[0]->razao;
+            $params = array(
+                'qtype' => 'cliente.id',
+                'query' => $os_fin->registros[$i_2]->id_cliente,
+                'oper' => '=',
+                'page' => '1',
+                'rp' => '300',
+                'sortname' => 'cliente.id',
+                'sortorder' => 'desc'
+            );
+    
+            $api->get('cliente', $params);
+            $retorno_cliente = $api->getRespostaConteudo(false);
+            $cliente = json_decode($retorno_cliente);
+    
+            $nomes_clientes[] = $cliente->registros[0]->razao;
+        }
+        $i_2++;
     }
 } else {
     $erro_mensagem = "Não foram encontrados registros.";
