@@ -281,3 +281,16 @@
         -webkit-transform: scale(1, 1);
     }
 }
+
+#filter{
+    width: 95%;
+    display: flex;
+    justify-content: end;
+}
+
+#filter input[type=date]{
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-shadow: var(---shadowBoxForm);
+}

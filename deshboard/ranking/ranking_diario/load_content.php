@@ -1,8 +1,12 @@
-<?php 
+<?php
 
 require_once "../../../core/core.php";
 
+// Simulate a delay
 sleep(2);
+
+// Get the date parameter from the GET request, default to the current date if not set
+$date_param = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
 
 // Obter a lista de colaboradores e seus setores
 $query = $pdo->prepare("SELECT * FROM colaborador");
@@ -16,19 +20,16 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
     $colaboradores[] = array_merge($row, $setores);
 }
 
-// Obter a data atual
-$data_atual = date('Y-m-d');
-
-// Obter as avaliações dos técnicos para o dia atual
+// Obter as avaliações dos técnicos para a data selecionada
 $query_n3 = $pdo->prepare("SELECT id_tecnico, nota_os, pontuacao_os FROM avaliacao_n3 WHERE DATE(data_finalizacao) = ?");
-$query_n3->execute([$data_atual]);
+$query_n3->execute([$date_param]);
 
 $query_sucesso = $pdo->prepare("SELECT ponto_sucesso, id_tecnico FROM avaliacao_sucesso WHERE DATE(data_avaliacao) = ?");
-$query_sucesso->execute([$data_atual]);
+$query_sucesso->execute([$date_param]);
 
 $avaliacoes_sucesso = [];
-while($row_sucesso = $query_sucesso->fetch(PDO::FETCH_ASSOC)){
-     $avaliacoes_sucesso[] = $row_sucesso;
+while ($row_sucesso = $query_sucesso->fetch(PDO::FETCH_ASSOC)) {
+    $avaliacoes_sucesso[] = $row_sucesso;
 }
 
 $avaliacoes_n3 = [];
