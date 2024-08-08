@@ -234,7 +234,7 @@ $avaliado = false;
                             </div> 
                         </form>
                 `,
-                45: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+            45: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_puxa_cabo" method="post" id="form_${idOS}">
                             <div>
                                 <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
@@ -300,7 +300,7 @@ $avaliado = false;
                             </div> 
                         </form>
                 `,
-                87: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
+            87: (idOS,descOS,fechamentoOS,formId,id_setor,nota_os,pontuacao_os,id_tecnico) => `
                         <form  class="formulario_troca_cabo" method="post" id="form_${idOS}">
                             <div>
                                 <input value="${id_tecnico}" type="hidden" name="idTecnico_${idOS}" id="idTecnico_${idOS}">
@@ -536,7 +536,7 @@ $avaliado = false;
                             </div>
                             <div>
                                 <input class="checkbox" value="2" type="checkbox" name="canal_${idOS}" id="canal_${idOS}">
-                                <label for="canal_${idOS}">onfigurações do equipamento Canal e Largura</label>
+                                <label for="canal_${idOS}">Configurações do equipamento Canal e Largura</label>
                             </div>
                             <div>
                                 <input class="checkbox" value="2" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
@@ -1024,8 +1024,21 @@ $avaliado = false;
                 icon: 'info',
                 confirmButtonText: 'OK'
             });
+            if(formId == 452){
+                generateAndCopyTextIPTV(idOS);
+            } else if(formId == 23 || formId == 87 || formId == 28 ||formId == 27 || formId == 11 || formId == 45){
+                generateAndCopyText(idOS);
+            } else if(formId == 357){
+                generateAndCopyTextCamera(idOS);
+            } else if (formId == 10 || formId == 70 ){
+                generateAndCopyTextInstalacao(idOS);
+            } else if (formId == 357){
+                generateAndCopyTextInstalacaoCamera(idOS);
+            } else if (formId == 452){
+                generateAndCopyTextSuporteIPTV(idOS);
+            }
 
-            generateAndCopyText(idOS);
+            
 
             const formData = new FormData(form);
             form.querySelector(`input[name="pontuacaoOS_${idOS}"]`).value = pontuacao_os;
@@ -1080,6 +1093,56 @@ function generateAndCopyText(idOS) {
     const fields = [
         { id: `execucao_${idOS}`, label: 'A ordem de serviço estava com o Status em "Execução"?' },
         { id: `potencia_${idOS}`, label: 'Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.' },
+        { id: `potenciaBoa_${idOS}`, label: 'A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?' },
+        { id: `organizadoCaixa_${idOS}`, label: 'Foi organizado os cabos na CTO/Caixa?' },
+        { id: `organizadoParede_${idOS}`, label: 'Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?' },
+        { id: `velocidade_${idOS}`, label: 'Foi Feito o teste de velocidade?' },
+        { id: `acessoRemoto_${idOS}`, label: 'Foi ativado o Ping e liberado o acesso remoto?' },
+        { id: `nomeRede_${idOS}`, label: 'Foi inserido o nome (Ticonnect), na rede wifi?' },
+    ];
+
+    let resultText = '';
+
+    fields.forEach(field => {
+        const checkbox = document.getElementById(field.id);
+        if (checkbox) {
+            resultText += `${field.label}\nSim (${checkbox.checked ? 'X' : ' '}) Não (${checkbox.checked ? ' ' : 'X'})\n\n`;
+        } else {
+            console.warn(`Elemento com ID ${field.id} não encontrado.`);
+        }
+    });
+
+    const obs = document.getElementById(`obs_${idOS}`);
+    if (obs) {
+        resultText += `OBS: ${obs.value}\n`;
+    } else {
+        console.warn(`Elemento com ID obs_${idOS} não encontrado.`);
+    }
+
+    navigator.clipboard.writeText(resultText).then(() => {
+        Swal.fire({
+            title: 'Sucesso',
+            text: 'Texto copiado para a área de transferência!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }).catch(err => {
+        console.error('Erro ao copiar o texto: ', err);
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao copiar o texto.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+}
+
+
+function generateAndCopyTextInstalacao(idOS) {
+    const fields = [
+        { id: `execucao_${idOS}`, label: 'A ordem de serviço estava com o Status em "Execução"?' },
+        { id: `potencia_${idOS}`, label: 'Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.' },      
+        { id: `canal_${idOS}`, label: 'Configurações do equipamento Canal e Largura' },
         { id: `potenciaBoa_${idOS}`, label: 'A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?' },
         { id: `organizadoCaixa_${idOS}`, label: 'Foi organizado os cabos na CTO/Caixa?' },
         { id: `organizadoParede_${idOS}`, label: 'Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?' },
@@ -1211,6 +1274,95 @@ function generateAndCopyTextCamera(idOS) {
         });
     });
 }
+
+function generateAndCopyTextInstalacaoCamera(idOS) {
+    const fields = [
+        { id: `link_${idOS}`, label: 'Foi tirado a foto do link no aplicativo?' },
+        { id: `funcionando_${idOS}`, label: 'Foi tirada a foto do IPTV funcionando?' },
+        { id: `organizacao_${idOS}`, label: 'Foi tirada a foto da organização(TV/TVBOX)?' },
+        { id: `cabeamento_${idOS}`, label: 'Foi tirada a foto do cabeamento TVBOX->TV?' },
+    ];
+
+    let resultText = '';
+
+    fields.forEach(field => {
+        const checkbox = document.getElementById(field.id);
+        if (checkbox) {
+            resultText += `${field.label}\nSim (${checkbox.checked ? 'X' : ' '}) Não (${checkbox.checked ? ' ' : 'X'})\n\n`;
+        } else {
+            console.warn(`Elemento com ID ${field.id} não encontrado.`);
+        }
+    });
+
+    const obs = document.getElementById(`obs_${idOS}`);
+    if (obs) {
+        resultText += `OBS: ${obs.value}\n`;
+    } else {
+        console.warn(`Elemento com ID obs_${idOS} não encontrado.`);
+    }
+
+    navigator.clipboard.writeText(resultText).then(() => {
+        Swal.fire({
+            title: 'Sucesso',
+            text: 'Texto copiado para a área de transferência!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }).catch(err => {
+        console.error('Erro ao copiar o texto: ', err);
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao copiar o texto.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+}
+
+function generateAndCopyTextSuporteIPTV(idOS) {
+    const fields = [
+        { id: `link_${idOS}`, label: 'Foi tirado a foto do link no aplicativo?' },
+        { id: `funcionando_${idOS}`, label: 'Foi tirada a foto do IPTV funcionando?' },
+        { id: `organizacao_${idOS}`, label: 'Foi tirada a foto da organização(TV/TVBOX)?' },
+        { id: `cabeamento_${idOS}`, label: 'Foi tirada a foto do cabeamento TVBOX->TV?' },
+    ];
+
+    let resultText = '';
+
+    fields.forEach(field => {
+        const checkbox = document.getElementById(field.id);
+        if (checkbox) {
+            resultText += `${field.label}\nSim (${checkbox.checked ? 'X' : ' '}) Não (${checkbox.checked ? ' ' : 'X'})\n\n`;
+        } else {
+            console.warn(`Elemento com ID ${field.id} não encontrado.`);
+        }
+    });
+
+    const obs = document.getElementById(`obs_${idOS}`);
+    if (obs) {
+        resultText += `OBS: ${obs.value}\n`;
+    } else {
+        console.warn(`Elemento com ID obs_${idOS} não encontrado.`);
+    }
+
+    navigator.clipboard.writeText(resultText).then(() => {
+        Swal.fire({
+            title: 'Sucesso',
+            text: 'Texto copiado para a área de transferência!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }).catch(err => {
+        console.error('Erro ao copiar o texto: ', err);
+        Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao copiar o texto.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+}
+
 
 
 // form submit 
