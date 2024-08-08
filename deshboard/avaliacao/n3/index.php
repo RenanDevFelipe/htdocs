@@ -929,37 +929,20 @@ $avaliado = false;
                                 <input value="${id_setor}" type="hidden" name="setor_${idOS}" id="setor_${idOS}">
                             </div>
                             <div>
-                                <input value="1" type="checkbox" name="execucao_${idOS}" id="execucao_${idOS}">
-                                <label for="execucao_${idOS}">A ordem de serviço estava com o Status em "Execução"? </label>
-                            </div>
-
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potencia_${idOS}" id="potencia_${idOS}">
-                                <label for="potencia_${idOS}">Foi aferida a potência do Sinal, na casa do cliente e na CTO? Frequência 1490nm.</label>
+                                <input value="1" type="checkbox" name="link_${idOS}" id="link_${idOS}">
+                                <label for="link_${idOS}">Foi tirado a foto do link no aplicativo?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="potenciaBoa_${idOS}" id="potenciaBoa_${idOS}">
-                                <label for="potenciaBoa_${idOS}">A potência do sinal óptico ficou na margem de sinal permitido = ou < que -25db?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="funcionando_${idOS}" id="funcionando_${idOS}">
+                                <label for="funcionando_${idOS}">Foi tirada a foto do IPTV funcionando?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoCaixa_${idOS}" id="organizadoCaixa_${idOS}">
-                                <label for="organizadoCaixa_${idOS}">Foi organizado os cabos na CTO/Caixa?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="organizacao_${idOS}" id="organizacao_${idOS}">
+                                <label for="organizacao_${idOS}">Foi tirada a foto da organização(TV/TVBOX)?</label>
                             </div>
                             <div>
-                                <input class="checkbox" value="1" type="checkbox" name="organizadoParede_${idOS}" id="organizadoParede_${idOS}">
-                                <label for="organizadoParede_${idOS}">Os Equipamentos e cabos ficaram organizados na parede, de acordo com o Padrão Ti Connect?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="velocidade_${idOS}" id="velocidade_${idOS}">
-                                <label for="velocidade_${idOS}">Foi Feito o teste de velocidade?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="acessoRemoto_${idOS}" id="acessoRemoto_${idOS}">
-                                <label for="acessoRemoto_${idOS}">Foi ativado o Ping e liberado o acesso remoto?</label>
-                            </div>
-                            <div>
-                                <input class="checkbox" value="1" type="checkbox" name="nomeRede_${idOS}" id="nomeRede_${idOS}">
-                                <label for="nomeRede_${idOS}">Foi inserido o nome (Ticonnect), na rede wifi?</label>
+                                <input class="checkbox" value="1" type="checkbox" name="cabeamento_${idOS}" id="cabeamento_${idOS}">
+                                <label for="cabeamento_${idOS}">Foi tirada a foto do cabeamento TVBOX->TV?</label>
                             </div>
                             <div>
                                 <label for="obs_${idOS}">OBS:</label>
