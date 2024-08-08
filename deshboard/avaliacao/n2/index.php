@@ -64,8 +64,8 @@ $colaborador = $sql->fetch(PDO::FETCH_ASSOC);
                             <label for="almoxarifado">-10 Pontos material desorganizado</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="almoxarifado" value="almoxarifado">
-                            <label for="almoxarifado">-10 Sem fardamento</label>
+                            <input type="checkbox" name="fora_prazo" value="fora_prazo">
+                            <label for="fora_prazo">-10 Sem fardamento</label>
                         </div>
 
                     </div>
@@ -82,6 +82,6 @@ $colaborador = $sql->fetch(PDO::FETCH_ASSOC);
 </body>
 
 <script src="../../../script/dashboard.js"></script>
-<script src="avaliacao_n2.js"></script>
+<script src="avaliacao_n2.js?v=1"></script>
 
 </html>

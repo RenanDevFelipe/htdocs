@@ -3,7 +3,7 @@
 require_once '../../../core/core.php';
 
 $bd = isset($_POST['bd']) ? $_POST['bd'] : '';
-$data = isset($_POST['data']) ? $_POST['data'] : '';
+$data = isset($_POST['data']) ? $_POST['data'] : date('Y-m-d');
 $checkboxes = [
     'ponto_finalizacao_os' => isset($_POST['pedido']) ? $_POST['pedido'] : null,
     'ponto_lavagem_carro' => isset($_POST['material']) ? $_POST['material'] : null,
