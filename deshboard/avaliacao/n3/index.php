@@ -18,11 +18,10 @@ $avaliado = false;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/dashboard.css?v=4">
-    <link rel="stylesheet" href="index.css?v=10">
+    <link rel="stylesheet" href="index.css?v=11">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Avaliação N3</title>
 </head>
-
 <body>
 <section class="body-os home-section">
     <div class="home-content">

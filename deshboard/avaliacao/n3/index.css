@@ -272,15 +272,20 @@
     margin-bottom: 10px;
 }
 #pesquisa{
-    width: 100%;
+    width: 95%;
     margin-top: 50px;
 }
 #pesquisa form{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
 }
-#pesquisa form input{
+#pesquisa form input[type=date]{
+    border-radius: 10px;
+    border: 1px solid transparent;
+    box-shadow: var(--shadowBoxForm);
+    font-weight: 500;
     padding: 10px;
+    outline: none;
 }
