@@ -54,7 +54,6 @@ $avaliado = false;
                             <div style="background-color: <?php echo $avaliado ? 'red' : 'green'; ?>;"></div>
                             <p><?php echo $avaliado ? 'Finalizado!' : 'Não Finalizado!'; ?></p>
                         </div>
-                        <p> <?php echo $id ?> </p>
                         <p> <?php echo $fechamento ?> </p>
                     </div>
                     <p> <?php echo $id_cliente . ' - ' . $cliente ?> </p>
