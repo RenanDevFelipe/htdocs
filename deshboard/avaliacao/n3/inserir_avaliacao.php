@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $setor = htmlspecialchars(trim($_POST['setor_'.$idOS]));
         $dataAvaliacao = date('Y-m-d');
         $idTecnico = htmlspecialchars(trim($_POST['idTecnico_'.$idOS]));
+        $avaliador = htmlspecialchars(trim($_POST['avaliador_'.$idOS]));
 
         try {
             // Consulta para verificar se o colaborador já existe
@@ -48,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $response['message'] = 'Avaliação ja existe!';
             } else {
                 // Insere o novo colaborador no banco de dados
-                $insert = $pdo->prepare('INSERT INTO avaliacao_n3 (id_os, desc_os, pontuacao_os, nota_os, data_finalizacao_os, data_finalizacao, id_tecnico, id_setor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-                if ($insert->execute([$idOS, $desc, $pontuacao, $notaOS, $fechamento, $dataAvaliacao, $idTecnico, $setor])) {
+                $insert = $pdo->prepare('INSERT INTO avaliacao_n3 (id_os, desc_os, pontuacao_os, nota_os, data_finalizacao_os, data_finalizacao, id_tecnico, id_setor, avaliador) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)');
+                if ($insert->execute([$idOS, $desc, $pontuacao, $notaOS, $fechamento, $dataAvaliacao, $idTecnico, $setor,$avaliador])) {
                     $response['success'] = true;
                     $response['message'] = 'Avaliação feita com sucesso!';
                 } else {

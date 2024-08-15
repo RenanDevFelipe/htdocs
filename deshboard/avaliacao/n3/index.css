@@ -95,7 +95,7 @@
     align-items: center;
 }
 .dashboard-tecnicos-ranking div .box-tecnico #tecnico .box-check{
-    width: 100px;
+    width: 140px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -106,7 +106,7 @@
     border-radius: 50%;
 }
 .dashboard-tecnicos-ranking div .box-tecnico #tecnico div p {
-    text-align: end;
+    text-align: center;
     font-size: 10px;
     margin-left: 2px;
 }
