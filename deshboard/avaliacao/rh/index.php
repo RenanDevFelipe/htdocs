@@ -49,24 +49,43 @@ $colaborador = $sql->fetch(PDO::FETCH_ASSOC);
                 <div class="box-estoque display-flex">
                     <div class="box-input-check">
                         <div><b>Ponto</b></div>
-                        <input type="checkbox" name="ponto" value="ponto">
+                        <input type="checkbox" id="ponto" name="ponto" value="ponto">
                         <label for="ponto">-2 pontos</label>
                     </div>
                     <div class="box-input-check">
                         <div><b>Atestado</b></div>
-                        <input type="checkbox" name="atestado" value="atestado">
+                        <input type="checkbox" id="atestado" name="atestado" value="atestado">
                         <label for="atestado">-2 Pontos </label>
                     </div>
                     <div class="box-input-check">
                         <div><b>Falta não justificada</b></div>
-                        <input type="checkbox" name="falta" value="falta">
+                        <input type="checkbox" id="falta" name="falta" value="falta">
                         <label for="falta">-2 Pontos</label>
                     </div>
+
+
+                    <div class="box-input-check">
+                        <div><b>Ponto</b></div>
+                        <input type="checkbox" id="ponto+" name="ponto+" value="ponto+">
+                        <label for="ponto+">+2 pontos</label>
+                    </div>
+                    <div class="box-input-check">
+                        <div><b>Atestado</b></div>
+                        <input type="checkbox" id="atestado+" name="atestado+" value="atestado+">
+                        <label for="atestado+">+2 Pontos </label>
+                    </div>
+                    <div class="box-input-check">
+                        <div><b>Falta não justificada</b></div>
+                        <input type="checkbox" id="ponto+" name="falta+" value="falta+">
+                        <label for="falta+">+2 Pontos</label>
+                    </div>
+
                 </div>
                 <div class="div-button">
                     <button type="submit" class="button-avaliar-estoque blue">Salvar</button>
                     <a href="/deshboard/" class="button-avaliar-estoque red">Voltar</a>
                 </div>
+
             </form>
         </section>
     </section>

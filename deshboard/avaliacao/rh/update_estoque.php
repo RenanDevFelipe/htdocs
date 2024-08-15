@@ -9,10 +9,16 @@ $checkboxes = [
     'pnt_atestado' => isset($_POST['atestado']) ? $_POST['atestado'] : null,
     'pnt_falta' => isset($_POST['falta']) ? $_POST['falta'] : null,
 ];
+$checkboxesAcrescentar = [
+    'pnt_ponto' => isset($_POST['ponto+']) ? $_POST['ponto+'] : null,
+    'pnt_atestado' => isset($_POST['atestado+']) ? $_POST['atestado+'] : null,
+    'pnt_falta' => isset($_POST['falta+']) ? $_POST['falta+'] : null,
+];
+
 
 // Filtra apenas os checkboxes marcados
 $checkedItems = array_filter($checkboxes);
-
+$checkedItemsAcrescentar = array_filter($checkboxesAcrescentar);
 // Extrair mês e ano da data recebida via POST
 $data_parts = explode('-', $data);
 $year = $data_parts[0];
@@ -20,11 +26,18 @@ $month = $data_parts[1];
 
 // Prepara a consulta SQL
 $updates = [];
-foreach ($checkedItems as $key => $value) {
-    // Subtrai 2 pontos do respectivo campo
-    $updates[] = "$key = $key - 2";
-}
 
+if($checkedItems == null ){
+    foreach ($checkboxesAcrescentar as $key => $value) {
+        // Subtrai 2 pontos do respectivo campo
+        $updates[] = "$key = $key + 2";
+    }
+} else {
+    foreach ($checkedItems as $key => $value) {
+        // Subtrai 2 pontos do respectivo campo
+        $updates[] = "$key = $key - 2";
+    }
+}
 // Executa a atualização no banco de dados
 if (!empty($updates)) {
     $sql = "UPDATE avaliacao_rh SET " . implode(', ', $updates) . " WHERE id_tecnico = ? AND MONTH(data_avaliacao) = ? AND YEAR(data_avaliacao) = ?";
